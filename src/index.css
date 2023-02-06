@@ -1,13 +1,198 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@font-face {
+  font-family: RubikDirt;
+  src: url(RubikDirt-Regular.ttf);
+}
+
+.home-outer-wrapper {
+  background: black;
+}
+
+.home-bkg-img-wrapper {
+  position: absolute;
+  z-index: 1;
+}
+
+.home-bkg-img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.test-wrapper {
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
+  display: flex;
+  background-color: #255C99;
+}
+
+.test-search-wrapper {
+  width: 90vw;
+  margin: auto;
+  margin-top: 5vw;
+}
+
+.test-artist-setlists {
+  width: 90vw;
+  margin: auto;
+  margin-top: 5vw;
+}
+
+.App {
+  background-color: #255C99;
+  width: 100vw;
+  height: 100vh;
+}
+
+#test-search-header {
+  font-size: 24px;
+  color: white;
+  width: fit-content;
+  margin-left: 0;
+  margin-bottom: 2vh;
+  font-family: RubikDirt;
+}
+
+#test-search-input {
+  width: 90vw;
+  height: 3vw;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.test-search-button {
+  width: fit-content;
+  padding: 15px 15px;
+  border-radius: 5px;
+  background-color: #fafffd;
+  margin: auto;
+  margin-left: 0;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.test-search-button:hover {
+  cursor: pointer;
+  background-color: #bac1b8;
+}
+
+#test-search-button-text {
+  padding: 0;
+  margin: auto;
+  color: black;
+}
+
+.search-result {
+  width: fit-content;
+  padding-right: 1vw;
+  padding-bottom: 1vw;
+  margin: auto;
+  margin-left: 0;
+}
+
+.search-result:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.test-confirm-artist {
+  width: 90vw;
+  margin: auto;
+  margin-top: 5vw;
+}
+
+#selected-artist-header {
+  font-size: 24px;
+  width: fit-content;
+}
+
+#selected-artist-name {
+  font-size: 24px;
+  width: fit-content;
+}
+
+#confirmed-artist-header {
+  font-size: 24px;
+  color: white;
+  width: fit-content;
+}
+
+.setlist-result {
+  background-color: #fafffd;
+  margin: auto;
+  margin-bottom: 2vw;
+  color: black;
+  width: 75vw;
+  max-width: 500px;
+  border-radius: 5px;
+  padding: 1vw 2vw;
+}
+
+.setlist-venue-name {
+  font-size: 20px;
+  color: black;
+  width: fit-content;
+  margin-bottom: 0;
+  margin-right: 1vw;
+}
+
+.setlist-result-top {
+  display: flex;
+  height: fit-content;
+}
+
+.setlist-date {
+  font-size: 20px;
+  color: black;
+  width: fit-content;
+}
+
+.setlist-venueu-location {
+  font-size: 20px;
+  color: black;
+  width: fit-content;
+  margin-left: 0vw;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.setlist-songs-dropdown {
+  width: fit-content;
+  font-size: 20px;
+}
+
+.dropdown-button {
+  cursor: pointer;
+}
+
+.setlist-songs-dropdow:hover {
+  cursor: pointer;
+}
+
+.song-wrapper {
+  display: flex;
+  margin: auto;
+}
+
+.song-num {
+  width: fit-content;
+}
+
+.song-title {
+  width: fit-content;
+  margin-left: 1vw;
 }
