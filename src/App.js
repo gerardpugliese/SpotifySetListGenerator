@@ -68,6 +68,7 @@ function App() {
     <div className="App">
       <div className="home-outer-wrapper">
         <div className="test-wrapper">
+        <p className="home-page-blurb">This website will help you prep for your next concert by creating Spotify playlists from artist's most recent setlists.</p>
           {selectedArtist == null ?
           <div className="test-search-wrapper">
             <p id="test-search-header">Search below for any artist:</p>
