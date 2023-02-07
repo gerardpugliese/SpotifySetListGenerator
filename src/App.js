@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import SetlistView from './components/SetlistView';
 import { XMLParser } from 'fast-xml-parser';
 
@@ -10,6 +10,23 @@ function App() {
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [artistConfirmed, setArtistConfirmed] = useState(false);
   const [setLists, setSetLists] = useState([]);
+  const [token, setToken] = useState("")
+
+
+  useEffect(() => {
+    const hash = window.location.hash
+    let token = window.localStorage.getItem("token")
+
+    if (!token && hash) {
+        token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
+
+        window.location.hash = ""
+        window.localStorage.setItem("token", token)
+    }
+
+    setToken(token)
+    console.log("token", token)
+  }, [])
 
   const sanitizeSearchResults = (searchResult) => {
     let splice_index = searchResult.length
@@ -26,7 +43,7 @@ function App() {
     fetch(`/rest/1.0/artist/${key}/setlists/`, {
         method: "GET",
         headers: {
-          'x-api-key': 'KL0aYt8quC2b5oGaMS9cLl8tyokmKIQ0VnxP',
+          'x-api-key': `${process.env.REACT_APP_MUSICBRAINZ_KEY}`,
           'Accept': 'application/json	',
         }
     })
@@ -68,13 +85,18 @@ function App() {
     <div className="App">
       <div className="home-outer-wrapper">
         <div className="test-wrapper">
+        {console.log(process.env.REACT_APP_REDIRECT_URI)}
         <p className="home-page-blurb">Search for an artist and we’ll show you what they’ve been playing at shows recently!</p>
           {selectedArtist == null ?
           <div className="test-search-wrapper">
             <input id="test-search-input" placeholder="I want to see set lists for..." onChange={e => setQuery(e.target.value)}/>
             <div onClick={() => submitQuery(query)} className="test-search-button">
-              <p id="test-search-button-text">Submit</p>
+              <p id="test-search-button-text">Search</p>
             </div>
+            {token == "" ? <div className="log-in-wrapper">
+              <p id="log-in-text">Log in to save set lists as playlists!</p>
+              <a href={`${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}`}>Login to Spotify</a>
+            </div> : <React.Fragment />}
             <div className="search-results-wrapper">
               {
                 searchResults.length > 0 
