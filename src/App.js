@@ -28,6 +28,11 @@ function App() {
     console.log("token", token)
   }, [])
 
+  const logout = () => {
+    setToken("")
+    window.localStorage.removeItem("token")
+  } 
+
   const sanitizeSearchResults = (searchResult) => {
     let splice_index = searchResult.length
     for (let i = 0; i < searchResult.length; i++) {
@@ -93,10 +98,14 @@ function App() {
             <div onClick={() => submitQuery(query)} className="test-search-button">
               <p id="test-search-button-text">Search</p>
             </div>
-            {token == "" ? <div className="log-in-wrapper">
+            {token == "" ? 
+            <div className="log-in-wrapper">
               <p id="log-in-text">Log in to save set lists as playlists!</p>
               <a href={`${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}`}>Login to Spotify</a>
-            </div> : <React.Fragment />}
+            </div> : 
+            <div className="log-out-wrapper"> 
+              <p onClick={() => logout()}>Log Out</p>
+            </div>}
             <div className="search-results-wrapper">
               {
                 searchResults.length > 0 
