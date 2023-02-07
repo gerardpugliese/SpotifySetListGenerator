@@ -68,11 +68,10 @@ function App() {
     <div className="App">
       <div className="home-outer-wrapper">
         <div className="test-wrapper">
-        <p className="home-page-blurb">This website will help you prep for your next concert by creating Spotify playlists from artist's most recent setlists.</p>
+        <p className="home-page-blurb">Search for an artist and we’ll show you what they’ve been playing at shows recently!</p>
           {selectedArtist == null ?
           <div className="test-search-wrapper">
-            <p id="test-search-header">Search below for any artist:</p>
-            <input id="test-search-input" placeholder="Type artist name here..." onChange={e => setQuery(e.target.value)}/>
+            <input id="test-search-input" placeholder="I want to see set lists for..." onChange={e => setQuery(e.target.value)}/>
             <div onClick={() => submitQuery(query)} className="test-search-button">
               <p id="test-search-button-text">Submit</p>
             </div>
@@ -85,7 +84,7 @@ function App() {
                   {searchResults.map((result) => {
                     return (
                       <div onClick={() => setSelectedArtist(result)} className="search-result">
-                        <p>{result.name}</p>
+                        <p className="search-result-name">{result.name}</p>
                         {/*<p>{result['@_']['@_id']}</p>*/}
                       </div>
                     )
