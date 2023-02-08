@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Source+Serif+Pro:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=PT+Serif:wght@700&family=Ultra&display=swap');
 
+/*
+font-family: 'PT Serif', serif;
+font-family: 'Ultra', serif;
+*/
 
 body {
   margin: 0;
@@ -38,11 +44,13 @@ code {
   position: absolute;
   z-index: 2;
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
+  min-height: 100vh;
+  background-color: #EFEFEF;
   display: flex;
   flex-direction: column;
  /* background-image: linear-gradient(0, #402565, #30be96)*/
-  background-image: linear-gradient(45deg, #000066, #6699ff)
+  /* background-image: linear-gradient(45deg, #000066, #6699ff)*/
 }
 
 .test-search-wrapper {
@@ -58,31 +66,32 @@ code {
 }
 
 .App {
-  background-color: #255C99;
+  /*background-image: url(images/paper-texture.jpg);*/
+  background-color: #EFEFEF;
   width: 100vw;
   height: 100vh;
 }
 
 .search-result-name {
-  color: white;
+  color: #2c74e7;
 }
 
 .home-page-blurb {
   font-size: 24px;
-  color: white;
+  color: #2c74e7;
   width: 90vw;
   margin: auto;
   margin-bottom: 2vw;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Ultra', serif;
 }
 
 #test-search-header {
   font-size: 24px;
-  color: white;
+  color: #2c74e7;
   width: fit-content;
   margin-left: 0;
   margin-bottom: 2vh;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'PT Serif', serif;
 }
 
 #test-search-input {
@@ -93,7 +102,8 @@ code {
   font-size: 20px;
   border-radius: 50px;
   border: none;
-  font-family: 'Montserrat', sans-serif;
+  color: #2c74e7;
+  font-family: 'PT Serif', serif;
 }
 
 #test-search-input:focus {
@@ -119,16 +129,16 @@ code {
   padding: 0;
   margin: auto;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'PT Serif', serif;
 }
 
 #log-in-text {
   padding: 0;
   margin: auto;
   margin-bottom: 1vw;
-  color: white;
+  color: #2c74e7;
   font-size: 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'PT Serif', serif;
 }
 
 .search-result {
@@ -140,7 +150,7 @@ code {
 }
 
 .search-result:hover {
-  color: white;
+  color: #2c74e7;
   cursor: pointer;
 }
 
@@ -162,7 +172,7 @@ code {
 
 #confirmed-artist-header {
   font-size: 24px;
-  color: white;
+  color: #2c74e7;
   width: fit-content;
 }
 
@@ -258,7 +268,7 @@ code {
 }
 
 .log-in-btn-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'PT Serif', serif;
   color: white;
   font-size: 14px;
   margin-right: 1vw;
@@ -267,7 +277,7 @@ code {
 }
 
 .log-out-btn-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'PT Serif', serif;
   color: white;
   font-size: 14px;
   margin-right: 1vw;

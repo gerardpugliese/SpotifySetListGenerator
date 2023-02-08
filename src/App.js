@@ -93,10 +93,10 @@ function App() {
       <div className="home-outer-wrapper">
         <div className="test-wrapper">
         {console.log(process.env.REACT_APP_REDIRECT_URI)}
-        <p className="home-page-blurb">Search for an artist and we’ll show you what they’ve been playing at shows recently!</p>
+        <p className="home-page-blurb">Search an artist for recent set lists!</p>
           {selectedArtist == null ?
           <div className="test-search-wrapper">
-            <input id="test-search-input" placeholder="I want to see set lists for..." onChange={e => setQuery(e.target.value)}/>
+            <input id="test-search-input" placeholder="I want to see set lists for..." autocomplete="off" onChange={e => setQuery(e.target.value)}/>
             <div onClick={() => submitQuery(query)} className="test-search-button">
               <p id="test-search-button-text">Search</p>
             </div>
