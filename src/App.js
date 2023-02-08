@@ -3,6 +3,8 @@ import './App.css';
 import React, {useState, useEffect} from 'react';
 import SetlistView from './components/SetlistView';
 import { XMLParser } from 'fast-xml-parser';
+import spotify_logo from './images/Spotify_Logo_RGB_Green.png';
+
 
 function App() {
   const [query, setQuery] = useState("");
@@ -101,10 +103,16 @@ function App() {
             {token == "" ? 
             <div className="log-in-wrapper">
               <p id="log-in-text">Log in to save set lists as playlists!</p>
-              <a href={`${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}`}>Login to Spotify</a>
+              <div onClick={() => window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}`} className="log-in-btn-wrapper">
+                <img className="log-in-btn-img" src={spotify_logo}/>
+                <p className="log-in-btn-text">LOGIN WITH SPOTIFY</p>
+              </div>
             </div> : 
-            <div className="log-out-wrapper"> 
-              <p onClick={() => logout()}>Log Out</p>
+            <div className="log-out-wrapper">
+              <div onClick={() => logout()} className="log-in-btn-wrapper">
+                <img className="log-in-btn-img" src={spotify_logo}/>
+                <p className="log-in-btn-text">LOG OUT</p>
+              </div>
             </div>}
             <div className="search-results-wrapper">
               {

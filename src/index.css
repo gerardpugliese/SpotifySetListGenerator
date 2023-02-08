@@ -122,6 +122,15 @@ code {
   font-family: 'Montserrat', sans-serif;
 }
 
+#log-in-text {
+  padding: 0;
+  margin: auto;
+  margin-bottom: 1vw;
+  color: white;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .search-result {
   width: fit-content;
   padding-right: 1vw;
@@ -223,4 +232,45 @@ code {
   margin-left: 1vw;
 }
 
+.log-in-btn-img {
+  max-width: 2vw;
+  max-height: 2vw;
+  min-width: 25px;
+  min-height: 25px;
+  margin: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
 
+.log-in-btn-wrapper {
+  width: fit-content;
+  display: flex;
+  border-radius: 10px;
+  padding: 10px 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: auto;
+  margin-top: 2vw;
+}
+
+.log-in-btn-wrapper:hover {
+  background-color: rgb(0, 0, 0, 1);
+  cursor: pointer;
+}
+
+.log-in-btn-text {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 14px;
+  margin-right: 1vw;
+  width: fit-content;
+  height: fit-content;
+}
+
+.log-out-btn-text {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 14px;
+  margin-right: 1vw;
+  width: fit-content;
+  height: fit-content;
+}
