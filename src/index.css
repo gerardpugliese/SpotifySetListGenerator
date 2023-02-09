@@ -27,6 +27,14 @@ code {
 }
 
 .home-outer-wrapper {
+  min-height: 100vh;
+  display: flex;
+}
+
+.home-wrapper {
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
 }
 
 .home-bkg-img-wrapper {
@@ -38,6 +46,71 @@ code {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+}
+
+.home-artist-setlists {
+  margin: auto;
+}
+
+.home-artist-search-results-wrapper {
+  width: 90vw;
+  height: fit-content;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+}
+
+.home-artist-search-header {
+  display: flex;
+}
+
+.home-artist-search-header-txt-wrapper {
+  display: flex;
+}
+
+.home-artist-cancel-search-btn {
+  margin-left: auto;
+  border-radius: 10px;
+  font-family: 'PT Serif', serif;
+  display: flex;
+  color: #2c74e7;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.home-artist-cancel-search-btn:hover{
+  cursor: pointer;
+  color: #5a87d1;
+}
+
+#home-artist-cancel-search-icon {
+  height: fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+#home-artist-cancel-search-btn-txt {
+  margin-left: 5px;
+}
+
+#artist-query-txt-left {
+  font-family: 'PT Serif', serif;
+}
+
+#artist-query {
+  font-family: 'Ultra', serif;
+  color: #2c74e7;
+  margin-left: 5px;
+}
+
+#selected-artist-header {
+  color: black;
+  font-family: 'PT Serif', serif;
+}
+
+.selected-artist-wrapper {
+  display: flex;
+
 }
 
 .test-wrapper {
@@ -74,6 +147,17 @@ code {
 
 .search-result-name {
   color: #2c74e7;
+  font-family: 'PT Serif', serif;
+}
+
+.search-result-name:hover {
+  cursor: pointer;
+  color: #5a87d1;
+}
+
+.home-confirm-artist { 
+  height: fit-content;
+  margin: auto;
 }
 
 .home-page-blurb {
@@ -138,7 +222,7 @@ code {
   margin-bottom: 1vw;
   color: #2c74e7;
   font-size: 20px;
-  font-family: 'PT Serif', serif;
+  font-family: 'Ultra', serif;
 }
 
 .search-result {
@@ -168,11 +252,28 @@ code {
 #selected-artist-name {
   font-size: 24px;
   width: fit-content;
+  font-family: "Ultra", serif;
+  margin-left: 10px;
+  margin-bottom: -5px;
+  color: #2c74e7;
+}
+
+.setlist-header {
+  display: flex;
+}
+
+#confirmed-artist-header-name {
+  font-size: 24px;
+  color: #2c74e7;
+  font-family: "Ultra", serif;
+  margin-top: auto + 10px;
+  margin-right: 2vw;
 }
 
 #confirmed-artist-header {
   font-size: 24px;
-  color: #2c74e7;
+  color: black;
+  font-family: 'PT Serif', serif;
   width: fit-content;
 }
 

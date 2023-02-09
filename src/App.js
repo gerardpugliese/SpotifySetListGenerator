@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect} from 'react';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 import SetlistView from './components/SetlistView';
 import { XMLParser } from 'fast-xml-parser';
 import spotify_logo from './images/Spotify_Logo_RGB_Green.png';
@@ -11,6 +12,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [artistConfirmed, setArtistConfirmed] = useState(false);
+  const [hideQueryResults, setHideQueryResults] = useState(false);
   const [setLists, setSetLists] = useState([]);
   const [token, setToken] = useState("")
 
@@ -91,8 +93,85 @@ function App() {
   return (
     <div className="App">
       <div className="home-outer-wrapper">
-        <div className="test-wrapper">
-        {console.log(process.env.REACT_APP_REDIRECT_URI)}
+        {searchResults.length == 0 ? <div className="home-wrapper">
+          <p className="home-page-blurb">Search an artist for recent set lists!</p>
+          <input id="test-search-input" placeholder="I want to see set lists for..." autocomplete="off" onChange={e => setQuery(e.target.value)}/>
+            <div onClick={() => submitQuery(query)} className="test-search-button">
+              <p id="test-search-button-text">Search</p>
+            </div>
+            {token == "" ? 
+            <div className="log-in-wrapper">
+              <p id="log-in-text">Log in to save set lists as playlists!</p>
+              <div onClick={() => window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}`} className="log-in-btn-wrapper">
+                <img className="log-in-btn-img" src={spotify_logo}/>
+                <p className="log-in-btn-text">LOGIN WITH SPOTIFY</p>
+              </div>
+            </div> : 
+            <div className="log-out-wrapper">
+              <div onClick={() => logout()} className="log-in-btn-wrapper">
+                <img className="log-in-btn-img" src={spotify_logo}/>
+                <p className="log-in-btn-text">LOG OUT</p>
+              </div>
+            </div>}
+        </div> : <React.Fragment />}
+        { searchResults.length > 0 && hideQueryResults == false ? 
+        <div className="home-artist-search-results-wrapper">
+            <div className="home-artist-search-header">
+              <div className="home-artist-search-header-txt-wrapper">
+                <p id="artist-query-txt-left">Search results for: </p>
+                <p id="artist-query">{query}</p>
+              </div>
+              <div onClick={() => setSearchResults([])} className="home-artist-cancel-search-btn">
+                <AiOutlineArrowLeft id="home-artist-cancel-search-icon"/>
+                <p id="home-artist-cancel-search-btn-txt">Return</p>
+              </div>
+            </div>
+            <div className="search-results">
+              {searchResults.map((result) => {
+                return (
+                  <div onClick={() => {
+                    setSelectedArtist(result) 
+                    setHideQueryResults(true)
+                    } 
+                  } className="search-result">
+                    <p className="search-result-name">{result.name}</p>
+                    {/*<p>{result['@_']['@_id']}</p>*/}
+                  </div>
+                )
+              })}
+            </div>    
+        </div> : <React.Fragment />}
+        {
+          selectedArtist != null ?
+          artistConfirmed == false ? 
+            <div className="home-confirm-artist">
+              <div className="selected-artist-wrapper">
+              <p id="selected-artist-header">Selected Artist:</p>
+              <p id="selected-artist-name">{selectedArtist.name}</p>
+              </div>
+              <div onClick={() => getSetLists(selectedArtist['@_']['@_id'])} className="test-search-button">
+                <p id="test-search-button-text">Confirm</p>
+              </div>
+            </div>
+            :
+            <div className="home-artist-setlists">
+              <div className="setlist-header">
+                <p id="confirmed-artist-header-name">{selectedArtist.name}</p>
+                <p id="confirmed-artist-header"> recent set lists</p>
+              </div>
+              <div className="setlist-results">
+                {setLists.map((setlist) => {
+                  return (
+                    <SetlistView setlist={setlist}/>
+                  )
+                })}
+              </div>
+            </div>
+          :
+          <React.Fragment />
+        }
+      </div>
+      {/*<div className="test-wrapper">
         <p className="home-page-blurb">Search an artist for recent set lists!</p>
           {selectedArtist == null ?
           <div className="test-search-wrapper">
@@ -124,7 +203,7 @@ function App() {
                     return (
                       <div onClick={() => setSelectedArtist(result)} className="search-result">
                         <p className="search-result-name">{result.name}</p>
-                        {/*<p>{result['@_']['@_id']}</p>*/}
+                        {/*<p>{result['@_']['@_id']}</p>*//*}
                       </div>
                     )
                   })}
@@ -148,9 +227,7 @@ function App() {
               })}
             </div>
           </div>}
-        </div>
-      </div>
-      
+            </div>*/}
     </div>
   );
 }
