@@ -27,7 +27,7 @@ code {
 }
 
 .home-outer-wrapper {
-  min-height: 100vh;
+  min-height: 92vh;
   display: flex;
 }
 
@@ -35,6 +35,7 @@ code {
   width: fit-content;
   height: fit-content;
   margin: auto;
+  margin-top: 20vh;
 }
 
 .home-bkg-img-wrapper {
@@ -48,8 +49,9 @@ code {
   object-fit: cover;
 }
 
-.home-artist-setlists {
+.artist-setlists {
   margin: auto;
+  width: 45vw;
 }
 
 .search-results {
@@ -286,7 +288,8 @@ code {
   color: #2c74e7;
   font-family: "Ultra", serif;
   margin-top: auto + 10px;
-  margin-right: 2vw;
+  margin-right: 1vw;
+  line-height: 1;
 }
 
 #confirmed-artist-header {
@@ -294,17 +297,24 @@ code {
   color: black;
   font-family: 'PT Serif', serif;
   width: fit-content;
+  line-height: 1;
 }
 
 .setlist-result {
   background-color: #fafffd;
   margin: auto;
+  margin-left: 0;
   margin-bottom: 2vw;
   color: black;
-  width: 75vw;
   max-width: 500px;
   border-radius: 5px;
   padding: 1vw 2vw;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.setlist-result:hover {
+  cursor: pointer;
+  border: 1px solid #2c74e7;
 }
 
 .setlist-venue-name {
@@ -351,6 +361,12 @@ code {
 .song-wrapper {
   display: flex;
   margin: auto;
+  padding: 5px;
+}
+
+.song-wrapper:hover {
+  cursor: pointer;
+  border: 1px solid #2c74e7;
 }
 
 .song-num {
@@ -377,13 +393,11 @@ code {
   display: flex;
   border-radius: 10px;
   padding: 10px 5px;
-  background-color: rgba(0, 0, 0, 0.5);
   margin: auto;
-  margin-top: 2vw;
+  margin-right: 5vw;
 }
 
 .log-in-btn-wrapper:hover {
-  background-color: rgb(0, 0, 0, 1);
   cursor: pointer;
 }
 
@@ -420,8 +434,26 @@ code {
   display: flex;
 }
 
+.home-header-logo-wrapper:hover {
+  cursor: pointer;
+}
+
 .home-header-logo-txt {
   margin: auto;
   font-size: 24px;
   font-family: "Ultra", serif;
+}
+
+.setlist-result-wrapper {
+  margin: auto;
+  display: flex
+}
+
+.playlist-creator-wrapper {
+  width: 45vw;
+}
+
+.playlist-creator-title {
+  font-size: 24px;
+  font-family: 'PT Serif', serif;
 }

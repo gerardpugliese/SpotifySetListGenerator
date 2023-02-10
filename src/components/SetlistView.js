@@ -79,7 +79,7 @@ function SetlistView (props) {
     }
 
     return (
-        <div className="setlist-result">
+        <div onClick={() => props.addSetToPlaylist(songList)} className="setlist-result">
             <div className="setlist-result-top">
                 <p className="setlist-venue-name">{props.setlist.venue.name}</p>
                 <p className="setlist-venueu-location">{formatVenueLocation(props.setlist.venue.city)}</p>
@@ -87,7 +87,10 @@ function SetlistView (props) {
             <div className="setlist-result-bottom">
                 <p className="setlist-date">{formatDate(props.setlist.eventDate)}</p>
             </div>
-            <div {...getToggleProps({onClick: () => setExpanded((prevExpanded) => !prevExpanded),})}className="setlist-result-songs">
+            <div {...getToggleProps({onClick: (e) => {
+                e.stopPropagation()
+                setExpanded((prevExpanded) => !prevExpanded)
+                }})}className="setlist-result-songs">
                 <p className="setlist-songs-dropdown">
                     {songCount(songList)} 
                     {isExpanded ? <FaAngleUp className="dropdown-btn"/> : <FaAngleDown className="dropdown-btn"/>} 
@@ -96,7 +99,7 @@ function SetlistView (props) {
             <div {...getCollapseProps()} className="setlist-song-list">
                 {songList[0] !== undefined && songList[0].song.map((song, idx) => {
                 return (
-                    <SongView song={song} songNum={idx+1}/>
+                    <SongView song={song} songNum={idx+1} addSongToPlaylist={props.addSongToPlaylist}/>
                 )
                 })} 
             </div>
