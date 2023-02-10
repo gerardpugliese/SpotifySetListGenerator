@@ -50,7 +50,6 @@ code {
 }
 
 .artist-setlists {
-  margin: auto;
   width: 45vw;
 }
 
@@ -290,6 +289,7 @@ code {
   margin-top: auto + 10px;
   margin-right: 1vw;
   line-height: 1;
+  margin-left: auto;
 }
 
 #confirmed-artist-header {
@@ -298,6 +298,14 @@ code {
   font-family: 'PT Serif', serif;
   width: fit-content;
   line-height: 1;
+  margin-right: auto;
+}
+
+.setlist-results {
+  overflow-y: scroll;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: 100vh;
 }
 
 .setlist-result {
