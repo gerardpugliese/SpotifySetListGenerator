@@ -196,7 +196,8 @@ function App() {
                     {songsForPlaylist.map((song, idx) => {
                       return(
                         <div className="playlist-song-wrapper">
-                          <p>{song.name}</p>
+                          <p className="playlist-song-number">{idx+1}.</p>
+                          <p className="playlist-song-name">{song.name}</p>
                         </div>
                       )
                     })}
