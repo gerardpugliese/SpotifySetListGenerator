@@ -40,6 +40,7 @@ function App() {
     setHideQueryResults(false);
     setSelectedArtist(null)
     setSearchResults([])
+    setSongsForPlaylist([])
   }
 
   const sanitizeSearchResults = (searchResult) => {
