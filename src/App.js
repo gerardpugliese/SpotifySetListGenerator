@@ -61,7 +61,7 @@ function App() {
     return searchResult.splice(0, splice_index)
   }
 
-  const getSetLists = (key) => {
+  const getSetLists = (key, result) => {
     fetch(`/rest/1.0/artist/${key}/setlists/`, {
         method: "GET",
         headers: {
@@ -72,6 +72,7 @@ function App() {
     .then(resp => resp.json())
     .then(resp => {
       setSetLists(resp.setlist)
+      setSelectedArtist(result) 
     })
     .catch(error => console.log(error))
   }
@@ -122,7 +123,6 @@ function App() {
   }
 
   const addSetToPlaylist = (setlist) => {
-    console.log(setlist[0].song)
     if (songsForPlaylist.length > 0) {
       setSongsForPlaylist(...songsForPlaylist, setlist[0].song)
     } else {
@@ -158,9 +158,8 @@ function App() {
               {searchResults.map((result) => {
                 return (
                   <div onClick={() => {
-                    setSelectedArtist(result) 
+                    getSetLists(result['@_']['@_id'], result)
                     setHideQueryResults(true)
-                    getSetLists(result['@_']['@_id'])
                     } 
                   } className="search-result">
                     <p className="search-result-name">{result.name}</p>

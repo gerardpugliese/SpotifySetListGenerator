@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import SongView from './SongView';
 import useCollapse from 'react-collapsed';
@@ -7,6 +7,10 @@ function SetlistView (props) {
     const [songList, setSongList] = useState(props.setlist.sets.set);
     const [isExpanded, setExpanded] = useState(false)
     const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded })
+
+    useEffect(() => {
+    
+      }, [])
 
     const numToMonth = (num) => {
         switch(num) {
