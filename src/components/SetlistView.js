@@ -4,13 +4,21 @@ import SongView from './SongView';
 import useCollapse from 'react-collapsed';
 
 function SetlistView (props) {
-    const [songList] = useState(props.setlist.sets.set);
+    const [songList, setSongList] = useState([]);
     const [isExpanded, setExpanded] = useState(false)
     const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded })
 
     useEffect(() => {
-    
-      }, [])
+        //If encore exists need to append it to regular set. setlist.sets has them as two separate arrays.
+        if (props.setlist.sets.set.length > 1) {
+            //Encore exists
+            let full_setlist = [...props.setlist.sets.set[0].song, ...props.setlist.sets.set[1].song]
+            setSongList(full_setlist)
+        }
+        else {
+            setSongList(props.setlist.sets.set[0].song)
+        }
+    }, [])
 
     const numToMonth = (num) => {
         switch(num) {
@@ -78,12 +86,12 @@ function SetlistView (props) {
 
     const songCount = (set) => {
         if (set[0] !== undefined) {
-            return "Songs (".concat(set[0].song.length.toString().concat(")"))
+            return "Songs (".concat(songList.length.toString().concat(")"))
         }
     }
 
     return (
-        <div onClick={() => props.addSetToPlaylist(songList)} className="setlist-result">
+        <div key={props.key} onClick={() => props.addSetToPlaylist(songList)} className="setlist-result">
             <div className="setlist-result-top">
                 <p className="setlist-venue-name">{props.setlist.venue.name}</p>
                 <p className="setlist-venueu-location">{formatVenueLocation(props.setlist.venue.city)}</p>
@@ -101,7 +109,7 @@ function SetlistView (props) {
                 </p>
             </div>
             <div {...getCollapseProps()} className="setlist-song-list">
-                {songList[0] !== undefined && songList[0].song.map((song, idx) => {
+                {songList !== undefined && songList.map((song, idx) => {
                 return (
                     <SongView song={song} songNum={idx+1} addSongToPlaylist={props.addSongToPlaylist}/>
                 )

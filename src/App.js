@@ -153,13 +153,13 @@ function App() {
           <p className="home-page-blurb">Search an artist for recent set lists!</p>
           <input id="test-search-input" placeholder="I want to see set lists for..." autoComplete="off" onChange={e => submitQuery(e.target.value)}/>
           {searchResults.length > 0 && <div className="search-results">
-              {searchResults.map((result) => {
+              {searchResults.map((result, idx) => {
                 return (
                   <div onClick={() => {
                     getSetLists(result['@_']['@_id'], result)
                     setHideQueryResults(true)
                     } 
-                  } className="search-result">
+                  } key={idx} className="search-result">
                     <p className="search-result-name">{result.name}</p>
                     {/*<p>{result['@_']['@_id']}</p>*/}
                   </div>
@@ -179,7 +179,7 @@ function App() {
                 <p id="confirmed-artist-header"> recent set lists</p>
               </div>
               <div className="setlist-results">
-                {setLists.map((setlist) => {
+                {setLists.map((setlist, idx) => {
                   return (
                     <SetlistView setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
                   )
