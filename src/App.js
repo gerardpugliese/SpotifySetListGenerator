@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect} from 'react';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
 import SetlistView from './components/SetlistView';
 import { XMLParser } from 'fast-xml-parser';
 import spotify_logo from './images/Spotify_Logo_RGB_Green.png';
@@ -50,8 +48,8 @@ function App() {
         splice_index = i;
         break;
       }*/
-      if ((searchResult[i].name.toLowerCase() === "the name" && query != "the name") ||
-        (searchResult[i].name.toLowerCase() === "name" && query != "name")
+      if ((searchResult[i].name.toLowerCase() === "the name" && query !== "the name") ||
+        (searchResult[i].name.toLowerCase() === "name" && query !== "name")
         ) {
         //cut the name
         splice_index = i
@@ -140,20 +138,20 @@ function App() {
         <div onClick={() => goToHomePage()} className="home-header-logo-wrapper">
           <p className="home-header-logo-txt">SetListify</p>
         </div>
-          {token == "" ? 
+          {token === "" ? 
           <div onClick={() => window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}`} className="log-in-btn-wrapper">
-          <img className="log-in-btn-img" src={spotify_logo}/>
+          <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
           <p className="log-in-btn-text">LOGIN WITH SPOTIFY</p>
         </div> : <div onClick={() => logout()} className="log-in-btn-wrapper">
-              <img className="log-in-btn-img" src={spotify_logo}/>
+              <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
               <p className="log-in-btn-text">LOG OUT</p>
             </div>}
         
       </div>
       <div className="home-outer-wrapper">
-        {hideQueryResults == false && <div className="home-wrapper">
+        {hideQueryResults === false && <div className="home-wrapper">
           <p className="home-page-blurb">Search an artist for recent set lists!</p>
-          <input id="test-search-input" placeholder="I want to see set lists for..." autocomplete="off" onChange={e => submitQuery(e.target.value)}/>
+          <input id="test-search-input" placeholder="I want to see set lists for..." autoComplete="off" onChange={e => submitQuery(e.target.value)}/>
           {searchResults.length > 0 && <div className="search-results">
               {searchResults.map((result) => {
                 return (

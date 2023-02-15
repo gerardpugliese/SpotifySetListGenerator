@@ -4,7 +4,7 @@ import SongView from './SongView';
 import useCollapse from 'react-collapsed';
 
 function SetlistView (props) {
-    const [songList, setSongList] = useState(props.setlist.sets.set);
+    const [songList] = useState(props.setlist.sets.set);
     const [isExpanded, setExpanded] = useState(false)
     const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded })
 
