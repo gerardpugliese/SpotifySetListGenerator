@@ -1,12 +1,16 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
 import SetlistView from './components/SetlistView';
+import { FaSearch } from 'react-icons/fa';
+import { FiDelete } from 'react-icons/fi';
+import { BsPlusLg } from 'react-icons/bs'
 import { XMLParser } from 'fast-xml-parser';
 import spotify_logo from './images/Spotify_Logo_RGB_Green.png';
 
 
 function App() {
   const [query, setQuery] = useState("");
+  const [showDelQuery, setShowDelQuery] = useState(false)
   const [searchResults, setSearchResults] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [hideQueryResults, setHideQueryResults] = useState(false);
@@ -84,11 +88,6 @@ function App() {
     if (query === "" || query === " " || query === "a") {
       setQuery("")
       setSearchResults([])
-      //set border radius back
-      search_bar.style.borderTopLeftRadius = "50px";
-      search_bar.style.borderTopRightRadius = "50px";
-      search_bar.style.borderBottomLeftRadius = "50px";
-      search_bar.style.borderBottomRightRadius = "50px";
     }
     else {
       setQuery(query)
@@ -107,10 +106,6 @@ function App() {
       let obj = parser.parse(textResp)
       //Sanitize results
       let results = sanitizeSearchResults(obj.metadata['artist-list'].artist, query)
-      search_bar.style.borderTopLeftRadius = "20px"
-      search_bar.style.borderTopRightRadius = "20px"
-      search_bar.style.borderBottomLeftRadius = "0px"
-      search_bar.style.borderBottomRightRadius = "0px"
       setSearchResults(results)
       })
     } 
@@ -155,7 +150,19 @@ function App() {
       <div className="home-outer-wrapper">
         {hideQueryResults === false && <div className="home-wrapper">
           <p className="home-page-blurb">Search an artist for recent set lists!</p>
-          <input id="test-search-input" placeholder="I want to see set lists for..." autoComplete="off" onChange={e => submitQuery(e.target.value)}/>
+          <div className="search-input-wrapper">
+            <input id="test-search-input" name="query" placeholder="I want to see set lists for..." autoComplete="off" value={query} onChange={e => submitQuery(e.target.value)}/>
+            <div className="delete-search-icon-wrapper">
+            {query !== "" ?
+              <BsPlusLg onClick={() => {setQuery("")}} className="delete-search-icon"/>
+              : 
+              <React.Fragment />
+              }
+            </div>
+            <div className="search-input-icon-wrapper">
+              <FaSearch className="search-input-icon"/>
+            </div>
+          </div>
           {searchResults.length > 0 && <div className="search-results">
               {searchResults.map((result, idx) => {
                 return (
