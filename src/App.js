@@ -56,7 +56,11 @@ function App() {
         break;
       }
     }
-    return searchResult.splice(0, splice_index)
+    //cut out "the name" and "name"
+    searchResult = searchResult.splice(0, splice_index)
+    
+    //cut down again to keep results to 6
+    return searchResult.splice(0, 6)
   }
 
   const getSetLists = (key, result) => {
