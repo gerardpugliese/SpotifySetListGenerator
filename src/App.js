@@ -154,7 +154,10 @@ function App() {
             <input id="test-search-input" name="query" placeholder="I want to see set lists for..." autoComplete="off" value={query} onChange={e => submitQuery(e.target.value)}/>
             <div className="delete-search-icon-wrapper">
             {query !== "" ?
-              <BsPlusLg onClick={() => {setQuery("")}} className="delete-search-icon"/>
+              <BsPlusLg onClick={() => {
+                setQuery("")
+                setSearchResults([])
+              }} className="delete-search-icon"/>
               : 
               <React.Fragment />
               }
