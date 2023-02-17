@@ -121,9 +121,9 @@ function App() {
 
   const addSetToPlaylist = (setlist) => {
     if (songsForPlaylist.length > 0) {
-      setSongsForPlaylist(...songsForPlaylist, setlist[0].song)
+      setSongsForPlaylist([...songsForPlaylist, ...setlist])
     } else {
-      setSongsForPlaylist(setlist[0].song)
+      setSongsForPlaylist(setlist)
     }
     
     /*setlist[0] !== undefined && setlist[0].song.forEach((song, idx) => {
