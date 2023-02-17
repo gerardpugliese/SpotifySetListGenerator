@@ -111,9 +111,36 @@ function App() {
     } 
   }
 
+  const containsObject = (obj, list) => {
+    let i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i].name === obj.name) {
+            return true;
+        }
+    }
+    return false;
+}
+
+  const removeDuplicates = (currSongs, addSongs) => {
+    //Loop through addSongs, if song is in currSongs return true
+    let nonDupSongs = [...currSongs];
+    let i = 0;
+    while (i < addSongs.length) {
+      if (!containsObject(addSongs[i], nonDupSongs)) {
+        nonDupSongs.push(addSongs[i])
+      }
+      else {
+        //can keep track of dup songs to show user or something
+      }
+      i++;
+    }
+    return [...nonDupSongs]
+  }
+
   const addSongToPlaylist = (song) => {
     if (songsForPlaylist.length > 0) {
-      setSongsForPlaylist([...songsForPlaylist, song])
+      setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
+      ///setSongsForPlaylist(removeDuplicates([...songsForPlaylist, song]))
     } else {
       setSongsForPlaylist([song])
     }
@@ -121,7 +148,8 @@ function App() {
 
   const addSetToPlaylist = (setlist) => {
     if (songsForPlaylist.length > 0) {
-      setSongsForPlaylist([...songsForPlaylist, ...setlist])
+      setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
+      ///setSongsForPlaylist([...songsForPlaylist, ...setlist])
     } else {
       setSongsForPlaylist(setlist)
     }
