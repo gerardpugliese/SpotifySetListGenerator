@@ -166,7 +166,7 @@ function App() {
           <p className="home-header-logo-txt">SetListify</p>
         </div>
           {token === "" ? 
-          <div onClick={() => window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}`} className="log-in-btn-wrapper">
+          <div onClick={() => window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`} className="log-in-btn-wrapper">
           <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
           <p className="log-in-btn-text">LOGIN WITH SPOTIFY</p>
         </div> : <div onClick={() => logout()} className="log-in-btn-wrapper">
