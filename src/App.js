@@ -113,6 +113,8 @@ function App() {
   }
 
   const containsObject = (obj, list) => {
+    console.log("obj: ", obj)
+    console.log("list: ", list)
     let i;
     for (i = 0; i < list.length; i++) {
         if (list[i].name === obj.name) {
@@ -123,22 +125,36 @@ function App() {
 }
 
   const removeDuplicates = (currSongs, addSongs) => {
+    console.log("currSongs: ", currSongs)
+    console.log("addSongs: ", addSongs)
     //Loop through addSongs, if song is in currSongs return true
     let nonDupSongs = [...currSongs];
-    let i = 0;
-    while (i < addSongs.length) {
-      if (!containsObject(addSongs[i], nonDupSongs)) {
-        nonDupSongs.push(addSongs[i])
+    console.log(addSongs.length)
+    if (addSongs.length == undefined) { //undefined length means it's just one song we're adding
+      console.log("In new add songs length case.")
+      if (!containsObject(addSongs, nonDupSongs)) {
+        nonDupSongs.push(addSongs)
       }
-      else {
-        //can keep track of dup songs to show user or something
+    }
+    else if (addSongs.length > 1) {
+      let i = 0;
+
+      while (i < addSongs.length) {
+        console.log("i: ", i)
+        if (!containsObject(addSongs[i], nonDupSongs)) {
+          nonDupSongs.push(addSongs[i])
+        }
+        else {
+          //can keep track of dup songs to show user or something
+        }
+        i++;
       }
-      i++;
     }
     return [...nonDupSongs]
   }
 
   const addSongToPlaylist = (song) => {
+    console.log("Adding: ", song)
     if (songsForPlaylist.length > 0) {
       setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
       ///setSongsForPlaylist(removeDuplicates([...songsForPlaylist, song]))
