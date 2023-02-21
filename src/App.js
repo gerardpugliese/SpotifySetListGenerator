@@ -53,7 +53,8 @@ function App() {
         break;
       }*/
       if ((searchResult[i].name.toLowerCase() === "the name" && query !== "the name") ||
-        (searchResult[i].name.toLowerCase() === "name" && query !== "name")
+        (searchResult[i].name.toLowerCase() === "name" && query !== "name") || 
+        (searchResult[i].name.toLowerCase() === "n.a.m.e" && query !== "n.a.m.e")
         ) {
         //cut the name
         splice_index = i
