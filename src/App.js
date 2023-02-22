@@ -231,7 +231,9 @@ function App() {
               <div className="setlist-results">
                 {setLists.map((setlist, idx) => {
                   return (
-                    <SetlistView setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
+                    <div key={idx}>
+                      <SetlistView idx={idx} setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
+                    </div>
                   )
                 })}
               </div>
@@ -243,7 +245,7 @@ function App() {
                   <div>
                     {songsForPlaylist.map((song, idx) => {
                       return(
-                        <div className="playlist-song-wrapper">
+                        <div className="playlist-song-wrapper" key={idx}>
                           <p className="playlist-song-number">{idx+1}.</p>
                           <p className="playlist-song-name">{song.name}</p>
                         </div>

@@ -91,7 +91,7 @@ function SetlistView (props) {
     }
 
     return (
-        <div key={props.key} onClick={() => props.addSetToPlaylist(songList)} className="setlist-result">
+        <div key={props.idx} onClick={() => props.addSetToPlaylist(songList)} className="setlist-result">
             <div className="setlist-result-top">
                 <p className="setlist-venue-name">{props.setlist.venue.name}</p>
                 <p className="setlist-venueu-location">{formatVenueLocation(props.setlist.venue.city)}</p>
@@ -111,7 +111,9 @@ function SetlistView (props) {
             <div {...getCollapseProps()} className="setlist-song-list">
                 {songList !== undefined && songList.map((song, idx) => {
                 return (
-                    <SongView song={song} songNum={idx+1} addSongToPlaylist={props.addSongToPlaylist}/>
+                    <div key={idx}>
+                        <SongView song={song} songNum={idx+1} addSongToPlaylist={props.addSongToPlaylist}/>
+                    </div>
                 )
                 })} 
             </div>
