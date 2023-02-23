@@ -2,7 +2,6 @@ import './App.css';
 import React, {useState, useEffect} from 'react';
 import SetlistView from './components/SetlistView';
 import { FaSearch } from 'react-icons/fa';
-import { FiDelete } from 'react-icons/fi';
 import { BsPlusLg } from 'react-icons/bs'
 import { XMLParser } from 'fast-xml-parser';
 import spotify_logo from './images/Spotify_Logo_RGB_Green.png';
@@ -10,7 +9,6 @@ import spotify_logo from './images/Spotify_Logo_RGB_Green.png';
 
 function App() {
   const [query, setQuery] = useState("");
-  const [showDelQuery, setShowDelQuery] = useState(false)
   const [searchResults, setSearchResults] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [hideQueryResults, setHideQueryResults] = useState(false);
@@ -90,7 +88,6 @@ function App() {
   }*/
 
   const submitQuery = (query) => {
-    let search_bar = document.getElementById("test-search-input")
     if (query === "" || query === " " || query === "a") {
       setQuery("")
       setSearchResults([])
@@ -130,7 +127,7 @@ function App() {
   const removeDuplicates = (currSongs, addSongs) => {
     //Loop through addSongs, if song is in currSongs return true
     let nonDupSongs = [...currSongs];
-    if (addSongs.length == undefined) { //undefined length means it's just one song we're adding
+    if (addSongs.length === undefined) { //undefined length means it's just one song we're adding
       if (!containsObject(addSongs, nonDupSongs)) {
         nonDupSongs.push(addSongs)
       }
