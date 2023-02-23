@@ -526,6 +526,22 @@ code {
   font-family: "PT Serif", serif;
 }
 
+.playlist-song-wrapper:hover {
+  cursor: pointer;
+}
+
+#playlist-song-delete-btn {
+  display: none;
+}
+
+.playlist-song-delete-icon {
+  transform: rotateY(0deg) rotate(45deg);
+  color: black;
+  margin: auto;
+  padding: 10px;
+  height: 2vw;
+}
+
 .playlist-song-name {
   margin-left: 5px;
 }

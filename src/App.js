@@ -83,6 +83,12 @@ function App() {
     .catch(error => console.log(error))
   }
 
+  /*const handleQuery = () => {
+    setTimeout(() => {
+      submitQuery(query)
+    }, 1000)
+  }*/
+
   const submitQuery = (query) => {
     let search_bar = document.getElementById("test-search-input")
     if (query === "" || query === " " || query === "a") {
@@ -145,6 +151,17 @@ function App() {
     return [...nonDupSongs]
   }
 
+  const changePlaylistDelButton = (displayState) => {
+    let button = document.getElementById('playlist-song-delete-btn')
+    button.style.display = displayState
+  }
+
+  const removeSongFromPlaylist = (song) => {
+    //Find song in songsForPlaylist, remove it and reset it.
+    let filteredSongs = songsForPlaylist.filter(e => e !== song)
+    setSongsForPlaylist(filteredSongs)
+  }
+
   const addSongToPlaylist = (song) => {
     if (songsForPlaylist.length > 0) {
       setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
@@ -187,7 +204,7 @@ function App() {
         {hideQueryResults === false && <div className="home-wrapper">
           <p className="home-page-blurb">Search an artist for recent set lists!</p>
           <div className="search-input-wrapper">
-            <input id="test-search-input" name="query" placeholder="I want to see set lists for..." autoComplete="off" value={query} onChange={e => submitQuery(e.target.value)}/>
+            <input id="test-search-input" name="query" placeholder="I want to see set lists for..." autoComplete="off" value={query} onChange={e => {submitQuery(e.target.value)}}/>
             <div className="delete-search-icon-wrapper">
             {query !== "" ?
               <BsPlusLg onClick={() => {
@@ -245,9 +262,14 @@ function App() {
                   <div>
                     {songsForPlaylist.map((song, idx) => {
                       return(
-                        <div className="playlist-song-wrapper" key={idx}>
+                        <div onMouseEnter={() => changePlaylistDelButton("flex")} onMouseLeave={() => changePlaylistDelButton("none")} className="playlist-song-wrapper" key={idx}>
                           <p className="playlist-song-number">{idx+1}.</p>
                           <p className="playlist-song-name">{song.name}</p>
+                          <div id="playlist-song-delete-btn">
+                            <BsPlusLg onClick={() => {
+                                removeSongFromPlaylist(song)
+                            }} className="playlist-song-delete-icon"/>
+                          </div>
                         </div>
                       )
                     })}
