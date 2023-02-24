@@ -88,6 +88,10 @@ function App() {
   }*/
 
   const submitQuery = (query) => {
+    /*if (query.length <= 2) {
+      return
+    }*/
+
     if (query === "" || query === " " || query === "a") {
       setQuery("")
       setSearchResults([])
@@ -95,22 +99,24 @@ function App() {
     else {
       setQuery(query)
       
-      fetch(`https://musicbrainz.org/ws/2/artist/?query=name:${query}&limit=10`, {
-        method: "GET",
-      })
-      .then(resp => resp.text())
-      .then((textResp) => {
-      const options = {
-        ignoreAttributes: false,
-        attributeNamePrefix : "@_",
-        attributesGroupName : "@_"
-      };
-      const parser = new XMLParser(options);
-      let obj = parser.parse(textResp)
-      //Sanitize results
-      let results = sanitizeSearchResults(obj.metadata['artist-list'].artist, query)
-      setSearchResults(results)
-      })
+      if (query.length > 2) {
+        fetch(`https://musicbrainz.org/ws/2/artist/?query=name:${query}&limit=10`, {
+          method: "GET",
+        })
+        .then(resp => resp.text())
+        .then((textResp) => {
+        const options = {
+          ignoreAttributes: false,
+          attributeNamePrefix : "@_",
+          attributesGroupName : "@_"
+        };
+        const parser = new XMLParser(options);
+        let obj = parser.parse(textResp)
+        //Sanitize results
+        let results = sanitizeSearchResults(obj.metadata['artist-list'].artist, query)
+        setSearchResults(results)
+        })
+      }
     } 
   }
 
