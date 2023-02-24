@@ -154,8 +154,8 @@ function App() {
     return [...nonDupSongs]
   }
 
-  const changePlaylistDelButton = (displayState) => {
-    let button = document.getElementById('playlist-song-delete-btn')
+  const changePlaylistDelButton = (displayState, btnId) => {
+    let button = document.getElementById(btnId)
     button.style.display = displayState
   }
 
@@ -265,10 +265,10 @@ function App() {
                   <div>
                     {songsForPlaylist.map((song, idx) => {
                       return(
-                        <div onMouseEnter={() => changePlaylistDelButton("flex")} onMouseLeave={() => changePlaylistDelButton("none")} className="playlist-song-wrapper" key={idx}>
+                        <div onMouseEnter={() => changePlaylistDelButton("flex", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} onMouseLeave={() => changePlaylistDelButton("none", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} className="playlist-song-wrapper" key={idx}>
                           <p className="playlist-song-number">{idx+1}.</p>
                           <p className="playlist-song-name">{song.name}</p>
-                          <div id="playlist-song-delete-btn">
+                          <div className="playlist-song-delete-btn" id={"playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase())}>
                             <BsPlusLg onClick={() => {
                                 removeSongFromPlaylist(song)
                             }} className="playlist-song-delete-icon"/>

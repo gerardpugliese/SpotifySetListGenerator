@@ -530,7 +530,7 @@ code {
   cursor: pointer;
 }
 
-#playlist-song-delete-btn {
+.playlist-song-delete-btn {
   display: none;
 }
 
