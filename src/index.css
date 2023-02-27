@@ -29,13 +29,15 @@ code {
 .home-outer-wrapper {
   min-height: 92vh;
   display: flex;
+  flex-direction: column;
 }
 
 .home-wrapper {
   width: fit-content;
   height: fit-content;
   margin: auto;
-  margin-top: 20vh;
+  margin-top: 25vh;
+  margin-bottom: 25vh;
 }
 
 .home-bkg-img-wrapper {
@@ -179,7 +181,7 @@ code {
 
 .App {
   /*background-image: url(images/paper-texture.jpg);*/
-  background-color: #EFEFEF;
+  background-color: #FAF9F6;
   width: 100vw;
   min-height: 100vh;
 }
@@ -544,4 +546,60 @@ code {
 
 .playlist-song-name {
   margin-left: 5px;
+}
+
+.howitworks-header-txt {
+  font-family: 'Ultra', serif;
+  color: #2c74e7;
+  font-size: 20px;
+}
+
+.howitworks-header-subtxt {
+  font-family: 'PT Serif', serif;
+}
+
+.home-howitworks-wrapper {
+  background-color: white;
+}
+
+.home-howitworks-content-wrapper {
+  display: flex;
+  margin-top: 3vw;
+  margin-bottom: 5vw;
+  width: 95vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-howitworks-header-wrapper {
+  width: 60vw;
+  margin: auto;
+  margin-top: 5vw;
+  margin-bottom: 3vw;
+}
+
+.howitworks-content-tile-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  margin: auto;
+  font-family: 'PT Serif', serif;
+}
+
+.howitworks-content-tile-title {
+  font-family: "Ultra", serif;
+  color: #2c74e7;
+}
+
+.howitworks-content-tile-subtext {
+  margin-top: 0;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.howitworks-content-title-icon {
+  width: 5vw;
+  height: 5vw;
+  margin: auto;
 }

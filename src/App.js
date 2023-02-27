@@ -5,6 +5,9 @@ import { FaSearch } from 'react-icons/fa';
 import { BsPlusLg } from 'react-icons/bs'
 import { XMLParser } from 'fast-xml-parser';
 import spotify_logo from './images/Spotify_Logo_RGB_Green.png';
+import music_icon from './images/musicicon.svg';
+import headphone_icon from './images/headphoneicon.svg';
+import phone_icon from './images/phoneicon.svg';
 
 
 function App() {
@@ -204,7 +207,8 @@ function App() {
         
       </div>
       <div className="home-outer-wrapper">
-        {hideQueryResults === false && <div className="home-wrapper">
+        {hideQueryResults === false && <React.Fragment>
+        <div className="home-wrapper">
           <p className="home-page-blurb">Search an artist for recent set lists!</p>
           <div className="search-input-wrapper">
             <input id="test-search-input" name="query" placeholder="I want to see set lists for..." autoComplete="off" value={query} onChange={e => {submitQuery(e.target.value)}}/>
@@ -239,7 +243,34 @@ function App() {
           {/*<div onClick={() => submitQuery(query)} className="test-search-button">
             <p id="test-search-button-text">Search</p>
           </div>*/}
-        </div>}
+        </div>
+        <div className="home-howitworks-wrapper">
+          <div className="home-howitworks-header-wrapper">
+            <p className="howitworks-header-txt">How Setlistify Works</p>
+            <p className="howitworks-header-subtxt">
+              Prepare for your next concert with a hand crafted playlist
+               of songs from your favorite artists’ recent set lists. 
+            </p>
+          </div>
+          <div className="home-howitworks-content-wrapper">
+            <div className="howitworks-content-tile-wrapper">
+              <img alt="Phone Icon" className="howitworks-content-title-icon" src={phone_icon}/>
+              <p className="howitworks-content-tile-title">Login with Spotify</p>
+              <p className="howitworks-content-tile-subtext">Login with your Spotify credentials so we can save whatever you make to your playlist library. </p>
+            </div>
+            <div className="howitworks-content-tile-wrapper">
+              <img alt="Music Icon" className="howitworks-content-title-icon" src={music_icon}/>
+              <p className="howitworks-content-tile-title">Build your Playlist</p>
+              <p className="howitworks-content-tile-subtext">Search for whatever artist you want, view their recent set lists and save songs to a playlist.</p>
+            </div>
+            <div className="howitworks-content-tile-wrapper">
+              <img alt="Headphone Icon" className="howitworks-content-title-icon" src={headphone_icon}/>
+              <p className="howitworks-content-tile-title">Start Listening</p>
+              <p className="howitworks-content-tile-subtext">Open up your Spotify playlists and start listening to your newly created playlist!</p>
+            </div>
+          </div>
+        </div>
+        </React.Fragment>}
         
         {selectedArtist != null && 
           <div className="setlist-result-wrapper">

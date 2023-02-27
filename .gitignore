@@ -8,6 +8,11 @@
 # testing
 /coverage
 
+# images
+/src/images/headphoneicon.svg
+/src/images/musicicon.svg
+/src/images/phoneicon.svg
+
 # production
 /build
 
