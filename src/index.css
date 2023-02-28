@@ -64,6 +64,9 @@ code {
   margin: auto;
   margin-top: 10px;
   border-radius: 5px;
+  left: 0;
+  right: 0;
+  position: absolute;
   z-index: 2;
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
 }
