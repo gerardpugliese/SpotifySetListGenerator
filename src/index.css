@@ -37,8 +37,8 @@ code {
   width: fit-content;
   height: fit-content;
   margin: auto;
-  margin-top: 25vh;
-  margin-bottom: 25vh;
+  margin-top: 30vh;
+  margin-bottom: 30vh;
 }
 
 .home-bkg-img-wrapper {
@@ -203,7 +203,7 @@ code {
 }
 
 .home-page-blurb {
-  font-size: 24px;
+  font-size: 28px;
   color: #2c74e7;
   width: 90vw;
   margin: auto;
@@ -553,12 +553,14 @@ code {
 .howitworks-header-txt {
   font-family: 'Ultra', serif;
   color: #2c74e7;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .howitworks-header-subtxt {
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .home-howitworks-wrapper {
@@ -592,6 +594,7 @@ code {
 .howitworks-content-tile-title {
   font-family: "Ultra", serif;
   color: #2c74e7;
+  font-size: 16px;
 }
 
 .howitworks-content-tile-subtext {
