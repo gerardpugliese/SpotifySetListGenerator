@@ -1,10 +1,10 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
+import Header from './components/Header';
 import SetlistView from './components/SetlistView';
 import { FaSearch } from 'react-icons/fa';
 import { BsPlusLg } from 'react-icons/bs'
 import { XMLParser } from 'fast-xml-parser';
-import spotify_logo from './images/Spotify_Logo_RGB_Green.png';
 import music_icon from './images/musicicon.svg';
 import headphone_icon from './images/headphoneicon.svg';
 import phone_icon from './images/phoneicon.svg';
@@ -18,7 +18,7 @@ function App() {
   const [setLists, setSetLists] = useState([]);
   const [token, setToken] = useState("")
   const [songsForPlaylist, setSongsForPlaylist] = useState([]);
-
+  const [spotifyResultsForPlaylist, setSpotifyResultsForPlaylist] = useState([])
 
   useEffect(() => {
     const hash = window.location.hash
@@ -32,11 +32,6 @@ function App() {
     }
     setToken(token)
   }, [])
-
-  const logout = () => {
-    setToken("")
-    window.localStorage.removeItem("token")
-  } 
 
   const goToHomePage = () => {
     setHideQueryResults(false);
@@ -190,22 +185,49 @@ function App() {
     })*/
   }
 
+  const filterSpotifyQueryResult = (resp, song_name, artist_name) => {
+    let filteredSpotifyResults = resp.filter((el) => {
+      return el.name.toLowerCase() === song_name && el.artists[0].name.toLowerCase() === artist_name
+    })
+
+    if (filteredSpotifyResults.length === 0) {
+      console.log("Song with no results: ", song_name)
+    }
+
+    return filteredSpotifyResults[0]
+  }
+
+  const retreiveSongs = () => {
+    let i = 0;
+    while (i < songsForPlaylist.length) {
+      let song_name = songsForPlaylist[i].name
+      //track%3A${song_name.replace(/\s+/g, '%2520')}%2520artist%3A${selectedArtist.name.replace(/\s+/g, '%2520')}
+      fetch(`https://api.spotify.com/v1/search?q=${song_name}&type=track`, {
+          method: "GET",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+      })
+      .then(resp => resp.json())
+      .then(resp => {
+        console.log("Song name: ", song_name)
+        console.log(resp)
+        let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.name.toLowerCase())
+        let results = spotifyResultsForPlaylist
+        results.push(songResult)
+        setSpotifyResultsForPlaylist(results)
+      })
+      .catch(error => console.log(error))
+      i++
+    } 
+    console.log(spotifyResultsForPlaylist)
+  }
+
   return (
     <div className="App">
-      <div className="home-header">
-        <div onClick={() => goToHomePage()} className="home-header-logo-wrapper">
-          <p className="home-header-logo-txt">SetListify</p>
-        </div>
-          {token === "" || token === null ? 
-          <div onClick={() => window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`} className="log-in-btn-wrapper">
-          <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
-          <p className="log-in-btn-text">LOGIN WITH SPOTIFY</p>
-        </div> : <div onClick={() => logout()} className="log-in-btn-wrapper">
-              <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
-              <p className="log-in-btn-text">LOG OUT</p>
-            </div>}
-        
-      </div>
+      <Header goToHomePage={goToHomePage}/>
       <div className="home-outer-wrapper">
         {hideQueryResults === false && <React.Fragment>
         <div className="home-wrapper">
@@ -309,6 +331,11 @@ function App() {
                     })}
                   </div>
                 }
+              </div>
+              <div className="confirm-playlist-btn-wrapper">
+                <div onClick={() => retreiveSongs()} className="confirm-playlist-btn">
+                  <p className="confirm-playlist-btn-txt">Confirm</p>
+                </div>
               </div>
             </div>
           </div>
