@@ -33,7 +33,7 @@ function PlaylistForm(props) {
             <div className="playlist-form-name-wrapper">
                 <p className="playlist-form-image-title">Playlist Image:</p>
                 <input onChange={handeImageChange} className="playlist-form-image-input" type="file" />
-                <img src={image}/>
+                <img className="playlist-form-image" src={image}/>
             </div>
             <div className="playlist-confirm-form-wrapper">
                 <div className="playlist-confirm-form-btn">

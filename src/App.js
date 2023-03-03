@@ -27,7 +27,7 @@ function PlaylistFinalization(props) {
     displaySongs && 
     <div className="finalize-playlist-wrapper">
         <div className="finalize-playlist-left">
-          <PlaylistForm />
+          <PlaylistForm userId={props.userId}/>
         </div>  
         <div className="finalize-playlist-right">
           {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
@@ -53,6 +53,7 @@ function App() {
   const [songsForPlaylist, setSongsForPlaylist] = useState([]);
   const [spotifyResultsForPlaylist, setSpotifyResultsForPlaylist] = useState([])
   const [finalizePlaylist, setFinalizePlaylist] = useState(false);
+  const [userId, setUserId] = useState(null)
 
   useEffect(() => {
     const hash = window.location.hash
@@ -254,7 +255,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header goToHomePage={goToHomePage}/>
+      <Header propagateUserId={setUserId} goToHomePage={goToHomePage}/>
       {finalizePlaylist == false ? <div className="home-outer-wrapper">
         {hideQueryResults === false && <React.Fragment>
         <div className="home-wrapper">
@@ -367,7 +368,7 @@ function App() {
             </div>
           </div>
           }
-      </div> : <PlaylistFinalization songs={spotifyResultsForPlaylist}/>}
+      </div> : <PlaylistFinalization userId={userId} songs={spotifyResultsForPlaylist}/>}
     </div>
   );
 }

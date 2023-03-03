@@ -788,7 +788,7 @@ code {
   border-radius: 25px;
   height: 5vh;
   padding-left: 20px;
-  border: none;
+  border: 1px solid #2c74e7;
   color: black;
   font-family: 'Montserrat', sans-serif;
 }
@@ -817,4 +817,8 @@ code {
 
 .playlist-confirm-form-btn:hover {
   cursor: pointer;
+}
+
+.playlist-form-image {
+  margin-top: 2vw;
 }
