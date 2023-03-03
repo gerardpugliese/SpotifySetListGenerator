@@ -803,6 +803,24 @@ code {
   margin-top: 2vw;
 }
 
+.confirm-playlist-btn-wrapper {
+  margin: auto;
+  margin-top: 2vw;
+  background: #2c74e7;
+  color: white;
+  font-family: "Ultra", serif;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+.confirm-playlist-btn-wrapper:hover {
+  cursor: pointer;
+}
+
 .playlist-confirm-form-btn {
   margin: auto;
   background: #2c74e7;
@@ -821,4 +839,35 @@ code {
 
 .playlist-form-image {
   margin-top: 2vw;
+}
+
+.confirm-playlist-login {
+  display: flex;
+  margin-top: 1vw;
+}
+
+.confirm-playlist-login-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #2c74e7;
+  text-decoration: underline;
+  width: fit-content;
+  margin: auto;
+  margin-right: 0;
+}
+
+.confirm-playlist-login-link:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.confirm-playlist-login-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: black;
+  width: fit-content;
+  margin-left: 1vw;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }

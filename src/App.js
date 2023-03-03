@@ -255,6 +255,10 @@ function App() {
     setFinalizePlaylist(true)
   }
 
+  const login = () => {
+    window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
+  }
+
   return (
     <div className="App">
       <Header propagateUserId={setUserId} goToHomePage={goToHomePage}/>
@@ -365,11 +369,18 @@ function App() {
                   </div>
                 }
               </div>
-              <div className="confirm-playlist-btn-wrapper">
-                <div onClick={() => retreiveSongs()} className="confirm-playlist-btn">
-                  <p className="confirm-playlist-btn-txt">Confirm</p>
+              {token == null ? 
+                songsForPlaylist.length > 0 && <div className="confirm-playlist-login">
+                  <p onClick={() => login()} className="confirm-playlist-login-link">Log in with Spotify </p>
+                  <p className="confirm-playlist-login-text">to continue.</p>
                 </div>
-              </div>
+                  :
+                songsForPlaylist.length > 0 &&  <div className="confirm-playlist-btn-wrapper">
+                  <div onClick={() => retreiveSongs()} className="confirm-playlist-btn">
+                    <p className="confirm-playlist-btn-txt">Confirm</p>
+                  </div>
+                </div>
+                }
             </div>
           </div>
           }
