@@ -32,9 +32,11 @@ function PlaylistFinalization(props) {
         <div className="finalize-playlist-right">
           {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
           {songs.map((song, idx) => {
-              return (
-                <PlaylistSong song={song} songNum={idx+1}/> 
-              )
+              if (song != undefined) {
+                return (
+                  <PlaylistSong key={idx} song={song} songNum={idx+1}/> 
+                )
+              }
             })}
         </div>
       </div>
@@ -330,12 +332,15 @@ function App() {
                 <p id="confirmed-artist-header"> recent set lists</p>
               </div>
               <div className="setlist-results">
+                {console.log("Setlists: ", setLists)}
                 {setLists.map((setlist, idx) => {
-                  return (
-                    <div key={idx}>
-                      <SetlistView idx={idx} setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
-                    </div>
-                  )
+                  if (setlist.sets.set.length != 0) {
+                    return (
+                      <div key={idx}>
+                        <SetlistView idx={idx} setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
+                      </div>
+                    )
+                  }
                 })}
               </div>
             </div>
