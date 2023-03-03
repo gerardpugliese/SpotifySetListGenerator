@@ -8,7 +8,40 @@ import { XMLParser } from 'fast-xml-parser';
 import music_icon from './images/musicicon.svg';
 import headphone_icon from './images/headphoneicon.svg';
 import phone_icon from './images/phoneicon.svg';
+import PlaylistSong from './components/PlaylistSong';
+import PlaylistForm from './components/PlaylistForm';
 
+function PlaylistFinalization(props) {
+  const [songs, setSongs] = useState(props.songs)
+  const [displaySongs, setDisplaySongs] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDisplaySongs(true)
+    }, 1000)
+  }, [])
+
+  return (
+    <React.Fragment>
+    {
+    displaySongs && 
+    <div className="finalize-playlist-wrapper">
+        <div className="finalize-playlist-left">
+          <PlaylistForm />
+        </div>  
+        <div className="finalize-playlist-right">
+          {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
+          {songs.map((song, idx) => {
+              return (
+                <PlaylistSong song={song} songNum={idx+1}/> 
+              )
+            })}
+        </div>
+      </div>
+    }
+    </React.Fragment>
+  );
+}
 
 function App() {
   const [query, setQuery] = useState("");
@@ -19,6 +52,7 @@ function App() {
   const [token, setToken] = useState("")
   const [songsForPlaylist, setSongsForPlaylist] = useState([]);
   const [spotifyResultsForPlaylist, setSpotifyResultsForPlaylist] = useState([])
+  const [finalizePlaylist, setFinalizePlaylist] = useState(false);
 
   useEffect(() => {
     const hash = window.location.hash
@@ -189,11 +223,6 @@ function App() {
     let filteredSpotifyResults = resp.filter((el) => {
       return el.name.toLowerCase() === song_name && el.artists[0].name.toLowerCase() === artist_name
     })
-
-    if (filteredSpotifyResults.length === 0) {
-      console.log("Song with no results: ", song_name)
-    }
-
     return filteredSpotifyResults[0]
   }
 
@@ -212,8 +241,6 @@ function App() {
       })
       .then(resp => resp.json())
       .then(resp => {
-        console.log("Song name: ", song_name)
-        console.log(resp)
         let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.name.toLowerCase())
         let results = spotifyResultsForPlaylist
         results.push(songResult)
@@ -221,14 +248,14 @@ function App() {
       })
       .catch(error => console.log(error))
       i++
-    } 
-    console.log(spotifyResultsForPlaylist)
+    }
+    setFinalizePlaylist(true)
   }
 
   return (
     <div className="App">
       <Header goToHomePage={goToHomePage}/>
-      <div className="home-outer-wrapper">
+      {finalizePlaylist == false ? <div className="home-outer-wrapper">
         {hideQueryResults === false && <React.Fragment>
         <div className="home-wrapper">
           <p className="home-page-blurb">Search an artist for recent set lists!</p>
@@ -340,7 +367,7 @@ function App() {
             </div>
           </div>
           }
-      </div>
+      </div> : <PlaylistFinalization songs={spotifyResultsForPlaylist}/>}
     </div>
   );
 }

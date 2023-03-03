@@ -614,3 +614,207 @@ code {
   height: 5vw;
   margin: auto;
 }
+
+.finalize-playlist-wrapper {
+  margin: auto;
+  width: 90vw;
+  display: flex;
+}
+
+.finalize-playlist-left {
+  width: 50vw;
+}
+
+.finalize-playlist-right {
+  width: 50vw;
+}
+
+.finalize-playlist-header-txt {
+  font-family: 'Ultra', serif;
+  font-size: 24px;
+  color: #2c74e7;
+}
+
+.playlist-song-outerwrapper {
+  display: flex;
+}
+
+.playlist-song-num-wrapper {
+  margin-left: auto;
+  margin-right: 0;
+  display: flex;
+}
+
+.playlist-song-num {
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.confirm-playlist-song-wrapper {
+  display: flex;
+  width: 25vw;
+  background-color: rgba(168, 172, 179, 0.5);
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  border-radius: 15px;
+  padding: 2vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  margin-left: 2vw;
+  margin-right: auto;
+}
+
+.playlist-song-img-wrapper {
+  display: flex;
+  width: 35%;
+  margin: auto;
+}
+
+.playlist-song-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.playlist-song-img {
+  width: 80%;
+  margin: auto;
+}
+
+.confirm-playlist-song-name {
+  width: fit-content;
+  margin-right: auto;
+  margin-top: 1vw;
+  margin-bottom: 0.5vw;
+  margin-left: 1vw;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.confirm-playlist-song-album {
+  width: fit-content;
+  margin-right: auto;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+  font-size: 12px;
+}
+
+.confirm-playlist-bulletpoint {
+  width: fit-content;
+  margin: auto;
+  margin-top: 0.5vw;
+  margin-left: 0.25vw;
+  margin-right: 0.25vw;
+}
+
+.confirm-playlist-song-artist {
+  width: fit-content;
+  margin-top: 0.5vw;
+  margin-bottom: 1vw;
+  margin-left: 1vw;
+  font-size: 12px;
+}
+
+.confirm-playlist-song-bulletpoint {
+  width: fit-content;
+  margin: 0;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+
+.playlist-song-album-artist-wrapper {
+  display: flex;
+}
+
+.playlist-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.playlist-form-title {
+  font-family: 'Ultra', serif;
+  color: #2c74e7;
+  font-size: 24px;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.playlist-form-name-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-form-name-title {
+  width: fit-content;
+  font-family: 'Ultra', serif;
+  color: #2c74e7;
+}
+
+.playlist-form-name-title {
+  width: fit-content;
+  font-family: "Ultra", serif;
+  color: #2c74e7;
+}
+
+.playlist-form-image-title {
+  width: fit-content;
+  font-family: "Ultra", serif;
+  color: #2c74e7;
+}
+
+.playlist-form-public-wrapper {
+  display: flex;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.playlist-form-public-switch {
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-left: 2vw;
+}
+
+.playlist-form-name-input {
+  margin: auto;
+  margin-left: 0;
+  width: 80%;
+  display: flex;
+  background-color: white;
+  font-size: 20px;
+  border-radius: 25px;
+  height: 5vh;
+  padding-left: 20px;
+  border: none;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.playlist-form-name-input:focus {
+  outline: none;
+}
+
+.playlist-confirm-form-wrapper {
+  display: flex;
+  margin: auto;
+  margin-top: 2vw;
+}
+
+.playlist-confirm-form-btn {
+  margin: auto;
+  background: #2c74e7;
+  color: white;
+  font-family: "Ultra", serif;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 15px;
+}
+
+.playlist-confirm-form-btn:hover {
+  cursor: pointer;
+}
