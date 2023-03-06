@@ -14,6 +14,7 @@ import PlaylistForm from './components/PlaylistForm';
 function PlaylistFinalization(props) {
   const [songs, setSongs] = useState(props.songs)
   const [displaySongs, setDisplaySongs] = useState(false)
+  const [token, setToken] = useState(props.token)
 
   useEffect(() => {
     setTimeout(() => {
@@ -27,10 +28,11 @@ function PlaylistFinalization(props) {
     displaySongs && 
     <div className="finalize-playlist-wrapper">
         <div className="finalize-playlist-left">
-          <PlaylistForm userId={props.userId}/>
+          <PlaylistForm token={token} songs={songs} userId={props.userId}/>
         </div>  
         <div className="finalize-playlist-right">
           {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
+          <p className="playlist-form-name-title">Playlist Songs:</p>
           {songs.map((song, idx) => {
               if (song != undefined) {
                 return (
@@ -71,10 +73,15 @@ function App() {
   }, [])
 
   const goToHomePage = () => {
+    //Clear out all state variables, this will return us to home page
     setHideQueryResults(false);
-    setSelectedArtist(null)
-    setSearchResults([])
-    setSongsForPlaylist([])
+    setSelectedArtist(null);
+    setSearchResults([]);
+    setQuery("");
+    setSongsForPlaylist([]);
+    setSongsForPlaylist([]);
+    setSpotifyResultsForPlaylist([]);
+    setFinalizePlaylist(false);
   }
 
   const sanitizeSearchResults = (searchResult) => {
@@ -336,7 +343,6 @@ function App() {
                 <p id="confirmed-artist-header"> recent set lists</p>
               </div>
               <div className="setlist-results">
-                {console.log("Setlists: ", setLists)}
                 {setLists.map((setlist, idx) => {
                   if (setlist.sets.set.length != 0) {
                     return (
@@ -384,7 +390,7 @@ function App() {
             </div>
           </div>
           }
-      </div> : <PlaylistFinalization userId={userId} songs={spotifyResultsForPlaylist}/>}
+      </div> : <PlaylistFinalization token={token} userId={userId} songs={spotifyResultsForPlaylist}/>}
     </div>
   );
 }

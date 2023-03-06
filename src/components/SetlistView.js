@@ -15,6 +15,9 @@ function SetlistView (props) {
             let full_setlist = [...props.setlist.sets.set[0].song, ...props.setlist.sets.set[1].song]
             setSongList(full_setlist)
         }
+        else if (props.setlist.sets.set.length === 0) {
+            
+        }
         else {
             setSongList(props.setlist.sets.set[0].song)
         }
