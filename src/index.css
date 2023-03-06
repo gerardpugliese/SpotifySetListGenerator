@@ -512,6 +512,7 @@ code {
 }
 
 .playlist-creator-wrapper {
+  padding-bottom: 2vw;
   width: 45vw;
 }
 
@@ -626,6 +627,8 @@ code {
 }
 
 .finalize-playlist-right {
+  height: 92vh;
+  overflow-y: scroll;
   width: 50vw;
 }
 
