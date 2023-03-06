@@ -10,19 +10,22 @@ function PlaylistForm(props) {
     const [imageBase64, setImageBase64] = useState("")
     const [resizedImage, setResizedImage] = useState(null);
     const [userId, setUserId] = useState(props.userId)
-    const [songs, setSongs] = useState([])
+    const [songs, setSongs] = useState(props.songs)
     const [token, setToken] = useState(props.token)
 
     useEffect(() => {
-        console.log(props.songs)
         let i = 0;
         let uris = [];
-        while (i < props.songs.length) {
-            if (props.songs[i] != undefined) {
-                uris.push(props.songs[i].uri);
+        console.log("Songs length: ", songs.length)
+        while (i < songs.length) {
+            console.log("song not undefined", songs[i] != undefined)
+            if (songs[i] != undefined) {
+                console.log("within uri conditional")
+                uris.push(songs[i].uri);
             }
             i++;
         }
+        console.log("uris: ", uris)
         setSongs(uris);
     }, [props.songs])
 
@@ -64,7 +67,7 @@ function PlaylistForm(props) {
     }
 
     const populatePlaylist = (id) => {
-        //
+        console.log(songs)
         let data = {
             "uris": songs,
             "position": 0
@@ -81,7 +84,8 @@ function PlaylistForm(props) {
         .then(resp => resp.json())
         .then(resp => {
             console.log(resp)
-            changePlaylistImg(id)
+            props.changePlaylistFormState(2)
+            //changePlaylistImg(id)
         })
         .catch(error => console.log(error))
     }
@@ -91,6 +95,7 @@ function PlaylistForm(props) {
     }
 
     const createPlaylist = () => {
+    props.changePlaylistFormState(1)
     let data = {
         "name": playlistName,
         "public": checked,

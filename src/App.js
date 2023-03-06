@@ -15,6 +15,7 @@ function PlaylistFinalization(props) {
   const [songs, setSongs] = useState(props.songs)
   const [displaySongs, setDisplaySongs] = useState(false)
   const [token, setToken] = useState(props.token)
+  const [playlistCreationState, setPlaylistCreationState] = useState(0)
 
   useEffect(() => {
     setTimeout(() => {
@@ -22,27 +23,70 @@ function PlaylistFinalization(props) {
     }, 1000)
   }, [])
 
+  useEffect(() => {
+
+  }, [playlistCreationState])
+
+  const changePlaylistFormState = (state) => {
+    setPlaylistCreationState(state)
+  }
+
+  const goToHomePage = () => {
+    setPlaylistCreationState(0)
+    props.goToHomePage()
+  }
+
   return (
     <React.Fragment>
     {
-    displaySongs && 
-    <div className="finalize-playlist-wrapper">
-        <div className="finalize-playlist-left">
-          <PlaylistForm token={token} songs={songs} userId={props.userId}/>
-        </div>  
-        <div className="finalize-playlist-right">
-          {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
-          <p className="playlist-form-name-title">Playlist Songs:</p>
-          {songs.map((song, idx) => {
-              if (song != undefined) {
-                return (
-                  <PlaylistSong key={idx} song={song} songNum={idx+1}/> 
-                )
-              }
-            })}
+    (playlistCreationState == 0) ? // Playlist has not been sent to Spotify or finished
+    <React.Fragment> 
+        {
+        displaySongs == true ?
+        <div className="finalize-playlist-wrapper">
+          <div className="finalize-playlist-left">
+            <PlaylistForm changePlaylistFormState={changePlaylistFormState} token={token} songs={songs} userId={props.userId}/>
+          </div>  
+          <div className="finalize-playlist-right">
+            {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
+            <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-form-name-title">Playlist Songs:</p>
+            <div className="finalize-playlist-right-songs">
+              {songs.map((song, idx) => {
+                  if (song != undefined) {
+                    return (
+                      <PlaylistSong key={idx} song={song} songNum={idx+1}/> 
+                    )
+                  }
+                })}
+            </div>
+          </div>
         </div>
-      </div>
-    }
+        :
+        <div className="finalize-playlist-loading">
+          <p className="finalize-playlist-loading-text">Loading Playlist...</p>
+        </div>
+        }
+    </React.Fragment>
+    : playlistCreationState == 1 ? // Playlist being sent to Spotify
+    <React.Fragment>
+    <div className="finalize-playlist-loading">
+      <p className="finalize-playlist-loading-text">Creating Spoitfy Playlist...</p>
+    </div>
+    </React.Fragment> 
+    : playlistCreationState == 2 ? // Playlist has been created successfully
+    <React.Fragment>
+    <div style={{display: "flex"}} className="finalize-playlist-loading">
+      <p className="finalize-playlist-loading-text">Playlist successfully created!</p>
+      <p onClick={() => goToHomePage()} className="finalize-playlist-complete-link">Return to Home page</p>
+    </div>
+    </React.Fragment> 
+    : // An error occurred when creating the playlist
+    <React.Fragment>
+    <div className="finalize-playlist-loading">
+      <p className="finalize-playlist-loading-text">Error occurred when creating playlist.</p>
+    </div>
+    </React.Fragment>
+    } 
     </React.Fragment>
   );
 }
@@ -390,7 +434,7 @@ function App() {
             </div>
           </div>
           }
-      </div> : <PlaylistFinalization token={token} userId={userId} songs={spotifyResultsForPlaylist}/>}
+      </div> : <PlaylistFinalization token={token} goToHomePage={goToHomePage} userId={userId} songs={spotifyResultsForPlaylist}/>}
     </div>
   );
 }

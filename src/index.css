@@ -628,14 +628,46 @@ code {
 
 .finalize-playlist-right {
   height: 92vh;
-  overflow-y: scroll;
   width: 50vw;
+}
+
+.finalize-playlist-right-songs {
+  height: 88vh;
+  overflow-y: scroll;
+  width: inherit;
 }
 
 .finalize-playlist-header-txt {
   font-family: 'Ultra', serif;
   font-size: 24px;
   color: #2c74e7;
+}
+
+.finalize-playlist-loading {
+  display: flex;
+  width: 100vw;
+  height: 92vh;
+}
+
+.finalize-playlist-loading-text {
+  font-family: 'Ultra', serif;
+  font-size: 20px;
+  color: #2c74e7;
+  width: fit-content;
+  margin: auto;
+}
+
+.finalize-playlist-complete-link {
+  font-family: 'Ultra', serif;
+  font-size: 20px;
+  color: #2c74e7;
+  width: fit-content;
+  margin: auto;
+}
+
+.finalize-playlist-complete-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .playlist-song-outerwrapper {
