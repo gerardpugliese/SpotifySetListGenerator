@@ -354,6 +354,16 @@ code {
   margin-right: auto;
 }
 
+.setlist-empty-results-wrapper {
+  display: flex;
+}
+
+.setlist-empty-results-txt {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  margin: auto;
+}
+
 .setlist-results {
   overflow-y: scroll;
   padding-left: 2rem;

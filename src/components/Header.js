@@ -28,7 +28,6 @@ function Header(props) {
       })
       .then(resp => resp.json())
       .then(resp => {
-        console.log(resp)
         setUserId(resp.id)
         props.propagateUserId(resp.id)
       })

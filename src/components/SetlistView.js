@@ -9,6 +9,7 @@ function SetlistView (props) {
     const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded })
 
     useEffect(() => {
+        console.log(props.setlist)
         //If encore exists need to append it to regular set. setlist.sets has them as two separate arrays.
         if (props.setlist.sets.set.length > 1) {
             //Encore exists
@@ -19,6 +20,7 @@ function SetlistView (props) {
             
         }
         else {
+            console.log("expected branch")
             setSongList(props.setlist.sets.set[0].song)
         }
     }, [])

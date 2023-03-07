@@ -387,11 +387,23 @@ function App() {
                 <p id="confirmed-artist-header"> recent set lists</p>
               </div>
               <div className="setlist-results">
-                {setLists.map((setlist, idx) => {
+                {setLists.length == 0 ? <React.Fragment>
+                  <div className="setlist-empty-results-wrapper">
+                    <p className="setlist-empty-results-txt">No set lists found!</p>
+                  </div>
+                </React.Fragment> 
+                :
+                setLists.map((setlist, idx) => {
                   if (setlist.sets.set.length != 0) {
                     return (
                       <div key={idx}>
                         <SetlistView idx={idx} setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
+                      </div>
+                    )
+                  } else if (setLists.length == 1 && setlist.sets.set.length == 0) {
+                    return (
+                      <div key={idx} className="setlist-empty-results-wrapper">
+                        <p className="setlist-empty-results-txt">No set lists found!</p>
                       </div>
                     )
                   }
