@@ -12,9 +12,9 @@ import PlaylistSong from './components/PlaylistSong';
 import PlaylistForm from './components/PlaylistForm';
 
 function PlaylistFinalization(props) {
-  const [songs, setSongs] = useState(props.songs)
+  const [songs] = useState(props.songs)
   const [displaySongs, setDisplaySongs] = useState(false)
-  const [token, setToken] = useState(props.token)
+  const [token] = useState(props.token)
   const [playlistCreationState, setPlaylistCreationState] = useState(0)
 
   useEffect(() => {
@@ -39,10 +39,10 @@ function PlaylistFinalization(props) {
   return (
     <React.Fragment>
     {
-    (playlistCreationState == 0) ? // Playlist has not been sent to Spotify or finished
+    (playlistCreationState === 0) ? // Playlist has not been sent to Spotify or finished
     <React.Fragment> 
         {
-        displaySongs == true ?
+        displaySongs === true ?
         <div className="finalize-playlist-wrapper">
           <div className="finalize-playlist-left">
             <PlaylistForm changePlaylistFormState={changePlaylistFormState} token={token} songs={songs} userId={props.userId}/>
@@ -52,10 +52,13 @@ function PlaylistFinalization(props) {
             <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-form-name-title">Playlist Songs:</p>
             <div className="finalize-playlist-right-songs">
               {songs.map((song, idx) => {
-                  if (song != undefined) {
+                  if (song !== undefined) {
                     return (
                       <PlaylistSong key={idx} song={song} songNum={idx+1}/> 
                     )
+                  }
+                  else {
+                    return <React.Fragment />
                   }
                 })}
             </div>
@@ -67,13 +70,13 @@ function PlaylistFinalization(props) {
         </div>
         }
     </React.Fragment>
-    : playlistCreationState == 1 ? // Playlist being sent to Spotify
+    : playlistCreationState === 1 ? // Playlist being sent to Spotify
     <React.Fragment>
     <div className="finalize-playlist-loading">
       <p className="finalize-playlist-loading-text">Creating Spoitfy Playlist...</p>
     </div>
     </React.Fragment> 
-    : playlistCreationState == 2 ? // Playlist has been created successfully
+    : playlistCreationState === 2 ? // Playlist has been created successfully
     <React.Fragment>
     <div style={{display: "flex"}} className="finalize-playlist-loading">
       <p className="finalize-playlist-loading-text">Playlist successfully created!</p>
@@ -313,7 +316,7 @@ function App() {
   return (
     <div className="App">
       <Header propagateUserId={setUserId} goToHomePage={goToHomePage}/>
-      {finalizePlaylist == false ? <div className="home-outer-wrapper">
+      {finalizePlaylist === false ? <div className="home-outer-wrapper">
         {hideQueryResults === false && <React.Fragment>
         <div className="home-wrapper">
           <p className="home-page-blurb">Search an artist for recent set lists!</p>
@@ -387,25 +390,27 @@ function App() {
                 <p id="confirmed-artist-header"> recent set lists</p>
               </div>
               <div className="setlist-results">
-                {setLists.length == 0 ? <React.Fragment>
+                {setLists.length === 0 ? <React.Fragment>
                   <div className="setlist-empty-results-wrapper">
                     <p className="setlist-empty-results-txt">No set lists found!</p>
                   </div>
                 </React.Fragment> 
                 :
                 setLists.map((setlist, idx) => {
-                  if (setlist.sets.set.length != 0) {
+                  if (setlist.sets.set.length !== 0) {
                     return (
                       <div key={idx}>
                         <SetlistView idx={idx} setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
                       </div>
                     )
-                  } else if (setLists.length == 1 && setlist.sets.set.length == 0) {
+                  } else if (setLists.length === 1 && setlist.sets.set.length === 0) {
                     return (
                       <div key={idx} className="setlist-empty-results-wrapper">
                         <p className="setlist-empty-results-txt">No set lists found!</p>
                       </div>
                     )
+                  } else {
+                    return <React.Fragment />
                   }
                 })}
               </div>

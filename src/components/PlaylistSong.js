@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { BsDot } from 'react-icons/bs'
 
 
@@ -10,7 +10,7 @@ function PlaylistSong(props) {
                 <p className="playlist-song-num">{props.songNum}.</p>
             </div>
             <div className="confirm-playlist-song-wrapper">
-                {props.song.album != undefined && <div className="playlist-song-img-wrapper">
+                {props.song.album !== undefined && <div className="playlist-song-img-wrapper">
                     <img className="playlist-song-img" alt="Album Art" src={props.song.album.images[0].url}/>
                 </div>}
                 <div className="playlist-song-info-wrapper">

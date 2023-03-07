@@ -1,31 +1,27 @@
 import React, {useState, useEffect} from 'react'
 import ReactSwitch from 'react-switch';
-import imageToBase64 from 'image-to-base64/browser';
-import Resizer from "react-image-file-resizer";
+//import imageToBase64 from 'image-to-base64/browser';
+//import Resizer from "react-image-file-resizer";
 
 function PlaylistForm(props) {
     const [checked, setChecked] = useState(true);
     const [playlistName, setPlaylistName] = useState("");
-    const [image, setImage] = useState(null)
-    const [imageBase64, setImageBase64] = useState("")
-    const [resizedImage, setResizedImage] = useState(null);
-    const [userId, setUserId] = useState(props.userId)
+    const [image] = useState(null)
+    //const [imageBase64, setImageBase64] = useState("")
+    //const [resizedImage, setResizedImage] = useState(null);
+    const [userId] = useState(props.userId)
     const [songs, setSongs] = useState(props.songs)
-    const [token, setToken] = useState(props.token)
+    const [token] = useState(props.token)
 
     useEffect(() => {
         let i = 0;
         let uris = [];
-        console.log("Songs length: ", songs.length)
         while (i < songs.length) {
-            console.log("song not undefined", songs[i] != undefined)
-            if (songs[i] != undefined) {
-                console.log("within uri conditional")
+            if (songs[i] !== undefined) {
                 uris.push(songs[i].uri);
             }
             i++;
         }
-        console.log("uris: ", uris)
         setSongs(uris);
     }, [props.songs])
 
@@ -33,7 +29,7 @@ function PlaylistForm(props) {
         setChecked(val)
     }
 
-    const resizeFile = (file) =>
+    /*const resizeFile = (file) =>
         new Promise((resolve) => {
         Resizer.imageFileResizer(
             file,
@@ -47,8 +43,9 @@ function PlaylistForm(props) {
             },
             "base64"
         );
-    });
+    });*/
 
+    /*
     const changePlaylistImg = (id) => {
         fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
             method: "PUT",
@@ -65,6 +62,7 @@ function PlaylistForm(props) {
         })
         .catch(error => console.log(error))
     }
+    */
 
     const populatePlaylist = (id) => {
         console.log(songs)
@@ -88,10 +86,6 @@ function PlaylistForm(props) {
             //changePlaylistImg(id)
         })
         .catch(error => console.log(error))
-    }
-
-    const testCreate = () => {
-        console.log(songs)
     }
 
     const createPlaylist = () => {
@@ -118,16 +112,17 @@ function PlaylistForm(props) {
     .catch(error => console.log(error))
     }
 
-    const handeImageChange = async (e) => {
+    
+    /*const handeImageChange = async (e) => {
         try {
             const file = e.target.files[0]
-            const image = await resizeFile(file)
-            setResizedImage(image)
+            //const image = await resizeFile(file)
+            //setResizedImage(image)
         } catch (err) {
             console.log(err)
         }
         
-        /*imageToBase64(imageUrl) // Image URL
+        imageToBase64(imageUrl) // Image URL
         .then(
             (response) => {
                 setImageBase64(response)
@@ -138,8 +133,8 @@ function PlaylistForm(props) {
             (error) => {
                 console.log(error); // Logs an error if there was one
             }
-        )*/
-    }
+        )
+    }*/
 
     return (
         <div className="playlist-form-wrapper">
@@ -160,8 +155,8 @@ function PlaylistForm(props) {
             </div>
             <div className="playlist-form-name-wrapper">
                 <p className="playlist-form-image-title">Playlist Image:</p>
-                <input onChange={handeImageChange} className="playlist-form-image-input" type="file" />
-                <img className="playlist-form-image" src={image}/>
+                <input /*onChange={handeImageChange}*/ className="playlist-form-image-input" type="file" />
+                <img alt="Playlist Cover" className="playlist-form-image" src={image}/>
             </div>
             <div className="playlist-confirm-form-wrapper">
                 <div className="playlist-confirm-form-btn">
