@@ -336,7 +336,7 @@ function App() {
               <FaSearch className="search-input-icon"/>
             </div>
           </div>
-          {searchResults.length > 0 && <div className="search-results">
+          {searchResults.length > 0 ? <div className="search-results">
               {searchResults.map((result, idx) => {
                 return (
                   <div onClick={() => {
@@ -349,7 +349,11 @@ function App() {
                   </div>
                 )
               })}
-          </div>}
+          </div> : searchResults.length === 0 && query !== "" ?
+          <div className="search-results">
+            <p className="search-results-empty-txt">No artists found!</p>
+          </div> :
+          <React.Fragment />}
           {/*<div onClick={() => submitQuery(query)} className="test-search-button">
             <p id="test-search-button-text">Search</p>
           </div>*/}
