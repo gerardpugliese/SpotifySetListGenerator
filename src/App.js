@@ -58,7 +58,7 @@ function PlaylistFinalization(props) {
                     )
                   }
                   else {
-                    return <React.Fragment />
+                    return <React.Fragment key={idx}/>
                   }
                 })}
             </div>
