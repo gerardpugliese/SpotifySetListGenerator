@@ -362,25 +362,24 @@ function App() {
           <div className="home-howitworks-header-wrapper">
             <p className="howitworks-header-txt">How Setlistify Works</p>
             <p className="howitworks-header-subtxt">
-              Prepare for your next concert with a hand crafted playlist
-               of songs from your favorite artists’ recent set lists. 
+               Prepare for you next concert with a customzied playlist of songs your favorite artist has played recently!
             </p>
           </div>
           <div className="home-howitworks-content-wrapper">
             <div className="howitworks-content-tile-wrapper">
               <img alt="Phone Icon" className="howitworks-content-title-icon" src={phone_icon}/>
               <p className="howitworks-content-tile-title">Login with Spotify</p>
-              <p className="howitworks-content-tile-subtext">Login with your Spotify credentials so we can save whatever you make to your playlist library. </p>
+              <p className="howitworks-content-tile-subtext">Login with your Spotify credentials so you can save whatever you create. </p>
             </div>
             <div className="howitworks-content-tile-wrapper">
               <img alt="Music Icon" className="howitworks-content-title-icon" src={music_icon}/>
               <p className="howitworks-content-tile-title">Build your Playlist</p>
-              <p className="howitworks-content-tile-subtext">Search for whatever artist you want, view their recent set lists and save songs to a playlist.</p>
+              <p className="howitworks-content-tile-subtext">Search for an artist, view their recent set lists and add songs to a playlist.</p>
             </div>
             <div className="howitworks-content-tile-wrapper">
               <img alt="Headphone Icon" className="howitworks-content-title-icon" src={headphone_icon}/>
               <p className="howitworks-content-tile-title">Start Listening</p>
-              <p className="howitworks-content-tile-subtext">Open up your Spotify playlists and start listening to your newly created playlist!</p>
+              <p className="howitworks-content-tile-subtext">Open up your Spotify and start listening to your newly created playlist!</p>
             </div>
           </div>
         </div>
