@@ -8,6 +8,13 @@ font-family: 'PT Serif', serif;
 font-family: 'Ultra', serif;
 */
 
+
+:root {
+  --logo-font: "Ultra", serif;
+  --subtext-font: 'Montserrat', sans-serif;
+  --blue: #2c74e7;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -80,13 +87,13 @@ code {
   border-radius: 50px;
   border: none;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 .search-input-icon-wrapper {
   display: flex;
   color: white;
-  background: #2c74e7;
+  background: var(--blue);
   padding: 15px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -116,9 +123,9 @@ code {
 .home-artist-cancel-search-btn {
   margin-left: auto;
   border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
   display: flex;
-  color: #2c74e7;
+  color: var(--blue);
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -139,18 +146,18 @@ code {
 }
 
 #artist-query-txt-left {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 #artist-query {
-  font-family: 'Ultra', serif;
-  color: #2c74e7;
+  font-family: var(--logo-font);
+  color: var(--blue);
   margin-left: 5px;
 }
 
 #selected-artist-header {
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 .selected-artist-wrapper {
@@ -192,7 +199,7 @@ code {
 
 .search-result-name {
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 .search-result-name:hover {
@@ -207,20 +214,20 @@ code {
 
 .home-page-blurb {
   font-size: 28px;
-  color: #2c74e7;
+  color: var(--blue);
   width: 90vw;
   margin: auto;
   margin-bottom: 2vw;
-  font-family: 'Ultra', serif;
+  font-family: var(--logo-font);
 }
 
 #test-search-header {
   font-size: 24px;
-  color: #2c74e7;
+  color: var(--blue);
   width: fit-content;
   margin-left: 0;
   margin-bottom: 2vh;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 #test-search-input {
@@ -234,7 +241,7 @@ code {
   border: none;
   color: black;
   margin: auto;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 #test-search-input:focus {
@@ -277,16 +284,16 @@ code {
   padding: 0;
   margin: auto;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 #log-in-text {
   padding: 0;
   margin: auto;
   margin-bottom: 1vw;
-  color: #2c74e7;
+  color: var(--blue);
   font-size: 20px;
-  font-family: 'Ultra', serif;
+  font-family: var(--logo-font);
 }
 
 .search-result-name {
@@ -303,11 +310,11 @@ code {
 }
 
 .search-result:hover {
-  color: #2c74e7;
+  color: var(--blue);
 }
 
 .search-result:hover {
-  color: #2c74e7;
+  color: var(--blue);
   cursor: pointer;
 }
 
@@ -325,10 +332,10 @@ code {
 #selected-artist-name {
   font-size: 24px;
   width: fit-content;
-  font-family: "Ultra", serif;
+  font-family: var(--logo-font);
   margin-left: 10px;
   margin-bottom: -5px;
-  color: #2c74e7;
+  color: var(--blue);
 }
 
 .setlist-header {
@@ -337,8 +344,8 @@ code {
 
 #confirmed-artist-header-name {
   font-size: 24px;
-  color: #2c74e7;
-  font-family: "Ultra", serif;
+  color: var(--blue);
+  font-family: var(--logo-font);
   margin-top: auto + 10px;
   margin-right: 1vw;
   line-height: 1;
@@ -348,7 +355,7 @@ code {
 #confirmed-artist-header {
   font-size: 24px;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
   width: fit-content;
   line-height: 1;
   margin-right: auto;
@@ -360,7 +367,7 @@ code {
 
 .setlist-empty-results-txt {
   font-size: 20px;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--subtext-font);
   margin: auto;
 }
 
@@ -370,7 +377,7 @@ code {
 
 .search-results-empty-txt {
   font-size: 20px;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--subtext-font);
   margin: auto;
   margin-top: 2vw;
   margin-bottom: 2vw;
@@ -393,12 +400,12 @@ code {
   border-radius: 5px;
   padding: 1vw 2vw;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  font-family: 'Montserrat', sans-serif;;
+  font-family: var(--subtext-font);
 }
 
 .setlist-result:hover {
   cursor: pointer;
-  border: 1px solid #2c74e7;
+  border: 1px solid var(--blue);
 }
 
 .setlist-venue-name {
@@ -450,7 +457,7 @@ code {
 
 .song-wrapper:hover {
   cursor: pointer;
-  border: 1px solid #2c74e7;
+  border: 1px solid var(--blue);
 }
 
 .song-num {
@@ -486,7 +493,7 @@ code {
 }
 
 .log-in-btn-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
   color: white;
   font-size: 14px;
   margin-right: 1vw;
@@ -495,7 +502,7 @@ code {
 }
 
 .log-out-btn-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
   color: white;
   font-size: 14px;
   margin-right: 1vw;
@@ -504,7 +511,7 @@ code {
 }
 
 .home-header {
-  background-color: #2c74e7;
+  background-color: var(--blue);
   width: 100vw;
   height: 8vh;
   display: flex;
@@ -525,7 +532,7 @@ code {
 .home-header-logo-txt {
   margin: auto;
   font-size: 24px;
-  font-family: "Ultra", serif;
+  font-family: var(--logo-font);
 }
 
 .setlist-result-wrapper {
@@ -540,7 +547,7 @@ code {
 
 .playlist-creator-title {
   font-size: 24px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 .playlist-songs-wrapper {
@@ -553,7 +560,7 @@ code {
 .playlist-song-wrapper {
   display: flex;
   margin-right: auto;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 .playlist-song-wrapper:hover {
@@ -577,13 +584,13 @@ code {
 }
 
 .howitworks-header-txt {
-  font-family: 'Ultra', serif;
-  color: #2c74e7;
+  font-family: var(--logo-font);
+  color: var(--blue);
   font-size: 24px;
 }
 
 .howitworks-header-subtxt {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
   font-size: 16px;
   margin-top: 0;
   margin-bottom: 0;
@@ -614,12 +621,12 @@ code {
   flex-direction: column;
   width: 20vw;
   margin: auto;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 .howitworks-content-tile-title {
-  font-family: "Ultra", serif;
-  color: #2c74e7;
+  font-family: var(--logo-font);
+  color: var(--blue);
   font-size: 16px;
 }
 
@@ -628,7 +635,7 @@ code {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
   font-size: 14px;
 }
 
@@ -659,9 +666,9 @@ code {
 }
 
 .finalize-playlist-header-txt {
-  font-family: 'Ultra', serif;
+  font-family: var(--logo-font);
   font-size: 24px;
-  color: #2c74e7;
+  color: var(--blue);
 }
 
 .finalize-playlist-loading {
@@ -671,17 +678,17 @@ code {
 }
 
 .finalize-playlist-loading-text {
-  font-family: 'Ultra', serif;
+  font-family: var(--logo-font);
   font-size: 20px;
-  color: #2c74e7;
+  color: var(--blue);
   width: fit-content;
   margin: auto;
 }
 
 .finalize-playlist-complete-link {
-  font-family: 'Ultra', serif;
+  font-family: var(--logo-font);
   font-size: 20px;
-  color: #2c74e7;
+  color: var(--blue);
   width: fit-content;
   margin: auto;
 }
@@ -703,7 +710,7 @@ code {
 
 .playlist-song-num {
   margin: auto;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 .confirm-playlist-song-wrapper {
@@ -730,7 +737,7 @@ code {
   flex-direction: column;
   width: 65%;
   margin: auto;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 .playlist-song-img {
@@ -791,8 +798,8 @@ code {
 }
 
 .playlist-form-title {
-  font-family: 'Ultra', serif;
-  color: #2c74e7;
+  font-family: var(--logo-font);
+  color: var(--blue);
   font-size: 24px;
   margin-top: 2vw;
   margin-bottom: 2vw;
@@ -805,20 +812,20 @@ code {
 
 .playlist-form-name-title {
   width: fit-content;
-  font-family: 'Ultra', serif;
-  color: #2c74e7;
+  font-family: var(--logo-font);
+  color: var(--blue);
 }
 
 .playlist-form-name-title {
   width: fit-content;
-  font-family: "Ultra", serif;
-  color: #2c74e7;
+  font-family: var(--logo-font);
+  color: var(--blue);
 }
 
 .playlist-form-image-title {
   width: fit-content;
-  font-family: "Ultra", serif;
-  color: #2c74e7;
+  font-family: var(--logo-font);
+  color: var(--blue);
 }
 
 .playlist-form-public-wrapper {
@@ -844,9 +851,9 @@ code {
   border-radius: 25px;
   height: 5vh;
   padding-left: 20px;
-  border: 1px solid #2c74e7;
+  border: 1px solid var(--blue);
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
 }
 
 .playlist-form-name-input:focus {
@@ -862,9 +869,9 @@ code {
 .confirm-playlist-btn-wrapper {
   margin: auto;
   margin-top: 2vw;
-  background: #2c74e7;
+  background: var(--blue);
   color: white;
-  font-family: "Ultra", serif;
+  font-family: var(--logo-font);
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
   padding: 2px;
   padding-left: 10px;
@@ -879,9 +886,9 @@ code {
 
 .playlist-confirm-form-btn {
   margin: auto;
-  background: #2c74e7;
+  background: var(--blue);
   color: white;
-  font-family: "Ultra", serif;
+  font-family: var(--logo-font);
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
   padding: 2px;
   padding-left: 10px;
@@ -903,9 +910,9 @@ code {
 }
 
 .confirm-playlist-login-link {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
   font-size: 16px;
-  color: #2c74e7;
+  color: var(--blue);
   text-decoration: underline;
   width: fit-content;
   margin: auto;
@@ -918,7 +925,7 @@ code {
 }
 
 .confirm-playlist-login-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--subtext-font);
   font-size: 16px;
   color: black;
   width: fit-content;
