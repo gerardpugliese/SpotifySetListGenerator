@@ -549,7 +549,7 @@ code {
 
 .playlist-creator-title {
   font-size: 24px;
-  font-family: var(--header-font);
+  font-family: var(--subtext-font);
 }
 
 .playlist-songs-wrapper {
@@ -935,4 +935,8 @@ code {
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.empty-setlist-playlist-text {
+  font-family: var(--subtext-font);
 }

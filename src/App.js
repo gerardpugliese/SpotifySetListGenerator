@@ -421,7 +421,7 @@ function App() {
             <div className="playlist-creator-wrapper">
               <p className="playlist-creator-title">Your playlist</p>
               <div className="playlist-songs-wrapper">
-                {songsForPlaylist.length > 0 && 
+                {songsForPlaylist.length > 0 ?
                   <div>
                     {songsForPlaylist.map((song, idx) => {
                       return(
@@ -436,6 +436,9 @@ function App() {
                         </div>
                       )
                     })}
+                  </div> :
+                  <div className="empty-setlist-playlist-wrapper">
+                    <p className="empty-setlist-playlist-text">No songs added.</p>
                   </div>
                 }
               </div>
