@@ -419,7 +419,7 @@ function App() {
               </div>
             </div>
             <div className="playlist-creator-wrapper">
-              <p className="playlist-creator-title">Create your playlist</p>
+              <p className="playlist-creator-title">Your playlist</p>
               <div className="playlist-songs-wrapper">
                 {songsForPlaylist.length > 0 && 
                   <div>

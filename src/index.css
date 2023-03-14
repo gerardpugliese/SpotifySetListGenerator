@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&family=Source+Serif+Pro:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=PT+Serif:wght@700&family=Ultra&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap');
 
 /*
 font-family: 'PT Serif', serif;
@@ -13,6 +14,7 @@ font-family: 'Ultra', serif;
   --logo-font: "Ultra", serif;
   --subtext-font: 'Montserrat', sans-serif;
   --blue: #2c74e7;
+  --header-font: 'Cabin', sans-serif;
 }
 
 body {
@@ -218,7 +220,7 @@ code {
   width: 90vw;
   margin: auto;
   margin-bottom: 2vw;
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
 }
 
 #test-search-header {
@@ -345,7 +347,7 @@ code {
 #confirmed-artist-header-name {
   font-size: 24px;
   color: var(--blue);
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   margin-top: auto + 10px;
   margin-right: 1vw;
   line-height: 1;
@@ -493,7 +495,7 @@ code {
 }
 
 .log-in-btn-text {
-  font-family: var(--subtext-font);
+  font-family: var(--header-font);
   color: white;
   font-size: 14px;
   margin-right: 1vw;
@@ -502,7 +504,7 @@ code {
 }
 
 .log-out-btn-text {
-  font-family: var(--subtext-font);
+  font-family: var(--header-font);
   color: white;
   font-size: 14px;
   margin-right: 1vw;
@@ -547,7 +549,7 @@ code {
 
 .playlist-creator-title {
   font-size: 24px;
-  font-family: var(--subtext-font);
+  font-family: var(--header-font);
 }
 
 .playlist-songs-wrapper {
@@ -584,7 +586,7 @@ code {
 }
 
 .howitworks-header-txt {
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   color: var(--blue);
   font-size: 24px;
 }
@@ -625,7 +627,7 @@ code {
 }
 
 .howitworks-content-tile-title {
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   color: var(--blue);
   font-size: 16px;
 }
@@ -678,7 +680,7 @@ code {
 }
 
 .finalize-playlist-loading-text {
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   font-size: 20px;
   color: var(--blue);
   width: fit-content;
@@ -686,7 +688,7 @@ code {
 }
 
 .finalize-playlist-complete-link {
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   font-size: 20px;
   color: var(--blue);
   width: fit-content;
@@ -798,7 +800,7 @@ code {
 }
 
 .playlist-form-title {
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   color: var(--blue);
   font-size: 24px;
   margin-top: 2vw;
@@ -812,19 +814,19 @@ code {
 
 .playlist-form-name-title {
   width: fit-content;
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   color: var(--blue);
 }
 
 .playlist-form-name-title {
   width: fit-content;
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   color: var(--blue);
 }
 
 .playlist-form-image-title {
   width: fit-content;
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   color: var(--blue);
 }
 
@@ -871,7 +873,7 @@ code {
   margin-top: 2vw;
   background: var(--blue);
   color: white;
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
   padding: 2px;
   padding-left: 10px;
@@ -888,7 +890,7 @@ code {
   margin: auto;
   background: var(--blue);
   color: white;
-  font-family: var(--logo-font);
+  font-family: var(--header-font);
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
   padding: 2px;
   padding-left: 10px;

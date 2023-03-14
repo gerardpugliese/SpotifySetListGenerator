@@ -162,7 +162,7 @@ function PlaylistForm(props) {
             </div>
             <div className="playlist-confirm-form-wrapper">
                 <div className="playlist-confirm-form-btn">
-                    <p onClick={() => createPlaylist()} className="playlist-conffirm-form-btn-texg">Create</p>
+                    <p onClick={() => createPlaylist()} className="playlist-conffirm-form-btn-text">Create</p>
                 </div>
             </div>
         </div>
