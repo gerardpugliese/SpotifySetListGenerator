@@ -2,10 +2,13 @@ import React, {useState, useEffect} from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import SongView from './SongView';
 import useCollapse from 'react-collapsed';
+import Fade from 'react-reveal/Fade';
+
 
 function SetlistView (props) {
     const [songList, setSongList] = useState([]);
     const [isExpanded, setExpanded] = useState(false)
+    const [delay, setDelay] = useState(0)
     const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded })
 
     useEffect(() => {
@@ -20,6 +23,10 @@ function SetlistView (props) {
         }
         else {
             setSongList(props.setlist.sets.set[0].song)
+        }
+
+        if (props.idx < 4) {
+            setDelay(props.idx * 200)
         }
     }, [])
 
@@ -94,33 +101,35 @@ function SetlistView (props) {
     }
 
     return (
-        <div key={props.idx} onClick={() => props.addSetToPlaylist(songList)} className="setlist-result">
-            <div className="setlist-result-top">
-                <p className="setlist-venue-name">{props.setlist.venue.name}</p>
-                <p className="setlist-venueu-location">{formatVenueLocation(props.setlist.venue.city)}</p>
+        <Fade delay={delay}>
+            <div key={props.idx} onClick={() => props.addSetToPlaylist(songList)} className="setlist-result">
+                <div className="setlist-result-top">
+                    <p className="setlist-venue-name">{props.setlist.venue.name}</p>
+                    <p className="setlist-venueu-location">{formatVenueLocation(props.setlist.venue.city)}</p>
+                </div>
+                <div className="setlist-result-bottom">
+                    <p className="setlist-date">{formatDate(props.setlist.eventDate)}</p>
+                </div>
+                <div {...getToggleProps({onClick: (e) => {
+                    e.stopPropagation()
+                    setExpanded((prevExpanded) => !prevExpanded)
+                    }})}className="setlist-result-songs">
+                    <p className="setlist-songs-dropdown">
+                        {songCount(songList)} 
+                        {isExpanded ? <FaAngleUp className="dropdown-btn"/> : <FaAngleDown className="dropdown-btn"/>} 
+                    </p>
+                </div>
+                <div {...getCollapseProps()} className="setlist-song-list">
+                    {songList !== undefined && songList.map((song, idx) => {
+                    return (
+                        <div key={idx}>
+                            <SongView song={song} songNum={idx+1} addSongToPlaylist={props.addSongToPlaylist}/>
+                        </div>
+                    )
+                    })} 
+                </div>
             </div>
-            <div className="setlist-result-bottom">
-                <p className="setlist-date">{formatDate(props.setlist.eventDate)}</p>
-            </div>
-            <div {...getToggleProps({onClick: (e) => {
-                e.stopPropagation()
-                setExpanded((prevExpanded) => !prevExpanded)
-                }})}className="setlist-result-songs">
-                <p className="setlist-songs-dropdown">
-                    {songCount(songList)} 
-                    {isExpanded ? <FaAngleUp className="dropdown-btn"/> : <FaAngleDown className="dropdown-btn"/>} 
-                </p>
-            </div>
-            <div {...getCollapseProps()} className="setlist-song-list">
-                {songList !== undefined && songList.map((song, idx) => {
-                return (
-                    <div key={idx}>
-                        <SongView song={song} songNum={idx+1} addSongToPlaylist={props.addSongToPlaylist}/>
-                    </div>
-                )
-                })} 
-            </div>
-        </div>
+        </Fade>
     )
 }
 
