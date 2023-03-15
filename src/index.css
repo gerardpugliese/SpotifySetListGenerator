@@ -9,6 +9,11 @@ font-family: 'PT Serif', serif;
 font-family: 'Ultra', serif;
 */
 
+/*
+box-shadow: 0px 0px 10px 0px black;
+  transition: box-shadow 250ms ease-in;
+*/
+
 
 :root {
   --logo-font: "Ultra", serif;
@@ -78,6 +83,7 @@ code {
   position: absolute;
   z-index: 2;
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  transition: box-shadow 250ms ease-in;
 }
 
 .search-input-wrapper {
@@ -90,6 +96,10 @@ code {
   border: none;
   color: black;
   font-family: var(--subtext-font);
+}
+
+.search-input-wrapper:focus-within {
+  outline: 1px solid var(--blue);
 }
 
 .search-input-icon-wrapper {

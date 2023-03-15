@@ -10,6 +10,8 @@ import headphone_icon from './images/headphoneicon.svg';
 import phone_icon from './images/phoneicon.svg';
 import PlaylistSong from './components/PlaylistSong';
 import PlaylistForm from './components/PlaylistForm';
+import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
 
 function PlaylistFinalization(props) {
   const [songs] = useState(props.songs)
@@ -336,23 +338,28 @@ function App() {
               <FaSearch className="search-input-icon"/>
             </div>
           </div>
-          {searchResults.length > 0 ? <div className="search-results">
-              {searchResults.map((result, idx) => {
-                return (
-                  <div onClick={() => {
-                    getSetLists(result['@_']['@_id'], result)
-                    setHideQueryResults(true)
-                    } 
-                  } key={idx} className="search-result">
-                    <p className="search-result-name">{result.name}</p>
-                    {/*<p>{result['@_']['@_id']}</p>*/}
-                  </div>
-                )
-              })}
-          </div> : searchResults.length === 0 && query !== "" ?
-          <div className="search-results">
-            <p className="search-results-empty-txt">No artists found!</p>
-          </div> :
+          {searchResults.length > 0 ? 
+          <Fade duration={500}>
+            <div className="search-results">
+                {searchResults.map((result, idx) => {
+                  return (
+                    <div onClick={() => {
+                      getSetLists(result['@_']['@_id'], result)
+                      setHideQueryResults(true)
+                      } 
+                    } key={idx} className="search-result">
+                      <p className="search-result-name">{result.name}</p>
+                      {/*<p>{result['@_']['@_id']}</p>*/}
+                    </div>
+                  )
+                })}
+            </div>
+          </Fade> : searchResults.length === 0 && query !== "" ?
+          <Fade duration={500}>
+            <div className="search-results">
+              <p className="search-results-empty-txt">No artists found!</p>
+            </div>
+          </Fade> :
           <React.Fragment />}
           {/*<div onClick={() => submitQuery(query)} className="test-search-button">
             <p id="test-search-button-text">Search</p>
@@ -366,21 +373,27 @@ function App() {
             </p>
           </div>
           <div className="home-howitworks-content-wrapper">
-            <div className="howitworks-content-tile-wrapper">
-              <img alt="Phone Icon" className="howitworks-content-title-icon" src={phone_icon}/>
-              <p className="howitworks-content-tile-title">Login with Spotify</p>
-              <p className="howitworks-content-tile-subtext">Login with your Spotify credentials so you can save whatever you create. </p>
-            </div>
-            <div className="howitworks-content-tile-wrapper">
-              <img alt="Music Icon" className="howitworks-content-title-icon" src={music_icon}/>
-              <p className="howitworks-content-tile-title">Build your Playlist</p>
-              <p className="howitworks-content-tile-subtext">Search for an artist, view their recent set lists and add songs to a playlist.</p>
-            </div>
-            <div className="howitworks-content-tile-wrapper">
-              <img alt="Headphone Icon" className="howitworks-content-title-icon" src={headphone_icon}/>
-              <p className="howitworks-content-tile-title">Start Listening</p>
-              <p className="howitworks-content-tile-subtext">Open up your Spotify and start listening to your newly created playlist!</p>
-            </div>
+            <Fade up duration={1000} distance={"20px"}>
+              <div className="howitworks-content-tile-wrapper">
+                <img alt="Phone Icon" className="howitworks-content-title-icon" src={phone_icon}/>
+                <p className="howitworks-content-tile-title">Login with Spotify</p>
+                <p className="howitworks-content-tile-subtext">Login with your Spotify credentials so you can save whatever you create. </p>
+              </div>
+            </Fade>
+            <Fade up duration={1000} distance={"20px"}>
+              <div className="howitworks-content-tile-wrapper">
+                <img alt="Music Icon" className="howitworks-content-title-icon" src={music_icon}/>
+                <p className="howitworks-content-tile-title">Build your Playlist</p>
+                <p className="howitworks-content-tile-subtext">Search for an artist, view their recent set lists and add songs to a playlist.</p>
+              </div>
+            </Fade>
+            <Fade up duration={1000} distance={"20px"}>
+              <div className="howitworks-content-tile-wrapper">
+                <img alt="Headphone Icon" className="howitworks-content-title-icon" src={headphone_icon}/>
+                <p className="howitworks-content-tile-title">Start Listening</p>
+                <p className="howitworks-content-tile-subtext">Open up your Spotify and start listening to your newly created playlist!</p>
+              </div>
+            </Fade>
           </div>
         </div>
         </React.Fragment>}
