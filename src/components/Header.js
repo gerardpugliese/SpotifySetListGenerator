@@ -26,19 +26,13 @@ function Header(props) {
             'Authorization': `Bearer ${token}`
           }
       })
+      .then(resp => resp.json())
       .then(resp => {
-        if (resp.ok) {
-          let jsonresp = resp.json()
-          setUserId(jsonresp.id)
-          props.propagateUserId(jsonresp.id)
-        } else {
-          logout()
-        }
-      })
-      /*.then(resp => {
+        console.log(resp)
         setUserId(resp.id)
+        console.log(resp.id)
         props.propagateUserId(resp.id)
-      })*/
+      })
       .catch(error => {
         console.log(error)
       })

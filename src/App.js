@@ -11,7 +11,6 @@ import phone_icon from './images/phoneicon.svg';
 import PlaylistSong from './components/PlaylistSong';
 import PlaylistForm from './components/PlaylistForm';
 import Fade from 'react-reveal/Fade';
-import Slide from 'react-reveal/Slide';
 
 function PlaylistFinalization(props) {
   const [songs] = useState(props.songs)
@@ -80,9 +79,9 @@ function PlaylistFinalization(props) {
     </React.Fragment> 
     : playlistCreationState === 2 ? // Playlist has been created successfully
     <React.Fragment>
-    <div style={{display: "flex"}} className="finalize-playlist-loading">
-      <p className="finalize-playlist-loading-text">Playlist successfully created!</p>
-      <p onClick={() => goToHomePage()} className="finalize-playlist-complete-link">Return to Home page</p>
+    <div style={{display: "flex", flexDirection: "column"}} className="finalize-playlist-loading">
+      <p style={{marginBottom: "2vw"}} className="finalize-playlist-loading-text">Playlist successfully created!</p>
+      <p style={{marginTop: "2vw"}} onClick={() => goToHomePage()} className="finalize-playlist-complete-link">Return to Home page</p>
     </div>
     </React.Fragment> 
     : // An error occurred when creating the playlist
