@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit&family=Source+Serif+Pro:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=PT+Serif:wght@700&family=Ultra&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap');
 
 /*
@@ -17,9 +16,10 @@ box-shadow: 0px 0px 10px 0px black;
 
 :root {
   --logo-font: "Ultra", serif;
-  --subtext-font: 'Montserrat', sans-serif;
+  --subtext-font: 'Open Sans', sans-serif;
+  /*--subtext-font: 'Cabin', sans-serif;*/
   --blue: #2c74e7;
-  --header-font: 'Cabin', sans-serif;
+  --header-font: 'Montserrat', sans-serif;
 }
 
 body {

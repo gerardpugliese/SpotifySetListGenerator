@@ -28,7 +28,6 @@ function Header(props) {
       })
       .then(resp => resp.json())
       .then(resp => {
-        console.log(resp)
         if ("error" in resp) {
           logout()
         } else {
