@@ -29,9 +29,12 @@ function Header(props) {
       .then(resp => resp.json())
       .then(resp => {
         console.log(resp)
-        setUserId(resp.id)
-        console.log(resp.id)
-        props.propagateUserId(resp.id)
+        if ("error" in resp) {
+          logout()
+        } else {
+          setUserId(resp.id)
+          props.propagateUserId(resp.id)
+        }
       })
       .catch(error => {
         console.log(error)
