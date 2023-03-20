@@ -120,6 +120,23 @@ function App() {
     setToken(token)
   }, [])
 
+  useEffect(() => {
+    matchSetlistsPlaylistsHeight()
+  }, [songsForPlaylist])
+
+  const matchSetlistsPlaylistsHeight = () => {
+    if (songsForPlaylist.length > 0) {
+      //let playlistWrapper = document.getElementById('playlist-creator-wrapper');
+      let playlistWrapper = document.getElementById('playlist-songs-wrapper');
+      let heightToMatch = playlistWrapper.offsetHeight;
+      if (heightToMatch > 700) {
+        let setListWrapper = document.getElementById('setlist-results')
+        //setListWrapper.offsetHeight = heightToMatch
+        setListWrapper.style.height = heightToMatch.toString().concat("px")
+      }
+    }
+  }
+
   const goToHomePage = () => {
     //Clear out all state variables, this will return us to home page
     setHideQueryResults(false);
@@ -253,6 +270,8 @@ function App() {
     //Find song in songsForPlaylist, remove it and reset it.
     let filteredSongs = songsForPlaylist.filter(e => e !== song)
     setSongsForPlaylist(filteredSongs)
+    //Update div heights
+    matchSetlistsPlaylistsHeight()
   }
 
   const addSongToPlaylist = (song) => {
@@ -404,7 +423,7 @@ function App() {
                 <p id="confirmed-artist-header-name">{selectedArtist.name}</p>
                 <p id="confirmed-artist-header"> recent set lists</p>
               </div>
-              <div className="setlist-results">
+              <div id="setlist-results" className="setlist-results">
                 {setLists.length === 0 ? <React.Fragment>
                   <div className="setlist-empty-results-wrapper">
                     <p className="setlist-empty-results-txt">No set lists found!</p>
@@ -430,14 +449,14 @@ function App() {
                 })}
               </div>
             </div>
-            <div className="playlist-creator-wrapper">
+            <div id="playlist-creator-wrapper" className="playlist-creator-wrapper">
               <p className="playlist-creator-title">Your playlist</p>
-              <div className="playlist-songs-wrapper">
+              <div id="playlist-songs-wrapper" className="playlist-songs-wrapper">
                 {songsForPlaylist.length > 0 ?
                   <div>
                     {songsForPlaylist.map((song, idx) => {
                       return(
-                        <Fade duration={1000}>
+                        <Fade duration={500}>
                           <div onMouseEnter={() => changePlaylistDelButton("flex", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} onMouseLeave={() => changePlaylistDelButton("none", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} className="playlist-song-wrapper" key={idx}>
                             <p className="playlist-song-number">{idx+1}.</p>
                             <p className="playlist-song-name">{song.name}</p>

@@ -464,12 +464,15 @@ code {
 .song-wrapper {
   display: flex;
   margin: auto;
+  margin-right: auto;
+  margin-left: 0;
   padding: 5px;
+  width: fit-content;
 }
 
 .song-wrapper:hover {
   cursor: pointer;
-  border: 1px solid var(--blue);
+  color: var(--blue);
 }
 
 .song-num {
@@ -479,6 +482,11 @@ code {
 .song-title {
   width: fit-content;
   margin-left: 1vw;
+}
+
+.song-title:hover {
+  cursor: pointer;
+  color: var(--blue);
 }
 
 .log-in-btn-img {
