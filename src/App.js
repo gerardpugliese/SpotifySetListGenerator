@@ -25,7 +25,7 @@ function PlaylistFinalization(props) {
   }, [])
 
   useEffect(() => {
-
+    console.log(props.songs)
   }, [playlistCreationState])
 
   const changePlaylistFormState = (state) => {
@@ -55,7 +55,9 @@ function PlaylistFinalization(props) {
               {songs.map((song, idx) => {
                   if (song !== undefined) {
                     return (
-                      <PlaylistSong key={idx} song={song} songNum={idx+1}/> 
+                      <div key={idx}>
+                        <PlaylistSong key={idx} song={song} songNum={idx+1}/> 
+                      </div>
                     )
                   }
                   else {
@@ -297,18 +299,25 @@ function App() {
   }
 
   const filterSpotifyQueryResult = (resp, song_name, artist_name) => {
+    console.log("song_name: ", song_name)
+    console.log("artist_name: ", artist_name)
     let filteredSpotifyResults = resp.filter((el) => {
+      console.log(el.name.toLowerCase())
+      console.log(el.artists[0].name.toLowerCase())
       return el.name.toLowerCase() === song_name && el.artists[0].name.toLowerCase() === artist_name
     })
+    console.log(filteredSpotifyResults)
     return filteredSpotifyResults[0]
   }
 
   const retreiveSongs = () => {
     let i = 0;
+    let artist_name = selectedArtist.name.toLowerCase()
+    artist_name.replace(/\s/g, '%20')
     while (i < songsForPlaylist.length) {
       let song_name = songsForPlaylist[i].name
       //track%3A${song_name.replace(/\s+/g, '%2520')}%2520artist%3A${selectedArtist.name.replace(/\s+/g, '%2520')}
-      fetch(`https://api.spotify.com/v1/search?q=${song_name}&type=track`, {
+      fetch(`https://api.spotify.com/v1/search?q=${song_name}%20${artist_name}&type=track`, {
           method: "GET",
           headers: {
             'Accept': 'application/json',
@@ -319,6 +328,7 @@ function App() {
       .then(resp => resp.json())
       .then(resp => {
         let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.name.toLowerCase())
+        console.log('songResult: ', songResult)
         let results = spotifyResultsForPlaylist
         results.push(songResult)
         setSpotifyResultsForPlaylist(results)
@@ -456,17 +466,19 @@ function App() {
                   <div>
                     {songsForPlaylist.map((song, idx) => {
                       return(
-                        <Fade duration={500}>
-                          <div onMouseEnter={() => changePlaylistDelButton("flex", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} onMouseLeave={() => changePlaylistDelButton("none", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} className="playlist-song-wrapper" key={idx}>
-                            <p className="playlist-song-number">{idx+1}.</p>
-                            <p className="playlist-song-name">{song.name}</p>
-                            <div className="playlist-song-delete-btn" id={"playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase())}>
-                              <BsPlusLg onClick={() => {
-                                  removeSongFromPlaylist(song)
-                              }} className="playlist-song-delete-icon"/>
+                        <div key={idx}>
+                          <Fade duration={500}>
+                            <div onMouseEnter={() => changePlaylistDelButton("flex", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} onMouseLeave={() => changePlaylistDelButton("none", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} className="playlist-song-wrapper" key={idx}>
+                              <p className="playlist-song-number">{idx+1}.</p>
+                              <p className="playlist-song-name">{song.name}</p>
+                              <div className="playlist-song-delete-btn" id={"playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase())}>
+                                <BsPlusLg onClick={() => {
+                                    removeSongFromPlaylist(song)
+                                }} className="playlist-song-delete-icon"/>
+                              </div>
                             </div>
-                          </div>
-                        </Fade>
+                          </Fade>
+                        </div>
                       )
                     })}
                   </div> :
