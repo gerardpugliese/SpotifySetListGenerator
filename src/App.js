@@ -25,7 +25,6 @@ function PlaylistFinalization(props) {
   }, [])
 
   useEffect(() => {
-    console.log(props.songs)
   }, [playlistCreationState])
 
   const changePlaylistFormState = (state) => {
@@ -298,15 +297,22 @@ function App() {
     })*/
   }
 
+  const filterSpotifySongName = (query_name, song_name) => {
+    if (song_name.toLowerCase() === query_name.toLowerCase()) {
+      return true // These are a perfect match
+    }
+    else if (query_name.toLowerCase().includes(song_name.toLowerCase()) && query_name.slice(-8).toLowerCase() === "remaster") {
+      return true // These are a match but the string contains '- <year> remaster'
+    }
+    else {
+      return false
+    }
+  }
+
   const filterSpotifyQueryResult = (resp, song_name, artist_name) => {
-    console.log("song_name: ", song_name)
-    console.log("artist_name: ", artist_name)
     let filteredSpotifyResults = resp.filter((el) => {
-      console.log(el.name.toLowerCase())
-      console.log(el.artists[0].name.toLowerCase())
-      return el.name.toLowerCase() === song_name && el.artists[0].name.toLowerCase() === artist_name
+      return filterSpotifySongName(el.name, song_name) && el.artists[0].name.toLowerCase() === artist_name
     })
-    console.log(filteredSpotifyResults)
     return filteredSpotifyResults[0]
   }
 
@@ -328,7 +334,6 @@ function App() {
       .then(resp => resp.json())
       .then(resp => {
         let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.name.toLowerCase())
-        console.log('songResult: ', songResult)
         let results = spotifyResultsForPlaylist
         results.push(songResult)
         setSpotifyResultsForPlaylist(results)

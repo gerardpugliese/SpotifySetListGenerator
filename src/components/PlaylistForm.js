@@ -23,7 +23,6 @@ function PlaylistForm(props) {
             i++;
         }
         setSongs(uris);
-        console.log(props)
     }, [props.songs])
 
     const handleChange = val => {
