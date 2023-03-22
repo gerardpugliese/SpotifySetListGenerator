@@ -19,6 +19,7 @@ box-shadow: 0px 0px 10px 0px black;
   --subtext-font: 'Open Sans', sans-serif;
   /*--subtext-font: 'Cabin', sans-serif;*/
   --blue: #2c74e7;
+  --blue-hover: #3f88fc;
   --header-font: 'Montserrat', sans-serif;
 }
 
@@ -902,6 +903,7 @@ code {
 
 .confirm-playlist-btn-wrapper:hover {
   cursor: pointer;
+  background: var(--blue-hover);
 }
 
 .playlist-confirm-form-btn {
@@ -918,6 +920,7 @@ code {
 
 .playlist-confirm-form-btn:hover {
   cursor: pointer;
+  background: var(--blue-hover);
 }
 
 .playlist-form-image {
