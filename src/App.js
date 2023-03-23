@@ -51,7 +51,7 @@ function PlaylistFinalization(props) {
             {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
             <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-form-name-title">Playlist Songs:</p>
             <div className="finalize-playlist-right-songs">
-              {songs.map((song, idx) => {
+              {songs.map((song, idx, arr) => {
                   if (song !== undefined) {
                     return (
                       <div key={idx}>
@@ -60,7 +60,16 @@ function PlaylistFinalization(props) {
                     )
                   }
                   else {
-                    return <React.Fragment key={idx}/>
+                    return  <div className="spotify-song-not-found-wrapper"key={idx}>
+                      <div className="playlist-song-outerwrapper">
+                        <div className="playlist-song-num-wrapper">
+                            <p className="playlist-song-num">{idx+1}.</p>
+                        </div>
+                        <div className="confirm-playlist-song-wrapper">
+                            <p className="confirm-playlist-song-name">Not found on Spotify!</p>
+                        </div>
+                      </div>
+                    </div>
                   }
                 })}
             </div>
@@ -498,11 +507,11 @@ function App() {
                   <p className="confirm-playlist-login-text">to continue.</p>
                 </div>
                   :
-                songsForPlaylist.length > 0 &&  <div className="confirm-playlist-btn-wrapper">
+                songsForPlaylist.length > 0 && <div className="confirm-playlist-btn-wrapper">
                   <div onClick={() => retreiveSongs()} className="confirm-playlist-btn">
                     <p className="confirm-playlist-btn-txt">Confirm</p>
                   </div>
-                </div>
+                </div> 
                 }
             </div>
           </div>
