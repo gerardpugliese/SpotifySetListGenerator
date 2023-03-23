@@ -155,11 +155,11 @@ function PlaylistForm(props) {
                 onChange={handleChange}
                 />
             </div>
-            <div className="playlist-form-name-wrapper">
+            {/*<div className="playlist-form-name-wrapper">
                 <p className="playlist-form-image-title">Playlist Image:</p>
-                <input /*onChange={handeImageChange}*/ className="playlist-form-image-input" type="file" />
+                <input /*onChange={handeImageChange}*//* className="playlist-form-image-input" type="file" />
                 {image !== null && <img alt="Playlist Cover" className="playlist-form-image" src={image}/>}
-            </div>
+            </div>*/}
             <div className="playlist-confirm-form-wrapper">
                 <div className="playlist-confirm-form-btn">
                     <p onClick={() => createPlaylist()} className="playlist-conffirm-form-btn-text">Create</p>
