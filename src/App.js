@@ -52,7 +52,7 @@ function PlaylistFinalization(props) {
             <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-form-name-title">Playlist Songs:</p>
             <div className="finalize-playlist-right-songs">
               {songs.map((song, idx, arr) => {
-                  if (song !== undefined) {
+                  if (typeof song !== "string") {
                     return (
                       <div key={idx}>
                         <PlaylistSong key={idx} song={song} songNum={idx+1}/> 
@@ -66,7 +66,7 @@ function PlaylistFinalization(props) {
                             <p className="playlist-song-num">{idx+1}.</p>
                         </div>
                         <div className="confirm-playlist-song-wrapper">
-                            <p className="confirm-playlist-song-name">Not found on Spotify!</p>
+                            <p className="confirm-playlist-song-name">{song} - not found on Spotify!</p>
                         </div>
                       </div>
                     </div>
@@ -344,7 +344,11 @@ function App() {
       .then(resp => {
         let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.name.toLowerCase())
         let results = spotifyResultsForPlaylist
-        results.push(songResult)
+        if (songResult === undefined) {
+          results.push(song_name)
+        } else {
+          results.push(songResult)
+        }
         setSpotifyResultsForPlaylist(results)
       })
       .catch(error => console.log(error))

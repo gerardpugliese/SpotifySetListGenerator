@@ -6,7 +6,7 @@ import ReactSwitch from 'react-switch';
 function PlaylistForm(props) {
     const [checked, setChecked] = useState(true);
     const [playlistName, setPlaylistName] = useState("");
-    const [image] = useState(null)
+    //const [image] = useState(null)
     //const [imageBase64, setImageBase64] = useState("")
     //const [resizedImage, setResizedImage] = useState(null);
     const [userId] = useState(props.userId)
