@@ -55,7 +55,7 @@ function PlaylistFinalization(props) {
                   if (typeof song !== "string") {
                     return (
                       <div key={idx}>
-                        <PlaylistSong key={idx} song={song} songNum={idx+1}/> 
+                        <PlaylistSong idx={idx} song={song} songNum={idx+1}/> 
                       </div>
                     )
                   }
