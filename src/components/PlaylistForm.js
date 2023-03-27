@@ -150,7 +150,7 @@ function PlaylistForm(props) {
                 <ReactSwitch
                 className="playlist-form-public-switch"
                 checked={checked}
-                onColor={'#2c74e7'}
+                onColor={'#14213d'}
                 offColor={'#a8acb3'}
                 onChange={handleChange}
                 />

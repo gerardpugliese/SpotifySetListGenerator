@@ -18,8 +18,12 @@ box-shadow: 0px 0px 10px 0px black;
   --logo-font: "Ultra", serif;
   --subtext-font: 'Open Sans', sans-serif;
   /*--subtext-font: 'Cabin', sans-serif;*/
-  --blue: #2c74e7;
-  --blue-hover: #3f88fc;
+  /*--blue: #2c74e7;*/
+  --blue: #14213d;
+  /*--blue-hover: #3f88fc;*/
+  --blue-hover: #003459;
+  --text-color: #ffffff;
+  --alt-color: #e5e5e5;
   --header-font: 'Montserrat', sans-serif;
 }
 
@@ -205,7 +209,8 @@ code {
 
 .App {
   /*background-image: url(images/paper-texture.jpg);*/
-  background-color: #FAF9F6;
+  /*background-color: #FAF9F6;*/
+  background-color: var(--alt-color);
   width: 100vw;
   min-height: 100vh;
 }
@@ -554,6 +559,7 @@ code {
   margin: auto;
   font-size: 24px;
   font-family: var(--logo-font);
+  /*color: var(--text-color);*/
 }
 
 .setlist-result-wrapper {
@@ -737,7 +743,7 @@ code {
 .confirm-playlist-song-wrapper {
   display: flex;
   width: 25vw;
-  background-color: rgba(168, 172, 179, 0.5);
+  background-color: #ffffff;
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
   border-radius: 15px;
   padding: 2vw;

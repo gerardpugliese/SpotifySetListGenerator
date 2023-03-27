@@ -8,7 +8,7 @@ function PlaylistSong(props) {
     const [delay, setDelay] = useState(0)
 
     useEffect(() => {
-        if (props.key < 4) {
+        if (props.idx < 4) {
             setDelay(props.idx * 200)
         }
     }, [])
