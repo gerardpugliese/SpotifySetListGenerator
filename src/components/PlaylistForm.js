@@ -12,6 +12,8 @@ function PlaylistForm(props) {
     const [userId] = useState(props.userId)
     const [songs, setSongs] = useState(props.songs)
     const [token] = useState(props.token)
+    //const [showError, setShowError] = useState(false)
+    const [errorText, setErrorText] = useState("")
 
     useEffect(() => {
         let i = 0;
@@ -89,29 +91,37 @@ function PlaylistForm(props) {
     }
 
     const createPlaylist = () => {
-    props.changePlaylistFormState(1)
-    let data = {
-        "name": playlistName,
-        "public": checked,
-    }
-    fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-        method: "POST",
-        headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(data)
-      })
-    .then(resp => resp.json())
-    .then(resp => {
-        console.log(resp)
-        populatePlaylist(resp.id)
-        //Call function to add songs to playlist
-    })
-    .catch(error => {
-        console.log(error)
-    })
+        if (playlistName === "") {
+            //Set error for 3 seconds
+            setErrorText("Playlist name can't be empty!")
+            setTimeout(() => {
+                setErrorText("")
+              }, 3000)
+        } else {
+            props.changePlaylistFormState(1)
+            let data = {
+                "name": playlistName,
+                "public": checked,
+            }
+            fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+                method: "POST",
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(data)
+            })
+            .then(resp => resp.json())
+            .then(resp => {
+                console.log(resp)
+                populatePlaylist(resp.id)
+                //Call function to add songs to playlist
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        } 
     }
 
     
@@ -143,7 +153,7 @@ function PlaylistForm(props) {
             <p className="playlist-form-title">Your Playlist Details</p>
             <div className="playlist-form-name-wrapper">
                 <p className="playlist-form-name-title">Playlist Name:</p>
-                <input onChange={e => setPlaylistName(e.target.value)}className="playlist-form-name-input" type="text" />
+                <input style={errorText !== "" ? {border: "1px solid #e80c1f"} : {}} onChange={e => setPlaylistName(e.target.value)} className="playlist-form-name-input" type="text" />
             </div>
             <div className="playlist-form-public-wrapper">
                 <p className="playlist-form-name-title">{checked === true ? "Public" : "Private"}:</p>
@@ -162,9 +172,14 @@ function PlaylistForm(props) {
             </div>*/}
             <div className="playlist-confirm-form-wrapper">
                 <div className="playlist-confirm-form-btn">
-                    <p onClick={() => createPlaylist()} className="playlist-conffirm-form-btn-text">Create</p>
+                    <p onClick={() => createPlaylist()} className="playlist-confirm-form-btn-text">Create</p>
                 </div>
             </div>
+            {
+                errorText !== "" && <div className="error-text-wrapper">
+                    <p className="error-text">{errorText}</p>
+                </div>
+            }
         </div>
     )
 }

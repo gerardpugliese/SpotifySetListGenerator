@@ -871,13 +871,13 @@ code {
 .playlist-form-name-input {
   margin: auto;
   margin-left: 0;
-  width: 80%;
+  width: 95%;
   display: flex;
   background-color: white;
   font-size: 20px;
   border-radius: 25px;
   height: 5vh;
-  padding-left: 20px;
+  padding-left: 5%x;
   border: 1px solid var(--blue);
   color: black;
   font-family: var(--subtext-font);
@@ -890,7 +890,21 @@ code {
 .playlist-confirm-form-wrapper {
   display: flex;
   margin: auto;
+}
+
+.error-text-wrapper {
+  width: 100%;
+  display: flex;
+  /*background: white;*/
   margin-top: 2vw;
+  /*border-radius: 15px;*/
+}
+
+.error-text {
+  font-family: var(--header-font);
+  margin: auto;
+  color: #e80c1f;
+  padding: 10px;
 }
 
 .confirm-playlist-btn-wrapper {
