@@ -111,6 +111,7 @@ function PlaylistFinalization(props) {
                 {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
                 <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-form-name-title">Playlist Songs:</p>
                 <div className="finalize-playlist-right-songs">
+                {console.log(spotifyResultsForPlaylist)}
                 {spotifyResultsForPlaylist.map((song, idx, arr) => {
                     if (typeof song !== "string") {
                         return (

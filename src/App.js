@@ -12,99 +12,6 @@ import PlaylistSong from './components/PlaylistSong';
 import PlaylistForm from './components/PlaylistForm';
 import Fade from 'react-reveal/Fade';
 
-function PlaylistFinalization(props) {
-  const [songs] = useState(props.songs)
-  const [displaySongs, setDisplaySongs] = useState(false)
-  const [token] = useState(props.token)
-  const [playlistCreationState, setPlaylistCreationState] = useState(0)
-  
-  useEffect(() => {
-    setTimeout(() => {
-      setDisplaySongs(true)
-    }, 1000)
-  }, [])
-
-  useEffect(() => {
-  }, [playlistCreationState])
-
-  const changePlaylistFormState = (state) => {
-    setPlaylistCreationState(state)
-  }
-
-  const goToHomePage = () => {
-    setPlaylistCreationState(0)
-    props.goToHomePage()
-  }
-
-  return (
-    <React.Fragment>
-    {
-    (playlistCreationState === 0) ? // Playlist has not been sent to Spotify or finished
-    <React.Fragment> 
-        {
-        displaySongs === true ?
-        <div className="finalize-playlist-wrapper">
-          <div className="finalize-playlist-left">
-            <PlaylistForm changePlaylistFormState={changePlaylistFormState} token={token} songs={songs} userId={props.userId}/>
-          </div>  
-          <div className="finalize-playlist-right">
-            {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
-            <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-form-name-title">Playlist Songs:</p>
-            <div className="finalize-playlist-right-songs">
-              {songs.map((song, idx, arr) => {
-                  if (typeof song !== "string") {
-                    return (
-                      <div key={idx}>
-                        <PlaylistSong idx={idx} song={song} songNum={idx+1}/> 
-                      </div>
-                    )
-                  }
-                  else {
-                    return  <div className="spotify-song-not-found-wrapper"key={idx}>
-                      <div className="playlist-song-outerwrapper">
-                        <div className="playlist-song-num-wrapper">
-                            <p className="playlist-song-num">{idx+1}.</p>
-                        </div>
-                        <div className="confirm-playlist-song-wrapper">
-                            <p className="confirm-playlist-song-name">{song} - not found on Spotify!</p>
-                        </div>
-                      </div>
-                    </div>
-                  }
-                })}
-            </div>
-          </div>
-        </div>
-        :
-        <div className="finalize-playlist-loading">
-          <p className="finalize-playlist-loading-text">Loading Playlist...</p>
-        </div>
-        }
-    </React.Fragment>
-    : playlistCreationState === 1 ? // Playlist being sent to Spotify
-    <React.Fragment>
-    <div className="finalize-playlist-loading">
-      <p className="finalize-playlist-loading-text">Creating Spoitfy Playlist...</p>
-    </div>
-    </React.Fragment> 
-    : playlistCreationState === 2 ? // Playlist has been created successfully
-    <React.Fragment>
-    <div style={{display: "flex", flexDirection: "column"}} className="finalize-playlist-loading">
-      <p style={{marginBottom: "2vw"}} className="finalize-playlist-loading-text">Playlist successfully created!</p>
-      <p style={{marginTop: "2vw"}} onClick={() => goToHomePage()} className="finalize-playlist-complete-link">Return to Home page</p>
-    </div>
-    </React.Fragment> 
-    : // An error occurred when creating the playlist
-    <React.Fragment>
-    <div className="finalize-playlist-loading">
-      <p className="finalize-playlist-loading-text">Error occurred when creating playlist.</p>
-    </div>
-    </React.Fragment>
-    } 
-    </React.Fragment>
-  );
-}
-
 function App() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -346,8 +253,8 @@ function App() {
   return (
     <div className="App">
       <Header propagateUserId={setUserId} goToHomePage={goToHomePage}/>
-      {finalizePlaylist === false ? <div className="home-outer-wrapper">
-        {hideQueryResults === false && <React.Fragment>
+      <div className="home-outer-wrapper">
+        <React.Fragment>
         <div className="home-wrapper">
           <p className="home-page-blurb">Look up an artist to see their recent set lists!</p>
           <div className="search-input-wrapper">
@@ -390,9 +297,6 @@ function App() {
             </div>
           </Fade> :
           <React.Fragment />}
-          {/*<div onClick={() => submitQuery(query)} className="test-search-button">
-            <p id="test-search-button-text">Search</p>
-          </div>*/}
         </div>
         <div className="home-howitworks-wrapper">
           <div className="home-howitworks-header-wrapper">
@@ -425,86 +329,8 @@ function App() {
             </Fade>
           </div>
         </div>
-        </React.Fragment>}
-        
-        {/* Start of ArtistResults */}
-        {selectedArtist != null && 
-          <div className="setlist-result-wrapper">
-            <div className="artist-setlists">
-              <div className="setlist-header">
-                <p id="confirmed-artist-header-name">{selectedArtist.name}</p>
-                <p id="confirmed-artist-header"> recent set lists</p>
-              </div>
-              <div id="setlist-results" className="setlist-results">
-                {setLists.length === 0 ? <React.Fragment>
-                  <div className="setlist-empty-results-wrapper">
-                    <p className="setlist-empty-results-txt">No set lists found!</p>
-                  </div>
-                </React.Fragment> 
-                :
-                setLists.map((setlist, idx) => {
-                  if (setlist.sets.set.length !== 0) {
-                    return (
-                      <div key={idx}>
-                        <SetlistView idx={idx} setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
-                      </div>
-                    )
-                  } else if (setLists.length === 1 && setlist.sets.set.length === 0) {
-                    return (
-                      <div key={idx} className="setlist-empty-results-wrapper">
-                        <p className="setlist-empty-results-txt">No set lists found!</p>
-                      </div>
-                    )
-                  } else {
-                    return <React.Fragment />
-                  }
-                })}
-              </div>
-            </div>
-            <div id="playlist-creator-wrapper" className="playlist-creator-wrapper">
-              <p className="playlist-creator-title">Your playlist</p>
-              <div id="playlist-songs-wrapper" className="playlist-songs-wrapper">
-                {songsForPlaylist.length > 0 ?
-                  <div>
-                    {songsForPlaylist.map((song, idx) => {
-                      return(
-                        <div key={idx}>
-                          <Fade duration={500}>
-                            <div onMouseEnter={() => changePlaylistDelButton("flex", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} onMouseLeave={() => changePlaylistDelButton("none", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} className="playlist-song-wrapper" key={idx}>
-                              <p className="playlist-song-number">{idx+1}.</p>
-                              <p className="playlist-song-name">{song.name}</p>
-                              <div className="playlist-song-delete-btn" id={"playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase())}>
-                                <BsPlusLg onClick={() => {
-                                    removeSongFromPlaylist(song)
-                                }} className="playlist-song-delete-icon"/>
-                              </div>
-                            </div>
-                          </Fade>
-                        </div>
-                      )
-                    })}
-                  </div> :
-                  <div className="empty-setlist-playlist-wrapper">
-                    <p className="empty-setlist-playlist-text">No songs added.</p>
-                  </div>
-                }
-              </div>
-              {token == null ? 
-                songsForPlaylist.length > 0 && <div className="confirm-playlist-login">
-                  <p onClick={() => login()} className="confirm-playlist-login-link">Log in with Spotify </p>
-                  <p className="confirm-playlist-login-text">to continue.</p>
-                </div>
-                  :
-                songsForPlaylist.length > 0 && <div className="confirm-playlist-btn-wrapper">
-                  <div onClick={() => retreiveSongs()} className="confirm-playlist-btn">
-                    <p className="confirm-playlist-btn-txt">Confirm</p>
-                  </div>
-                </div> 
-                }
-            </div>
-          </div>
-          }
-      </div> : <PlaylistFinalization token={token} goToHomePage={goToHomePage} userId={userId} songs={spotifyResultsForPlaylist}/>}
+        </React.Fragment>
+      </div>
     </div>
   );
 }
