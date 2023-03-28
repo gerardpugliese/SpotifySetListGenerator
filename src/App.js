@@ -17,7 +17,7 @@ function PlaylistFinalization(props) {
   const [displaySongs, setDisplaySongs] = useState(false)
   const [token] = useState(props.token)
   const [playlistCreationState, setPlaylistCreationState] = useState(0)
-
+  
   useEffect(() => {
     setTimeout(() => {
       setDisplaySongs(true)
@@ -182,27 +182,9 @@ function App() {
     return searchResult.splice(0, 6)
   }
 
-  const getSetLists = (key, result) => {
-    fetch(`/rest/1.0/artist/${key}/setlists/`, {
-        method: "GET",
-        headers: {
-          'x-api-key': `${process.env.REACT_APP_MUSICBRAINZ_KEY}`,
-          'Accept': 'application/json	',
-        }
-    })
-    .then(resp => resp.json())
-    .then(resp => {
-      setSetLists(resp.setlist)
-      setSelectedArtist(result) 
-    })
-    .catch(error => console.log(error))
+  const goToArtistResults = (key, name) => {
+    window.location.href = `/artist_results/${name}/${key}`
   }
-
-  /*const handleQuery = () => {
-    setTimeout(() => {
-      submitQuery(query)
-    }, 1000)
-  }*/
 
   const submitQuery = (query) => {
     /*if (query.length <= 2) {
@@ -245,7 +227,7 @@ function App() {
         }
     }
     return false;
-}
+  }
 
   const removeDuplicates = (currSongs, addSongs) => {
     //Loop through addSongs, if song is in currSongs return true
@@ -367,7 +349,7 @@ function App() {
       {finalizePlaylist === false ? <div className="home-outer-wrapper">
         {hideQueryResults === false && <React.Fragment>
         <div className="home-wrapper">
-          <p className="home-page-blurb">Search an artist for recent set lists!</p>
+          <p className="home-page-blurb">Look up an artist to see their recent set lists!</p>
           <div className="search-input-wrapper">
             <input id="test-search-input" name="query" placeholder="I want to see set lists for..." autoComplete="off" value={query} onChange={e => {submitQuery(e.target.value)}}/>
             <div className="delete-search-icon-wrapper">
@@ -390,7 +372,8 @@ function App() {
                 {searchResults.map((result, idx) => {
                   return (
                     <div onClick={() => {
-                      getSetLists(result['@_']['@_id'], result)
+                      goToArtistResults(result['@_']['@_id'], result.name)
+                      //getSetLists(result['@_']['@_id'], result)
                       setHideQueryResults(true)
                       } 
                     } key={idx} className="search-result">
@@ -444,6 +427,7 @@ function App() {
         </div>
         </React.Fragment>}
         
+        {/* Start of ArtistResults */}
         {selectedArtist != null && 
           <div className="setlist-result-wrapper">
             <div className="artist-setlists">

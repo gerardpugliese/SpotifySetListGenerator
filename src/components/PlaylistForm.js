@@ -18,6 +18,7 @@ function PlaylistForm(props) {
     useEffect(() => {
         let i = 0;
         let uris = [];
+        console.log(props)
         while (i < songs.length) {
             if (songs[i] !== undefined) {
                 uris.push(songs[i].uri);
