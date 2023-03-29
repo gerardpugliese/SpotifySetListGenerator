@@ -19,7 +19,8 @@ function PlaylistForm(props) {
         let i = 0;
         let uris = [];
         while (i < songs.length) {
-            if (songs[i] !== undefined || songs[i] !== null) {
+            console.log(typeof songs[i])
+            if (typeof songs[i] !== "string") {
                 uris.push(songs[i].uri);
             }
             i++;
