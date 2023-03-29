@@ -12,23 +12,9 @@ import Fade from 'react-reveal/Fade';
 function App() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [setToken] = useState("")
   const [songsForPlaylist, setSongsForPlaylist] = useState([]);
   const [setSpotifyResultsForPlaylist] = useState([])
   const [setUserId] = useState(null)
-
-  useEffect(() => {
-    const hash = window.location.hash
-    let token = window.localStorage.getItem("token")
-
-    if (!token && hash) {
-        token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-
-        window.location.hash = ""
-        window.localStorage.setItem("token", token)
-    }
-    setToken(token)
-  }, [])
 
   useEffect(() => {
     matchSetlistsPlaylistsHeight()

@@ -32,7 +32,9 @@ function Header(props) {
           logout()
         } else {
           setUserId(resp.id)
-          props.propagateUserId(resp.id)
+          if (props.propagateUserId) {
+            props.propagateUserId(resp.id)
+          }
         }
       })
       .catch(error => {
