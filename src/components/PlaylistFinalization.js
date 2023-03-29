@@ -5,14 +5,12 @@ import Header from './Header';
 import { useLocation } from 'react-router-dom';
 
 function PlaylistFinalization(props) {
-    const [songs] = useState(props.songs)
     const [token, setToken] = useState("")
     const [userId, setUserId] = useState(null)
     const [displaySongs, setDisplaySongs] = useState(false)
     const [playlistCreationState, setPlaylistCreationState] = useState(0)
     const location = useLocation()
     const [spotifyResultsForPlaylist, setSpotifyResultsForPlaylist] = useState([])
-    const [finalizePlaylist, setFinalizePlaylist] = useState(false);
     const { songsForPlaylist } = location.state 
     const { selectedArtist} = location.state
 
@@ -84,7 +82,6 @@ function PlaylistFinalization(props) {
           .catch(error => console.log(error))
           i++
         }
-        setFinalizePlaylist(true)
     }
 
     const changePlaylistFormState = (state) => {

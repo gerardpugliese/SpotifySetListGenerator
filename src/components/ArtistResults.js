@@ -11,10 +11,8 @@ function ArtistResults(props) {
     const [songsForPlaylist, setSongsForPlaylist] = useState([]);
     const [token, setToken] = useState("");
     const [selectedArtist, setSelectedArtist] = useState(null);
-    const [spotifyResultsForPlaylist, setSpotifyResultsForPlaylist] = useState([])
-    const [finalizePlaylist, setFinalizePlaylist] = useState(false);
     const [setLists, setSetLists] = useState([]);
-    const [userId, setUserId] = useState(null);
+    const [setUserId] = useState(null);
 
     useEffect(() => {
         //Get parameters from URL
@@ -34,13 +32,8 @@ function ArtistResults(props) {
 
     const goToHomePage = () => {
         //Clear out all state variables, this will return us to home page
-        //setHideQueryResults(false);
         setSelectedArtist(null);
-        //setSearchResults([]);
-        //setQuery("");
         setSongsForPlaylist([]);
-        setSpotifyResultsForPlaylist([]);
-        setFinalizePlaylist(false);
         window.location.href = "/"
     }
 

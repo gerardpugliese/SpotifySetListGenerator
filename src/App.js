@@ -1,28 +1,21 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
-import SetlistView from './components/SetlistView';
 import { FaSearch } from 'react-icons/fa';
 import { BsPlusLg } from 'react-icons/bs'
 import { XMLParser } from 'fast-xml-parser';
 import music_icon from './images/musicicon.svg';
 import headphone_icon from './images/headphoneicon.svg';
 import phone_icon from './images/phoneicon.svg';
-import PlaylistSong from './components/PlaylistSong';
-import PlaylistForm from './components/PlaylistForm';
 import Fade from 'react-reveal/Fade';
 
 function App() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [selectedArtist, setSelectedArtist] = useState(null);
-  const [hideQueryResults, setHideQueryResults] = useState(false);
-  const [setLists, setSetLists] = useState([]);
-  const [token, setToken] = useState("")
+  const [setToken] = useState("")
   const [songsForPlaylist, setSongsForPlaylist] = useState([]);
-  const [spotifyResultsForPlaylist, setSpotifyResultsForPlaylist] = useState([])
-  const [finalizePlaylist, setFinalizePlaylist] = useState(false);
-  const [userId, setUserId] = useState(null)
+  const [setSpotifyResultsForPlaylist] = useState([])
+  const [setUserId] = useState(null)
 
   useEffect(() => {
     const hash = window.location.hash
@@ -56,14 +49,11 @@ function App() {
 
   const goToHomePage = () => {
     //Clear out all state variables, this will return us to home page
-    setHideQueryResults(false);
-    setSelectedArtist(null);
     setSearchResults([]);
     setQuery("");
     setSongsForPlaylist([]);
     setSongsForPlaylist([]);
     setSpotifyResultsForPlaylist([]);
-    setFinalizePlaylist(false);
   }
 
   const sanitizeSearchResults = (searchResult) => {
@@ -126,130 +116,6 @@ function App() {
     } 
   }
 
-  const containsObject = (obj, list) => {
-    let i;
-    for (i = 0; i < list.length; i++) {
-        if (list[i].name === obj.name) {
-            return true;
-        }
-    }
-    return false;
-  }
-
-  const removeDuplicates = (currSongs, addSongs) => {
-    //Loop through addSongs, if song is in currSongs return true
-    let nonDupSongs = [...currSongs];
-    if (addSongs.length === undefined) { //undefined length means it's just one song we're adding
-      if (!containsObject(addSongs, nonDupSongs)) {
-        nonDupSongs.push(addSongs)
-      }
-    }
-    else if (addSongs.length > 1) {
-      let i = 0;
-
-      while (i < addSongs.length) {
-        if (!containsObject(addSongs[i], nonDupSongs)) {
-          nonDupSongs.push(addSongs[i])
-        }
-        else {
-          //can keep track of dup songs to show user or something
-        }
-        i++;
-      }
-    }
-    return [...nonDupSongs]
-  }
-
-  const changePlaylistDelButton = (displayState, btnId) => {
-    let button = document.getElementById(btnId)
-    button.style.display = displayState
-  }
-
-  const removeSongFromPlaylist = (song) => {
-    //Find song in songsForPlaylist, remove it and reset it.
-    let filteredSongs = songsForPlaylist.filter(e => e !== song)
-    setSongsForPlaylist(filteredSongs)
-    //Update div heights
-    matchSetlistsPlaylistsHeight()
-  }
-
-  const addSongToPlaylist = (song) => {
-    if (songsForPlaylist.length > 0) {
-      setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
-      ///setSongsForPlaylist(removeDuplicates([...songsForPlaylist, song]))
-    } else {
-      setSongsForPlaylist([song])
-    }
-  }
-
-  const addSetToPlaylist = (setlist) => {
-    if (songsForPlaylist.length > 0) {
-      setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
-      ///setSongsForPlaylist([...songsForPlaylist, ...setlist])
-    } else {
-      setSongsForPlaylist(setlist)
-    }
-    
-    /*setlist[0] !== undefined && setlist[0].song.forEach((song, idx) => {
-      setSongsForPlaylist({...songsForPlaylist, song})
-    })*/
-  }
-
-  const filterSpotifySongName = (query_name, song_name) => {
-    if (song_name.toLowerCase() === query_name.toLowerCase()) {
-      return true // These are a perfect match
-    }
-    else if (query_name.toLowerCase().includes(song_name.toLowerCase()) && query_name.slice(-8).toLowerCase() === "remaster") {
-      return true // These are a match but the string contains '- <year> remaster'
-    }
-    else {
-      return false
-    }
-  }
-
-  const filterSpotifyQueryResult = (resp, song_name, artist_name) => {
-    let filteredSpotifyResults = resp.filter((el) => {
-      return filterSpotifySongName(el.name, song_name) && el.artists[0].name.toLowerCase() === artist_name
-    })
-    return filteredSpotifyResults[0]
-  }
-
-  const retreiveSongs = () => {
-    let i = 0;
-    let artist_name = selectedArtist.name.toLowerCase()
-    artist_name.replace(/\s/g, '%20')
-    while (i < songsForPlaylist.length) {
-      let song_name = songsForPlaylist[i].name
-      //track%3A${song_name.replace(/\s+/g, '%2520')}%2520artist%3A${selectedArtist.name.replace(/\s+/g, '%2520')}
-      fetch(`https://api.spotify.com/v1/search?q=${song_name}%20${artist_name}&type=track`, {
-          method: "GET",
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          }
-      })
-      .then(resp => resp.json())
-      .then(resp => {
-        let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.name.toLowerCase())
-        let results = spotifyResultsForPlaylist
-        if (songResult === undefined) {
-          results.push(song_name)
-        } else {
-          results.push(songResult)
-        }
-        setSpotifyResultsForPlaylist(results)
-      })
-      .catch(error => console.log(error))
-      i++
-    }
-    setFinalizePlaylist(true)
-  }
-
-  const login = () => {
-    window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
-  }
-
   return (
     <div className="App">
       <Header propagateUserId={setUserId} goToHomePage={goToHomePage}/>
@@ -281,7 +147,6 @@ function App() {
                     <div onClick={() => {
                       goToArtistResults(result['@_']['@_id'], result.name)
                       //getSetLists(result['@_']['@_id'], result)
-                      setHideQueryResults(true)
                       } 
                     } key={idx} className="search-result">
                       <p className="search-result-name">{result.name}</p>
