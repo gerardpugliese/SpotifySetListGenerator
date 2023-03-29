@@ -18,9 +18,8 @@ function PlaylistForm(props) {
     useEffect(() => {
         let i = 0;
         let uris = [];
-        console.log(props)
         while (i < songs.length) {
-            if (songs[i] !== undefined) {
+            if (songs[i] !== undefined || songs[i] !== null) {
                 uris.push(songs[i].uri);
             }
             i++;
@@ -85,10 +84,17 @@ function PlaylistForm(props) {
         .then(resp => resp.json())
         .then(resp => {
             console.log(resp)
-            props.changePlaylistFormState(2)
+            if (resp["error"]) {
+                props.changePlaylistFormState(-1)
+            } else {
+                props.changePlaylistFormState(2)
+            }
             //changePlaylistImg(id)
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            props.changePlaylistFormState(-1)
+        })
     }
 
     const createPlaylist = () => {
@@ -115,7 +121,6 @@ function PlaylistForm(props) {
             })
             .then(resp => resp.json())
             .then(resp => {
-                console.log(resp)
                 populatePlaylist(resp.id)
                 //Call function to add songs to playlist
             })

@@ -31,7 +31,7 @@ function PlaylistFinalization(props) {
         setTimeout(() => {
             setDisplaySongs(true)
         }, 1000)
-    }, [])
+    }, [location.state])
 
     useEffect(() => {
     }, [playlistCreationState])
@@ -92,16 +92,15 @@ function PlaylistFinalization(props) {
     }
 
     const goToHomePage = () => {
-        setPlaylistCreationState(0)
         window.location.href = "/"
     }
 
     return (
         <React.Fragment>
+        <Header propagateUserId={setUserId}/>
         {
         (playlistCreationState === 0) ? // Playlist has not been sent to Spotify or finished
         <React.Fragment> 
-            <Header propagateUserId={setUserId}/>
             {
             displaySongs === true ?
             <div className="finalize-playlist-wrapper">
@@ -112,7 +111,6 @@ function PlaylistFinalization(props) {
                 {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
                 <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-form-name-title">Playlist Songs:</p>
                 <div className="finalize-playlist-right-songs">
-                {console.log(spotifyResultsForPlaylist)}
                 {spotifyResultsForPlaylist.map((song, idx, arr) => {
                     if (typeof song !== "string") {
                         return (
@@ -158,8 +156,9 @@ function PlaylistFinalization(props) {
         </React.Fragment> 
         : // An error occurred when creating the playlist
         <React.Fragment>
-        <div className="finalize-playlist-loading">
-        <p className="finalize-playlist-loading-text">Error occurred when creating playlist.</p>
+        <div style={{display: "flex", flexDirection: "column"}} className="finalize-playlist-loading">
+        <p style={{marginBottom: "2vw"}} className="finalize-playlist-loading-text">Error occurred when creating playlist.</p>
+        <p style={{marginTop: "2vw"}} onClick={() => setPlaylistCreationState(0)} className="finalize-playlist-complete-link">Try again</p>
         </div>
         </React.Fragment>
         } 

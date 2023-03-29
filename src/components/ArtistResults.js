@@ -39,7 +39,6 @@ function ArtistResults(props) {
         //setSearchResults([]);
         //setQuery("");
         setSongsForPlaylist([]);
-        setSongsForPlaylist([]);
         setSpotifyResultsForPlaylist([]);
         setFinalizePlaylist(false);
         window.location.href = "/"

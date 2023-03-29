@@ -46,6 +46,11 @@ code {
   src: url(RubikDirt-Regular.ttf);
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .home-outer-wrapper {
   min-height: 92vh;
   display: flex;
@@ -891,7 +896,7 @@ code {
   font-size: 20px;
   border-radius: 25px;
   height: 5vh;
-  padding-left: 5%x;
+  padding-left: 5%;
   border: 1px solid var(--blue);
   color: black;
   font-family: var(--subtext-font);

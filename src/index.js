@@ -9,15 +9,13 @@ import PlaylistFinalization from './components/PlaylistFinalization';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<App />}/>
-          <Route exact path="/artist_results/:name/:id" element={<ArtistResults />} />
-          <Route exact path="/finalize_playlist" element={<PlaylistFinalization />} />
-        </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<App />}/>
+        <Route exact path="/artist_results/:name/:id" element={<ArtistResults />} />
+        <Route exact path="/finalize_playlist" element={<PlaylistFinalization />} />
+      </Routes>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
