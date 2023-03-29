@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 function PlaylistFinalization(props) {
     const [songs] = useState(props.songs)
     const [token, setToken] = useState("")
+    const [userId, setUserId] = useState(null)
     const [displaySongs, setDisplaySongs] = useState(false)
     const [playlistCreationState, setPlaylistCreationState] = useState(0)
     const location = useLocation()
@@ -92,7 +93,7 @@ function PlaylistFinalization(props) {
 
     const goToHomePage = () => {
         setPlaylistCreationState(0)
-        props.goToHomePage()
+        window.location.href = "/"
     }
 
     return (
@@ -100,12 +101,12 @@ function PlaylistFinalization(props) {
         {
         (playlistCreationState === 0) ? // Playlist has not been sent to Spotify or finished
         <React.Fragment> 
-            <Header />
+            <Header propagateUserId={setUserId}/>
             {
             displaySongs === true ?
             <div className="finalize-playlist-wrapper">
             <div className="finalize-playlist-left">
-                <PlaylistForm changePlaylistFormState={changePlaylistFormState} token={token} songs={spotifyResultsForPlaylist} userId={props.userId}/>
+                <PlaylistForm changePlaylistFormState={changePlaylistFormState} token={token} songs={spotifyResultsForPlaylist} userId={userId}/>
             </div>  
             <div className="finalize-playlist-right">
                 {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}

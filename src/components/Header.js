@@ -52,7 +52,7 @@ function Header(props) {
     
     return(
         <div className="home-header">
-        <div onClick={() => props.goToHomePage()} className="home-header-logo-wrapper">
+        <div onClick={() => window.location.href = "/"} className="home-header-logo-wrapper">
           <p className="home-header-logo-txt">SetListify</p>
         </div>
           {token === "" || token === null ? 
