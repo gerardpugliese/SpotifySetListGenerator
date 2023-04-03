@@ -172,7 +172,7 @@ function ArtistResults(props) {
                         </div>
                     )
                     } else {
-                    return <React.Fragment />
+                    return <React.Fragment key={idx} />
                     }
                 })}
                 </div>
