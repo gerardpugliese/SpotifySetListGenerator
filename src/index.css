@@ -693,16 +693,19 @@ a {
 
 .finalize-playlist-wrapper {
   margin: auto;
-  width: 90vw;
+  width: 100vw;
   display: flex;
+  background: var(--alt-color);
 }
 
 .finalize-playlist-left {
   width: 50vw;
+  padding-left: 5vw;
 }
 
 .finalize-playlist-right {
   width: 50vw;
+  padding-right: 5vw;
 }
 
 .finalize-playlist-right-songs {
