@@ -997,6 +997,13 @@ a {
   margin-bottom: auto;
 }
 
+.empty-setlist-playlist-wrapper {
+  width: inherit;
+  display: flex;
+}
+
 .empty-setlist-playlist-text {
   font-family: var(--subtext-font);
+  width: fit-content;
+  margin: auto;
 }
