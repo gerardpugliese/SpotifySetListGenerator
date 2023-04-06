@@ -1106,6 +1106,49 @@ a {
   }
 }
 
+@media screen and (max-width: 665px) {
+  .setlist-result-wrapper {
+    flex-direction: column;
+  }
+
+  .artist-setlists {
+    width: 90vw;
+  }
+
+  .setlist-results {
+    display: flex;
+    overflow-x: scroll;
+    height: fit-content;
+  }
+
+  .setlist-result {
+    margin-right: 2vw;
+    width: 40vw;
+  }
+
+  .setlist-venue-name {
+    font-size: 14px;
+  }
+
+  .setlist-venueu-location {
+    font-size: 14px;
+  }
+
+  .setlist-date {
+    font-size: 14px;
+  }
+
+  .setlist-songs-dropdown {
+    font-size: 14px;
+  }
+
+  .artist-results-wrapper {
+    min-height: 100vh;
+    background: var(--alt-color);
+  }
+
+}
+
 @media screen and (max-width: 520px) {
   .home-header-logo-txt {
     font-size: 20px;
