@@ -1119,6 +1119,8 @@ a {
     display: flex;
     overflow-x: scroll;
     height: fit-content;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .setlist-result {
