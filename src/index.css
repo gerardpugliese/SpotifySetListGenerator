@@ -1107,6 +1107,16 @@ a {
 }
 
 @media screen and (max-width: 665px) {
+  .playlist-creator-wrapper {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .playlist-song-delete-btn {
+    display: flex;
+  }
+
   .setlist-result-wrapper {
     flex-direction: column;
   }
@@ -1145,6 +1155,22 @@ a {
   }
 
   .empty-setlist-playlist-text {
+    font-size: 14px;
+  }
+
+  .playlist-song-number {
+    font-size: 14px;
+  }
+
+  .playlist-song-name {
+    font-size: 14px;
+  }
+
+  .confirm-playlist-login-link {
+    font-size: 14px;
+  }
+
+  .confirm-playlist-login-text {
     font-size: 14px;
   }
 
