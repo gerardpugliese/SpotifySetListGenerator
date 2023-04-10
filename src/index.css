@@ -1144,6 +1144,10 @@ a {
     font-size: 14px;
   }
 
+  .empty-setlist-playlist-text {
+    font-size: 14px;
+  }
+
   .artist-results-wrapper {
     min-height: 100vh;
     background: var(--alt-color);
@@ -1153,6 +1157,18 @@ a {
 
 @media screen and (max-width: 520px) {
   .home-header-logo-txt {
+    font-size: 20px;
+  }
+
+  #confirmed-artist-header-name {
+    font-size: 20px;
+  }
+
+  .playlist-creator-title {
+    font-size: 20px;
+  }
+
+  #confirmed-artist-header {
     font-size: 20px;
   }
 
@@ -1185,4 +1201,11 @@ a {
     font-size: 14px;
   }
 
+}
+
+@media screen and (max-width: 520px) { 
+  .playlist-songs-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

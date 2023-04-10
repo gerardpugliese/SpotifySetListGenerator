@@ -143,7 +143,7 @@ function ArtistResults(props) {
     
 
     return(
-        <div className="artist-results-wrappe">
+        <div className="artist-results-wrapper">
         <Header propagateUserId={setUserId} goToHomePage={goToHomePage}/>
         <div className="setlist-result-wrapper">
             <div className="artist-setlists">
