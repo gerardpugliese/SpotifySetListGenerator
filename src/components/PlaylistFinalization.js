@@ -92,6 +92,8 @@ function PlaylistFinalization(props) {
         window.location.href = "/"
     }
 
+    
+
     return (
         <React.Fragment>
         <Header propagateUserId={setUserId}/>
@@ -106,7 +108,7 @@ function PlaylistFinalization(props) {
             </div>  
             <div className="finalize-playlist-right">
                 {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
-                <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-form-name-title">Playlist Songs:</p>
+                <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-songs-name-title">Playlist Songs:</p>
                 <div className="finalize-playlist-right-songs">
                 {spotifyResultsForPlaylist.map((song, idx, arr) => {
                     if (typeof song !== "string") {
@@ -130,6 +132,11 @@ function PlaylistFinalization(props) {
                     }
                     })}
                 </div>
+                {/*<div className="playlist-confirm-form-wrapper-mobile">
+                    <div className="playlist-confirm-form-btn-mobile">
+                        <p onClick={() => createPlaylist()} className="playlist-confirm-form-btn-text-mobile">Create</p>
+                    </div>
+                </div>*/}
             </div>
             </div>
             :
