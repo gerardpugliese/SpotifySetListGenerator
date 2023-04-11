@@ -1070,6 +1070,10 @@ a {
     font-size: 16px;
   }
 
+  .setlist-empty-results-txt {
+    font-size: 16px;
+  }
+
   .howitworks-content-tile-title {
     font-size: 14px;
   }
@@ -1121,6 +1125,10 @@ a {
     flex-direction: column;
   }
 
+  .setlist-result-top {
+    flex-direction: column;
+  }
+
   .artist-setlists {
     width: 90vw;
   }
@@ -1138,12 +1146,17 @@ a {
     width: 40vw;
   }
 
+  .setlist-empty-results-txt {
+    font-size: 14px;
+  }
+
   .setlist-venue-name {
     font-size: 14px;
   }
 
   .setlist-venueu-location {
     font-size: 14px;
+    margin-top: 0;
   }
 
   .setlist-date {
