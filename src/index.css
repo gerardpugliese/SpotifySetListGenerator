@@ -1178,6 +1178,12 @@ a {
   .playlist-songs-name-title {
     width: 80%;
   }
+
+  .setlist-results {
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 2vw;
+  }
 }
 
 @media screen and (max-width: 625px) {
