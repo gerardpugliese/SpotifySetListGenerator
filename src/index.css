@@ -1180,7 +1180,7 @@ a {
   }
 
   .setlist-results {
-    width: fit-content;
+    width: 90vw;
     margin: auto;
     margin-bottom: 2vw;
   }
