@@ -13,6 +13,22 @@ function ArtistResults(props) {
     const [selectedArtist, setSelectedArtist] = useState(null);
     const [setLists, setSetLists] = useState([]);
     const [setUserId] = useState(null);
+    const [windowSize, setWindowSize] = useState([
+        window.innerWidth,
+        window.innerHeight,
+      ]);
+    
+    useEffect(() => {
+    const handleWindowResize = () => {
+        setWindowSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+        window.removeEventListener('resize', handleWindowResize);
+    };
+    });
 
     useEffect(() => {
         //Get parameters from URL
@@ -68,8 +84,10 @@ function ArtistResults(props) {
     }
 
     const changePlaylistDelButton = (displayState, btnId) => {
-        let button = document.getElementById(btnId)
-        button.style.display = displayState
+        if (windowSize[0] > 665) {
+            let button = document.getElementById(btnId)
+            button.style.display = displayState
+        } 
     }
 
     const removeSongFromPlaylist = (song) => {

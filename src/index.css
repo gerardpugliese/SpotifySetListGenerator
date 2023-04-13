@@ -494,7 +494,7 @@ a {
 
 .song-wrapper:hover {
   cursor: pointer;
-  color: var(--blue-hover);
+  color: #5a87d1;
 }
 
 .song-num {
@@ -504,11 +504,6 @@ a {
 .song-title {
   width: fit-content;
   margin-left: 1vw;
-}
-
-.song-title:hover {
-  cursor: pointer;
-  color: var(--blue);
 }
 
 .log-in-btn-img {
