@@ -19,7 +19,6 @@ function PlaylistForm(props) {
         let i = 0;
         let uris = [];
         while (i < songs.length) {
-            console.log(typeof songs[i])
             if (typeof songs[i] !== "string") {
                 uris.push(songs[i].uri);
             }
@@ -68,7 +67,6 @@ function PlaylistForm(props) {
     */
 
     const populatePlaylist = (id) => {
-        console.log(songs)
         let data = {
             "uris": songs,
             "position": 0
@@ -84,7 +82,6 @@ function PlaylistForm(props) {
           })
         .then(resp => resp.json())
         .then(resp => {
-            console.log(resp)
             if (resp["error"]) {
                 props.changePlaylistFormState(-1)
             } else {
@@ -93,7 +90,6 @@ function PlaylistForm(props) {
             //changePlaylistImg(id)
         })
         .catch(error => {
-            console.log(error)
             props.changePlaylistFormState(-1)
         })
     }
