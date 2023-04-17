@@ -8,7 +8,7 @@ function Header(props) {
     useEffect(() => {
     const hash = window.location.hash
     let token = window.localStorage.getItem("token")
-
+    
     if (!token && hash) {
         token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
 
@@ -16,7 +16,7 @@ function Header(props) {
         window.localStorage.setItem("token", token)
     }
     setToken(token)
-    if (userId === null) {
+    if (userId === null && token !== null) {
       //Get user profile
       fetch(`https://api.spotify.com/v1/me`, {
           method: "GET",
@@ -50,7 +50,7 @@ function Header(props) {
     const logout = () => {
         setToken("")
         window.localStorage.removeItem("token")
-      } 
+    } 
     
     return(
         <div className="home-header">
