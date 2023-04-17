@@ -70,14 +70,18 @@ function PlaylistFinalization(props) {
           })
           .then(resp => resp.json())
           .then(resp => {
-            let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.toLowerCase())
-            let results = spotifyResultsForPlaylist
-            if (songResult === undefined) {
-              results.push(song_name)
-            } else {
-              results.push(songResult)
-            }
-            setSpotifyResultsForPlaylist(results)
+            if ("error" in resp) {
+                window.location.href = "/";
+              } else {
+                let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.toLowerCase())
+                let results = spotifyResultsForPlaylist
+                if (songResult === undefined) {
+                    results.push(song_name)
+                } else {
+                    results.push(songResult)
+                }
+                setSpotifyResultsForPlaylist(results)
+              }
           })
           .catch(error => console.log(error))
           i++
