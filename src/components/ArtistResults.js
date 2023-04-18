@@ -100,12 +100,10 @@ function ArtistResults(props) {
 
     const matchSetlistsPlaylistsHeight = () => {
         if (songsForPlaylist.length > 0) {
-            //let playlistWrapper = document.getElementById('playlist-creator-wrapper');
             let playlistWrapper = document.getElementById('playlist-songs-wrapper');
             let heightToMatch = playlistWrapper.offsetHeight;
             if (heightToMatch > 700) {
             let setListWrapper = document.getElementById('setlist-results')
-            //setListWrapper.offsetHeight = heightToMatch
             setListWrapper.style.height = heightToMatch.toString().concat("px")
             }
         }
@@ -138,7 +136,6 @@ function ArtistResults(props) {
     const addSongToPlaylist = (song) => {
         if (songsForPlaylist.length > 0) {
           setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
-          ///setSongsForPlaylist(removeDuplicates([...songsForPlaylist, song]))
         } else {
           setSongsForPlaylist([song])
         }
@@ -147,14 +144,9 @@ function ArtistResults(props) {
       const addSetToPlaylist = (setlist) => {
         if (songsForPlaylist.length > 0) {
           setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
-          ///setSongsForPlaylist([...songsForPlaylist, ...setlist])
         } else {
           setSongsForPlaylist(setlist)
         }
-        
-        /*setlist[0] !== undefined && setlist[0].song.forEach((song, idx) => {
-          setSongsForPlaylist({...songsForPlaylist, song})
-        })*/
     }
 
     

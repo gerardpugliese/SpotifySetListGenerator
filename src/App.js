@@ -22,12 +22,10 @@ function App() {
 
   const matchSetlistsPlaylistsHeight = () => {
     if (songsForPlaylist.length > 0) {
-      //let playlistWrapper = document.getElementById('playlist-creator-wrapper');
       let playlistWrapper = document.getElementById('playlist-songs-wrapper');
       let heightToMatch = playlistWrapper.offsetHeight;
       if (heightToMatch > 700) {
         let setListWrapper = document.getElementById('setlist-results')
-        //setListWrapper.offsetHeight = heightToMatch
         setListWrapper.style.height = heightToMatch.toString().concat("px")
       }
     }
@@ -45,10 +43,6 @@ function App() {
   const sanitizeSearchResults = (searchResult) => {
     let splice_index = searchResult.length
     for (let i = 0; i < searchResult.length; i++) {
-      /*if (searchResult[i].name.toLowerCase().includes(query.toLowerCase()) == false) {
-        splice_index = i;
-        break;
-      }*/
       if ((searchResult[i].name.toLowerCase() === "the name" && query !== "the name") ||
         (searchResult[i].name.toLowerCase() === "name" && query !== "name") || 
         (searchResult[i].name.toLowerCase() === "n.a.m.e" && query !== "n.a.m.e")
@@ -70,10 +64,6 @@ function App() {
   }
 
   const submitQuery = (query) => {
-    /*if (query.length <= 2) {
-      return
-    }*/
-
     if (query === "" || query === " " || query === "a") {
       setQuery("")
       setSearchResults([])
@@ -94,6 +84,7 @@ function App() {
         };
         const parser = new XMLParser(options);
         let obj = parser.parse(textResp)
+
         //Sanitize results
         let results = sanitizeSearchResults(obj.metadata['artist-list'].artist, query)
         setSearchResults(results)
@@ -132,11 +123,9 @@ function App() {
                   return (
                     <div onClick={() => {
                       goToArtistResults(result['@_']['@_id'], result.name)
-                      //getSetLists(result['@_']['@_id'], result)
                       } 
                     } key={idx} className="search-result">
                       <p className="search-result-name">{result.name}</p>
-                      {/*<p>{result['@_']['@_id']}</p>*/}
                     </div>
                   )
                 })}

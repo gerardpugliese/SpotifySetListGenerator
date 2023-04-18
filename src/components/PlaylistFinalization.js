@@ -59,7 +59,6 @@ function PlaylistFinalization(props) {
         artist_name.replace(/\s/g, '%20')
         while (i < songsForPlaylist.length) {
           let song_name = songsForPlaylist[i].name
-          //track%3A${song_name.replace(/\s+/g, '%2520')}%2520artist%3A${selectedArtist.replace(/\s+/g, '%2520')}
           fetch(`https://api.spotify.com/v1/search?q=${song_name}%20${artist_name}&type=track`, {
               method: "GET",
               headers: {
@@ -111,7 +110,6 @@ function PlaylistFinalization(props) {
                 <PlaylistForm changePlaylistFormState={changePlaylistFormState} token={token} songs={spotifyResultsForPlaylist} userId={userId}/>
             </div>  
             <div className="finalize-playlist-right">
-                {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
                 <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-songs-name-title">Playlist Songs:</p>
                 <div className="finalize-playlist-right-songs">
                 {spotifyResultsForPlaylist.map((song, idx, arr) => {
@@ -136,11 +134,6 @@ function PlaylistFinalization(props) {
                     }
                     })}
                 </div>
-                {/*<div className="playlist-confirm-form-wrapper-mobile">
-                    <div className="playlist-confirm-form-btn-mobile">
-                        <p onClick={() => createPlaylist()} className="playlist-confirm-form-btn-text-mobile">Create</p>
-                    </div>
-                </div>*/}
             </div>
             </div>
             :
