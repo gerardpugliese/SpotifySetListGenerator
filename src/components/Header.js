@@ -65,7 +65,6 @@ function Header(props) {
               <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
               <p className="log-in-btn-text">LOG OUT</p>
             </div>}
-        
       </div>
     );
 }

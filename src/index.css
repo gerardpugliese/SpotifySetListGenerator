@@ -1016,6 +1016,10 @@ a {
   margin: auto;
 }
 
+.finalize-playlist-mobile-songs {
+  display: none;
+}
+
 @media screen and (max-width: 750px) {
   .home-page-blurb {
     font-size: 24px;
@@ -1148,10 +1152,13 @@ a {
     margin-right: auto;
   }
 
+  .finalize-playlist-mobile-songs {
+    display: flex;
+    flex-direction: column;
+  }
+
   .finalize-playlist-right {
-    width: 90vw;
-    padding-right: 0;
-    margin: auto;
+    display: none;
   }
 
   .finalize-playlist-right-songs {
@@ -1163,7 +1170,6 @@ a {
 
   .playlist-song-outerwrapper {
     width: 80%;
-    margin: auto;
   }
 
   .confirm-playlist-song-wrapper {
@@ -1172,6 +1178,7 @@ a {
 
   .playlist-songs-name-title {
     width: 80%;
+    margin-left: 0 !important;
   }
 
   .setlist-results {

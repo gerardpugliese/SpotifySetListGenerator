@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import ReactSwitch from 'react-switch';
+import PlaylistSong from './PlaylistSong';
 //import imageToBase64 from 'image-to-base64/browser';
 //import Resizer from "react-image-file-resizer";
 
@@ -173,6 +174,38 @@ function PlaylistForm(props) {
                 <input /*onChange={handeImageChange}*//* className="playlist-form-image-input" type="file" />
                 {image !== null && <img alt="Playlist Cover" className="playlist-form-image" src={image}/>}
             </div>*/}
+            <div className="finalize-playlist-mobile-songs">
+                {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
+                <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-songs-name-title">Playlist Songs:</p>
+                <div className="finalize-playlist-right-songs">
+                {props.songs.map((song, idx, arr) => {
+                    if (typeof song !== "string") {
+                        return (
+                        <div key={idx}>
+                            <PlaylistSong idx={idx} song={song} songNum={idx+1}/> 
+                        </div>
+                        )
+                    }
+                    else {
+                        return  <div className="spotify-song-not-found-wrapper"key={idx}>
+                        <div className="playlist-song-outerwrapper">
+                            <div className="playlist-song-num-wrapper">
+                                <p className="playlist-song-num">{idx+1}.</p>
+                            </div>
+                            <div className="confirm-playlist-song-wrapper">
+                                <p className="confirm-playlist-song-name">{song} - not found on Spotify!</p>
+                            </div>
+                        </div>
+                        </div>
+                    }
+                    })}
+                </div>
+                {/*<div className="playlist-confirm-form-wrapper-mobile">
+                    <div className="playlist-confirm-form-btn-mobile">
+                        <p onClick={() => createPlaylist()} className="playlist-confirm-form-btn-text-mobile">Create</p>
+                    </div>
+                </div>*/}
+            </div>
             <div className="playlist-confirm-form-wrapper">
                 <div className="playlist-confirm-form-btn">
                     <p onClick={() => createPlaylist()} className="playlist-confirm-form-btn-text">Create</p>
