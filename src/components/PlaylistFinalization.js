@@ -71,7 +71,7 @@ function PlaylistFinalization(props) {
           .then(resp => {
             if ("error" in resp) {
                 window.location.href = "/";
-              } else {
+            } else {
                 let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.toLowerCase())
                 let results = spotifyResultsForPlaylist
                 if (songResult === undefined) {
@@ -80,7 +80,7 @@ function PlaylistFinalization(props) {
                     results.push(songResult)
                 }
                 setSpotifyResultsForPlaylist(results)
-              }
+            }
           })
           .catch(error => console.log(error))
           i++

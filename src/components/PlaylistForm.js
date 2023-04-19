@@ -1,19 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import ReactSwitch from 'react-switch';
 import PlaylistSong from './PlaylistSong';
-//import imageToBase64 from 'image-to-base64/browser';
-//import Resizer from "react-image-file-resizer";
 
 function PlaylistForm(props) {
     const [checked, setChecked] = useState(true);
     const [playlistName, setPlaylistName] = useState("");
-    //const [image] = useState(null)
-    //const [imageBase64, setImageBase64] = useState("")
-    //const [resizedImage, setResizedImage] = useState(null);
     const [userId] = useState(props.userId)
     const [songs, setSongs] = useState(props.songs)
     const [token] = useState(props.token)
-    //const [showError, setShowError] = useState(false)
     const [errorText, setErrorText] = useState("")
 
     useEffect(() => {
@@ -31,41 +25,6 @@ function PlaylistForm(props) {
     const handleChange = val => {
         setChecked(val)
     }
-
-    /*const resizeFile = (file) =>
-        new Promise((resolve) => {
-        Resizer.imageFileResizer(
-            file,
-            300,
-            300,
-            "JPEG",
-            100,
-            0,
-            (uri) => {
-                resolve(uri);
-            },
-            "base64"
-        );
-    });*/
-
-    /*
-    const changePlaylistImg = (id) => {
-        fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
-            method: "PUT",
-            headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'image/jpeg',
-            'Authorization': `Bearer ${token}`
-            },
-            body: resizedImage
-          })
-        .then(resp => resp.json())
-        .then(resp => {
-            console.log(resp)
-        })
-        .catch(error => console.log(error))
-    }
-    */
 
     const populatePlaylist = (id) => {
         let data = {
@@ -88,7 +47,6 @@ function PlaylistForm(props) {
             } else {
                 props.changePlaylistFormState(2)
             }
-            //changePlaylistImg(id)
         })
         .catch(error => {
             props.changePlaylistFormState(-1)
@@ -128,30 +86,6 @@ function PlaylistForm(props) {
         } 
     }
 
-    
-    /*const handeImageChange = async (e) => {
-        try {
-            const file = e.target.files[0]
-            //const image = await resizeFile(file)
-            //setResizedImage(image)
-        } catch (err) {
-            console.log(err)
-        }
-        
-        imageToBase64(imageUrl) // Image URL
-        .then(
-            (response) => {
-                setImageBase64(response)
-                console.log(response); // "iVBORw0KGgoAAAANSwCAIA..."
-            }
-        )
-        .catch(
-            (error) => {
-                console.log(error); // Logs an error if there was one
-            }
-        )
-    }*/
-
     return (
         <div className="playlist-form-wrapper">
             <p className="playlist-form-title">Your Playlist Details</p>
@@ -169,13 +103,7 @@ function PlaylistForm(props) {
                 onChange={handleChange}
                 />
             </div>
-            {/*<div className="playlist-form-name-wrapper">
-                <p className="playlist-form-image-title">Playlist Image:</p>
-                <input /*onChange={handeImageChange}*//* className="playlist-form-image-input" type="file" />
-                {image !== null && <img alt="Playlist Cover" className="playlist-form-image" src={image}/>}
-            </div>*/}
             <div className="finalize-playlist-mobile-songs">
-                {/*<p className="finalize-playlist-header-txt">Songs for your playlist</p>*/}
                 <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-songs-name-title">Playlist Songs:</p>
                 <div className="finalize-playlist-right-songs">
                 {props.songs.map((song, idx, arr) => {
@@ -200,11 +128,6 @@ function PlaylistForm(props) {
                     }
                     })}
                 </div>
-                {/*<div className="playlist-confirm-form-wrapper-mobile">
-                    <div className="playlist-confirm-form-btn-mobile">
-                        <p onClick={() => createPlaylist()} className="playlist-confirm-form-btn-text-mobile">Create</p>
-                    </div>
-                </div>*/}
             </div>
             <div className="playlist-confirm-form-wrapper">
                 <div className="playlist-confirm-form-btn">
