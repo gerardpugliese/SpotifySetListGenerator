@@ -12,32 +12,12 @@ import Fade from 'react-reveal/Fade';
 function App() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [songsForPlaylist, setSongsForPlaylist] = useState([]);
-  const [setSpotifyResultsForPlaylist] = useState([])
   const [setUserId] = useState(null)
-
-  useEffect(() => {
-    matchSetlistsPlaylistsHeight()
-  }, [songsForPlaylist])
-
-  const matchSetlistsPlaylistsHeight = () => {
-    if (songsForPlaylist.length > 0) {
-      let playlistWrapper = document.getElementById('playlist-songs-wrapper');
-      let heightToMatch = playlistWrapper.offsetHeight;
-      if (heightToMatch > 700) {
-        let setListWrapper = document.getElementById('setlist-results')
-        setListWrapper.style.height = heightToMatch.toString().concat("px")
-      }
-    }
-  }
 
   const goToHomePage = () => {
     //Clear out all state variables, this will return us to home page
     setSearchResults([]);
     setQuery("");
-    setSongsForPlaylist([]);
-    setSongsForPlaylist([]);
-    setSpotifyResultsForPlaylist([]);
   }
 
   const sanitizeSearchResults = (searchResult) => {
