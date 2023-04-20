@@ -31,6 +31,10 @@ function ArtistResults(props) {
     });
 
     useEffect(() => {
+        matchSetlistsPlaylistsHeight()
+      }, [songsForPlaylist])
+
+    useEffect(() => {
         //Get parameters from URL
         //Call getSetLists
         getSetLists(id, name)
