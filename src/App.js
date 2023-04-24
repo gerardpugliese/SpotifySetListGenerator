@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Header from './components/Header';
 import { FaSearch } from 'react-icons/fa';
 import { BsPlusLg } from 'react-icons/bs'
@@ -51,6 +51,12 @@ function App() {
   }
 
   const submitQuery = (query) => {
+    /*This function executes everytime the artist input text changes. It will query musicbrainz and return results for
+      the current artist input. 
+    */
+
+    //Since this function executes onChange, if the query becomes an empty string we should clear out the results and not
+    //send a request to musicbrainz with an empty artist name. In this implementation we don't query 'a' as well.
     if (query === "" || query === " " || query === "a") {
       setQuery("")
       setSearchResults([])
