@@ -20,26 +20,33 @@ function App() {
     setQuery("");
   }
 
-  const sanitizeSearchResults = (searchResult) => {
-    let splice_index = searchResult.length
-    for (let i = 0; i < searchResult.length; i++) {
-      if ((searchResult[i].name.toLowerCase() === "the name" && query !== "the name") ||
-        (searchResult[i].name.toLowerCase() === "name" && query !== "name") || 
-        (searchResult[i].name.toLowerCase() === "n.a.m.e" && query !== "n.a.m.e")
+  const sanitizeSearchResults = (searchResults) => {
+    /*
+      This function takes in the artist results from musicbrainz and filters out some unwanted results.
+      If there were only a few results matching the query, other very general results such as 'the name',
+      'name' and 'n.a.m.e' are in the result. This function filters those out unless explicitly queried. 
+    */
+
+    let splice_index = searchResults.length
+    for (let i = 0; i < searchResults.length; i++) {
+      if ((searchResults[i].name.toLowerCase() === "the name" && query !== "the name") ||
+        (searchResults[i].name.toLowerCase() === "name" && query !== "name") || 
+        (searchResults[i].name.toLowerCase() === "n.a.m.e" && query !== "n.a.m.e")
         ) {
-        //cut the name
+        //If one of these names is found, store it's index so we can remove it.
         splice_index = i
         break;
       }
     }
-    //cut out "the name" and "name"
-    searchResult = searchResult.splice(0, splice_index)
+    //Use found index to remove result
+    searchResults = searchResults.splice(0, splice_index)
     
-    //cut down again to keep results to 6
-    return searchResult.splice(0, 6)
+    //Restrict results to length of 6
+    return searchResults.splice(0, 6)
   }
 
   const goToArtistResults = (key, name) => {
+    //Function that executes when an artist result is clicked on.s
     window.location.href = `/artist_results/${name}/${key}`
   }
 
