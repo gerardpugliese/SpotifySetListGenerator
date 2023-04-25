@@ -19,15 +19,17 @@ function ArtistResults(props) {
       ]);
     
     useEffect(() => {
-    const handleWindowResize = () => {
-        setWindowSize([window.innerWidth, window.innerHeight]);
-    };
+        //This assures that the setlist result div and the playlist songs div are the same height
+        //as songs are added / removed.
+        const handleWindowResize = () => {
+            setWindowSize([window.innerWidth, window.innerHeight]);
+        };
 
-    window.addEventListener('resize', handleWindowResize);
+        window.addEventListener('resize', handleWindowResize);
 
-    return () => {
-        window.removeEventListener('resize', handleWindowResize);
-    };
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
     });
 
     useEffect(() => {
@@ -58,6 +60,7 @@ function ArtistResults(props) {
     }
 
     const getSetLists = (key, result) => {
+        //This function calls musicbrainz to get recent set lists for the selected artist.
         fetch(`/rest/1.0/artist/${key}/setlists/`, {
             method: "GET",
             headers: {
@@ -74,6 +77,7 @@ function ArtistResults(props) {
     }
 
     const login = () => {
+        //This function opens up a window that allows the user to log into their spotify account.
         window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
     }
 
