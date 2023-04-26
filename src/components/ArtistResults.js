@@ -60,7 +60,7 @@ function ArtistResults(props) {
     }
 
     const getSetLists = (key, result) => {
-        //This function calls musicbrainz to get recent set lists for the selected artist.
+        //This function calls musicbrainz API to retrieve recent set lists for the selected artist.
         fetch(`/rest/1.0/artist/${key}/setlists/`, {
             method: "GET",
             headers: {
@@ -82,6 +82,8 @@ function ArtistResults(props) {
     }
 
     const containsObject = (obj, list) => {
+        //This is a helper function that checks if a list contains an object. It's used here to assure that a
+        //song doesn't get added to a playlist twice.
         let i;
         for (i = 0; i < list.length; i++) {
             if (list[i].name === obj.name) {
@@ -92,14 +94,16 @@ function ArtistResults(props) {
     }
 
     const changePlaylistDelButton = (displayState, btnId) => {
-        if (windowSize[0] > 665) {
+        //This function will show or hide the delete button for playlist songs when a use hovers over the 
+        //song. 
+        if (windowSize[0] > 665) { //The delete button is always shown on smaller screen sizes, so this behavior isn't needed.
             let button = document.getElementById(btnId)
             button.style.display = displayState
         } 
     }
 
     const removeSongFromPlaylist = (song) => {
-        //Find song in songsForPlaylist, remove it and reset it.
+        //This function removes a given song from a playlist
         let filteredSongs = songsForPlaylist.filter(e => e !== song)
         setSongsForPlaylist(filteredSongs)
         //Update div heights
@@ -107,6 +111,7 @@ function ArtistResults(props) {
     }
 
     const matchSetlistsPlaylistsHeight = () => {
+        //This function gets the height of the playlist div and sets the setlist div to the same height.
         if (songsForPlaylist.length > 0) {
             let playlistWrapper = document.getElementById('playlist-songs-wrapper');
             let heightToMatch = playlistWrapper.offsetHeight;
@@ -142,6 +147,7 @@ function ArtistResults(props) {
     }
 
     const addSongToPlaylist = (song) => {
+        //This function adds a single song to a playlist.
         if (songsForPlaylist.length > 0) {
           setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
         } else {
@@ -150,6 +156,7 @@ function ArtistResults(props) {
     }
     
       const addSetToPlaylist = (setlist) => {
+        //This function adds an entire setlist to a playlist.
         if (songsForPlaylist.length > 0) {
           setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
         } else {
