@@ -6,7 +6,7 @@ function Header(props) {
     const [userId, setUserId] = useState(null)
 
     useEffect(() => {
-      //Retrieve token from local storage.
+      //Tries to retrieve the user's token from local storage.
       const hash = window.location.hash
       let token = window.localStorage.getItem("token")
       

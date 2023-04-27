@@ -15,6 +15,7 @@ function PlaylistFinalization(props) {
     const { selectedArtist} = location.state
 
     useEffect(() => {
+        //Tries to retrieve the user's token from local storage.
         const hash = window.location.hash
         let token = window.localStorage.getItem("token")
 
@@ -35,6 +36,7 @@ function PlaylistFinalization(props) {
     }, [playlistCreationState])
 
     const filterSpotifySongName = (query_name, song_name) => {
+        //Helper function for filterSpotifyQueryResult. Helps edge case where a songs name has a "remaster" at the end of it. 
         if (song_name.toLowerCase() === query_name.toLowerCase()) {
           return true // These are a perfect match
         }
@@ -47,6 +49,10 @@ function PlaylistFinalization(props) {
     }
     
     const filterSpotifyQueryResult = (resp, song_name, artist_name) => {
+        /* This function takes in the results from Spotify API's after we query a song name, the name of the song 
+           and the artist's name. It filters out any results from the API where the song name doesn't match or 
+           the artist name doesn't match.
+        */
         let filteredSpotifyResults = resp.filter((el) => {
         return filterSpotifySongName(el.name, song_name) && el.artists[0].name.toLowerCase() === artist_name
         })
@@ -54,6 +60,10 @@ function PlaylistFinalization(props) {
     }
 
     const retreiveSongs = (token) => {
+        /* This function loops through all the songs in the user's playlist and queries the Spotify API
+           for each of them. The API returns a list of songs that match the song name in some way. These
+           results are then filtered so the perfect match is the one added to the final playlist.
+        */
         let i = 0;
         let artist_name = selectedArtist.toLowerCase()
         artist_name.replace(/\s/g, '%20')
