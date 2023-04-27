@@ -8,6 +8,8 @@ function PlaylistSong(props) {
     const [delay, setDelay] = useState(0)
 
     useEffect(() => {
+        //We want the songs to cascade on the page, so we need to offset the delay time
+        //depending on how far down the page it appears.
         if (props.idx < 4) {
             setDelay(props.idx * 200)
         }
