@@ -3,24 +3,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap');
 
-/*
-font-family: 'PT Serif', serif;
-font-family: 'Ultra', serif;
-*/
-
-/*
-box-shadow: 0px 0px 10px 0px black;
-  transition: box-shadow 250ms ease-in;
-*/
-
 
 :root {
   --logo-font: "Ultra", serif;
   --subtext-font: 'Open Sans', sans-serif;
-  /*--subtext-font: 'Cabin', sans-serif;*/
-  /*--blue: #2c74e7;*/
   --blue: #14213d;
-  /*--blue-hover: #3f88fc;*/
   --blue-hover: #003459;
   --text-color: #ffffff;
   --alt-color: #e5e5e5;
@@ -202,8 +189,6 @@ a {
   background-color: #EFEFEF;
   display: flex;
   flex-direction: column;
- /* background-image: linear-gradient(0, #402565, #30be96)*/
-  /* background-image: linear-gradient(45deg, #000066, #6699ff)*/
 }
 
 .test-search-wrapper {
@@ -219,8 +204,6 @@ a {
 }
 
 .App {
-  /*background-image: url(images/paper-texture.jpg);*/
-  /*background-color: #FAF9F6;*/
   background-color: var(--alt-color);
   width: 100vw;
   min-height: 100vh;
@@ -570,7 +553,6 @@ a {
   margin: auto;
   font-size: 24px;
   font-family: var(--logo-font);
-  /*color: var(--text-color);*/
 }
 
 .setlist-result-wrapper {
@@ -922,9 +904,7 @@ a {
 .error-text-wrapper {
   width: 100%;
   display: flex;
-  /*background: white;*/
   margin-top: 2vw;
-  /*border-radius: 15px;*/
 }
 
 .error-text {
