@@ -112,7 +112,7 @@ function ArtistResults(props) {
 
     const matchSetlistsPlaylistsHeight = () => {
         //This function gets the height of the playlist div and sets the setlist div to the same height.
-        if (songsForPlaylist.length > 0) {
+        if (songsForPlaylist.length > 0 && windowSize[0] > 665) {
             let playlistWrapper = document.getElementById('playlist-songs-wrapper');
             let heightToMatch = playlistWrapper.offsetHeight;
             if (heightToMatch > 700) {

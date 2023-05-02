@@ -47,6 +47,13 @@ function PlaylistFinalization(props) {
           return false
         }
     }
+
+    /*const sortSpotifyResults = () => {
+        //This function takes in the array of playlist songs and sorts them back into the correct order.
+        let sortedSongs = spotifyResultsForPlaylist.sort(
+            (s1, s2) => (s1.num > s2.num) ? 1 : (s1.num > s2.num) ? -1 : 0);
+        console.log(sortedSongs)
+    }*/
     
     const filterSpotifyQueryResult = (resp, song_name, artist_name) => {
         /* This function takes in the results from Spotify API's after we query a song name, the name of the song 
@@ -84,10 +91,13 @@ function PlaylistFinalization(props) {
             } else {
                 let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.toLowerCase())
                 let results = spotifyResultsForPlaylist
+                
                 if (songResult === undefined) {
-                    results.push(song_name)
+                    let song_to_push = {"num": songsForPlaylist.indexOf({"name": song_name}), "song": song_name}
+                    results.push(song_to_push)
                 } else {
-                    results.push(songResult)
+                    let song_to_push = {"num": songsForPlaylist.indexOf({"name": song_name}), "song": songResult}
+                    results.push(song_to_push)
                 }
                 setSpotifyResultsForPlaylist(results)
             }
@@ -95,6 +105,8 @@ function PlaylistFinalization(props) {
           .catch(error => console.log(error))
           i++
         }
+        //Sort spotifyResultsForPlaylist based on "num"
+        //sortSpotifyResults()
     }
 
     const changePlaylistFormState = (state) => {
@@ -123,7 +135,7 @@ function PlaylistFinalization(props) {
                 <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-songs-name-title">Playlist Songs:</p>
                 <div className="finalize-playlist-right-songs">
                 {spotifyResultsForPlaylist.map((song, idx, arr) => {
-                    if (typeof song !== "string") {
+                    if (typeof song.song !== "string") {
                         return (
                         <div key={idx}>
                             <PlaylistSong idx={idx} song={song} songNum={idx+1}/> 
@@ -137,7 +149,7 @@ function PlaylistFinalization(props) {
                                 <p className="playlist-song-num">{idx+1}.</p>
                             </div>
                             <div className="confirm-playlist-song-wrapper">
-                                <p className="confirm-playlist-song-name">{song} - not found on Spotify!</p>
+                                <p className="confirm-playlist-song-name">{song.song} - not found on Spotify!</p>
                             </div>
                         </div>
                         </div>
