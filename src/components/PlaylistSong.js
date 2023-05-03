@@ -18,7 +18,7 @@ function PlaylistSong(props) {
     return (
         <Fade delay={delay}>
             <div className="playlist-song-outerwrapper">
-                {props.song.song.artists == undefined ? console.log(props.song) : console.log("")}
+                {props.song.song.artists === undefined ? console.log(props.song) : console.log("")}
                 <div className="playlist-song-num-wrapper">
                     <p className="playlist-song-num">{props.songNum}.</p>
                 </div>
