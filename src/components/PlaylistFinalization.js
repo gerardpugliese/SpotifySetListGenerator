@@ -75,6 +75,7 @@ function PlaylistFinalization(props) {
         let artist_name = selectedArtist.toLowerCase()
         artist_name.replace(/\s/g, '%20')
         while (i < songsForPlaylist.length) {
+          let song_num = i
           let song_name = songsForPlaylist[i].name
           fetch(`https://api.spotify.com/v1/search?q=${song_name}%20${artist_name}&type=track`, {
               method: "GET",
@@ -91,12 +92,11 @@ function PlaylistFinalization(props) {
             } else {
                 let songResult = filterSpotifyQueryResult(resp.tracks.items, song_name.toLowerCase(), selectedArtist.toLowerCase())
                 let results = spotifyResultsForPlaylist
-                
                 if (songResult === undefined) {
-                    let song_to_push = {"num": songsForPlaylist.indexOf({"name": song_name}), "song": song_name}
+                    let song_to_push = {"num": song_num + 1, "song": song_name}
                     results.push(song_to_push)
                 } else {
-                    let song_to_push = {"num": songsForPlaylist.indexOf({"name": song_name}), "song": songResult}
+                    let song_to_push = {"num": song_num + 1, "song": songResult}
                     results.push(song_to_push)
                 }
                 setSpotifyResultsForPlaylist(results)

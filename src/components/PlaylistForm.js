@@ -107,7 +107,7 @@ function PlaylistForm(props) {
                 <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-songs-name-title">Playlist Songs:</p>
                 <div className="finalize-playlist-right-songs">
                 {props.songs.map((song, idx, arr) => {
-                    if (typeof song !== "string") {
+                    if (typeof song.song !== "string") {
                         return (
                         <div key={idx}>
                             <PlaylistSong idx={idx} song={song} songNum={idx+1}/> 
@@ -121,7 +121,7 @@ function PlaylistForm(props) {
                                 <p className="playlist-song-num">{idx+1}.</p>
                             </div>
                             <div className="confirm-playlist-song-wrapper">
-                                <p className="confirm-playlist-song-name">{song} - not found on Spotify!</p>
+                                <p className="confirm-playlist-song-name">{song.song} - not found on Spotify!</p>
                             </div>
                         </div>
                         </div>
