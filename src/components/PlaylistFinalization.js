@@ -48,12 +48,26 @@ function PlaylistFinalization(props) {
         }
     }
 
-    /*const sortSpotifyResults = () => {
+    const sortArrayOfObjects = (arr) => {
+        const sortedArr = arr.sort((a, b) => {
+          if (a["num"] < b["num"]) {
+            return -1;
+          }
+          if (a["num"] > b["num"]) {
+            return 1;
+          }
+          return 0;
+        });
+      
+        return sortedArr;
+      };
+
+    const sortSpotifyResults = () => {
         //This function takes in the array of playlist songs and sorts them back into the correct order.
-        let sortedSongs = spotifyResultsForPlaylist.sort(
-            (s1, s2) => (s1.num > s2.num) ? 1 : (s1.num > s2.num) ? -1 : 0);
-        console.log(sortedSongs)
-    }*/
+        let sortedSongs = sortArrayOfObjects(spotifyResultsForPlaylist);
+        setSpotifyResultsForPlaylist((sortedSongs))
+
+    }
     
     const filterSpotifyQueryResult = (resp, song_name, artist_name) => {
         /* This function takes in the results from Spotify API's after we query a song name, the name of the song 
@@ -106,7 +120,7 @@ function PlaylistFinalization(props) {
           i++
         }
         //Sort spotifyResultsForPlaylist based on "num"
-        //sortSpotifyResults()
+        sortSpotifyResults()
     }
 
     const changePlaylistFormState = (state) => {
