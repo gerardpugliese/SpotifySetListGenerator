@@ -49,6 +49,8 @@ function PlaylistFinalization(props) {
     }
 
     const sortArrayOfObjects = (arr) => {
+        //This function takes in an array of playlist songs and sorts them by the number 
+        //in the setlist they are.
         const sortedArr = arr.sort((a, b) => {
           if (a["num"] < b["num"]) {
             return -1;
@@ -70,7 +72,8 @@ function PlaylistFinalization(props) {
     }
     
     const filterSpotifyQueryResult = (resp, song_name, artist_name) => {
-        /* This function takes in the results from Spotify API's after we query a song name, the name of the song 
+        /* 
+           This function takes in the results from Spotify API's after we query a song name, the name of the song 
            and the artist's name. It filters out any results from the API where the song name doesn't match or 
            the artist name doesn't match.
         */
@@ -81,7 +84,8 @@ function PlaylistFinalization(props) {
     }
 
     const retreiveSongs = (token) => {
-        /* This function loops through all the songs in the user's playlist and queries the Spotify API
+        /* 
+           This function loops through all the songs in the user's playlist and queries the Spotify API
            for each of them. The API returns a list of songs that match the song name in some way. These
            results are then filtered so the perfect match is the one added to the final playlist.
         */
