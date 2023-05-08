@@ -18,9 +18,11 @@ function ArtistResults(props) {
         window.innerHeight,
       ]);
     
+    /**
+     * Stores the height and width of the window into state variables whenever
+     * the window is resized.
+     */
     useEffect(() => {
-        //This assures that the setlist result div and the playlist songs div are the same height
-        //as songs are added / removed.
         const handleWindowResize = () => {
             setWindowSize([window.innerWidth, window.innerHeight]);
         };
@@ -32,14 +34,18 @@ function ArtistResults(props) {
         };
     });
 
+    /**
+     * Sets the height of the setlist results matches the height of the playist container as
+     * songs are added / removed.
+     */
     useEffect(() => {
         matchSetlistsPlaylistsHeight()
       }, [songsForPlaylist])
 
+
     useEffect(() => {
-        //Get parameters from URL
-        //Call getSetLists
-        getSetLists(id, name)
+        getSetLists(id, name) // Retrieves setlist data
+        
         const hash = window.location.hash
         let token = window.localStorage.getItem("token")
 
@@ -52,15 +58,19 @@ function ArtistResults(props) {
         setToken(token)
     }, [])
 
+    /**
+     * Clears out all state variables and returns to home page.
+     */
     const goToHomePage = () => {
-        //Clear out all state variables, this will return us to home page
         setSelectedArtist(null);
         setSongsForPlaylist([]);
         window.location.href = "/"
     }
 
+    /**
+     * Retrieves setlist data using MusicBrainz API for the selected artist.
+     */
     const getSetLists = (key, result) => {
-        //This function calls musicbrainz API to retrieve recent set lists for the selected artist.
         fetch(`/rest/1.0/artist/${key}/setlists/`, {
             method: "GET",
             headers: {
@@ -76,14 +86,17 @@ function ArtistResults(props) {
         .catch(error => console.log(error))
     }
 
+    /**
+     * Logs user into their Spotify account.
+     */
     const login = () => {
-        //This function opens up a window that allows the user to log into their spotify account.
         window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
     }
 
+    /**
+     * Checks if a list contains an object.
+     */
     const containsObject = (obj, list) => {
-        //This is a helper function that checks if a list contains an object. It's used here to assure that a
-        //song doesn't get added to a playlist twice.
         let i;
         for (i = 0; i < list.length; i++) {
             if (list[i].name === obj.name) {
@@ -93,25 +106,30 @@ function ArtistResults(props) {
         return false;
     }
 
+    /**
+     * Hides or shows delete button for songs on playlist.
+     */
     const changePlaylistDelButton = (displayState, btnId) => {
-        //This function will show or hide the delete button for playlist songs when a use hovers over the 
-        //song. 
-        if (windowSize[0] > 665) { //The delete button is always shown on smaller screen sizes, so this behavior isn't needed.
+        if (windowSize[0] > 665) { // Behavior is only necessary on larger screen sizes.
             let button = document.getElementById(btnId)
             button.style.display = displayState
         } 
     }
-
+    
+    /**
+     * Removes a song from the playist.
+     */
     const removeSongFromPlaylist = (song) => {
         //This function removes a given song from a playlist
         let filteredSongs = songsForPlaylist.filter(e => e !== song)
         setSongsForPlaylist(filteredSongs)
-        //Update div heights
-        matchSetlistsPlaylistsHeight()
+        matchSetlistsPlaylistsHeight() //Update setlist container height
     }
 
+    /**
+     * Retrieves the height of the playlist container and sets the setlist container to the same height. 
+     */
     const matchSetlistsPlaylistsHeight = () => {
-        //This function gets the height of the playlist div and sets the setlist div to the same height.
         if (songsForPlaylist.length > 0 && windowSize[0] > 665) {
             let playlistWrapper = document.getElementById('playlist-songs-wrapper');
             let heightToMatch = playlistWrapper.offsetHeight;
@@ -122,10 +140,12 @@ function ArtistResults(props) {
         }
     }
 
+    /**
+     * Prevents duplicate songs in the playlist.
+     */
     const removeDuplicates = (currSongs, addSongs) => {
-        //Loop through addSongs, if song is in currSongs return true
         let nonDupSongs = [...currSongs];
-        if (addSongs.length === undefined) { //undefined length means it's just one song we're adding
+        if (addSongs.length === undefined) { // Undefined length means it's just one song we're adding.
           if (!containsObject(addSongs, nonDupSongs)) {
             nonDupSongs.push(addSongs)
           }
@@ -134,11 +154,8 @@ function ArtistResults(props) {
           let i = 0;
     
           while (i < addSongs.length) {
-            if (!containsObject(addSongs[i], nonDupSongs)) {
+            if (!containsObject(addSongs[i], nonDupSongs)) { //Songs isn't in playlist so we can add it.
               nonDupSongs.push(addSongs[i])
-            }
-            else {
-              //can keep track of dup songs to show user or something
             }
             i++;
           }
@@ -146,8 +163,10 @@ function ArtistResults(props) {
         return [...nonDupSongs]
     }
 
+    /**
+     * Adds a single song to the playlist.
+     */
     const addSongToPlaylist = (song) => {
-        //This function adds a single song to a playlist.
         if (songsForPlaylist.length > 0) {
           setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
         } else {
@@ -155,12 +174,14 @@ function ArtistResults(props) {
         }
     }
     
-      const addSetToPlaylist = (setlist) => {
-        //This function adds an entire setlist to a playlist.
+    /**
+     * Adds a whole setlist to the playlist.
+     */
+    const addSetToPlaylist = (setlist) => {
         if (songsForPlaylist.length > 0) {
-          setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
+            setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
         } else {
-          setSongsForPlaylist(setlist)
+            setSongsForPlaylist(setlist)
         }
     }
 

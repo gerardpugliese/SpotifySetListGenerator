@@ -5,8 +5,10 @@ function Header(props) {
     const [token, setToken] = useState("")
     const [userId, setUserId] = useState(null)
 
+    /**
+     * Retrieves user's token from local storage.
+     */
     useEffect(() => {
-      //Tries to retrieve the user's token from local storage.
       const hash = window.location.hash
       let token = window.localStorage.getItem("token")
       
@@ -19,9 +21,7 @@ function Header(props) {
 
       setToken(token)
 
-      //If we have a token but haven't retried the user's Spotify id, get it.
-      if (userId === null && token !== null) {
-        //Get user profile
+      if (userId === null && token !== null) { // Retrieves Spotify user info if we have a token and no user info.
         fetch(`https://api.spotify.com/v1/me`, {
             method: "GET",
             headers: {
@@ -32,12 +32,12 @@ function Header(props) {
         })
         .then(resp => resp.json())
         .then(resp => {
-          if ("error" in resp) {
+          if ("error" in resp) { // Logout if error occurs
             logout()
           } else {
-            setUserId(resp.id)
-            if (props.propagateUserId) {
-              props.propagateUserId(resp.id)
+            setUserId(resp.id) // Stores spotify user id in state variable
+            if (props.propagateUserId) { 
+              props.propagateUserId(resp.id) // Propagates user id to parent component.
             }
           }
         })
@@ -47,31 +47,36 @@ function Header(props) {
       }
     }, [])
 
-    
+    /**
+     * Logs user into their Spotify account.
+     */
     const login = () => {
-      //This function opens up a window that allows the user to log into their spotify account.
       window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
     }
 
+    /**
+     * Logs user out of their Spotify account.
+     */
     const logout = () => {
-      //This function logouts the user from Spotify.
       setToken("")
       window.localStorage.removeItem("token")
     } 
     
     return(
         <div className="home-header">
-        <div onClick={() => window.location.href = "/"} className="home-header-logo-wrapper">
-          <p className="home-header-logo-txt">SetListify</p>
-        </div>
+          <div onClick={() => window.location.href = "/"} className="home-header-logo-wrapper">
+            <p className="home-header-logo-txt">SetListify</p>
+          </div>
           {token === "" || token === null ? 
           <div onClick={() => login()} className="log-in-btn-wrapper">
-          <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
-          <p className="log-in-btn-text">LOGIN WITH SPOTIFY</p>
-        </div> : <div onClick={() => logout()} className="log-in-btn-wrapper">
-              <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
-              <p className="log-in-btn-text">LOG OUT</p>
-            </div>}
+            <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
+            <p className="log-in-btn-text">LOGIN WITH SPOTIFY</p>
+          </div> 
+          : 
+          <div onClick={() => logout()} className="log-in-btn-wrapper">
+            <img alt="Spotify Logo" className="log-in-btn-img" src={spotify_logo}/>
+            <p className="log-in-btn-text">LOG OUT</p>
+          </div>}
       </div>
     );
 }
