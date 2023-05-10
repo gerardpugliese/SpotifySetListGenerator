@@ -11,26 +11,27 @@ function SetlistView (props) {
     const [delay, setDelay] = useState(0)
     const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded })
 
+    /**
+     * Creates song list and and sets delays.
+     */
     useEffect(() => {
-        //Musicbrainz stores an encore as a second set in the setlist data. If there is more than 1 set present, that means
-        //there was an encore. In that case, we need to merge these two sets and set the song list as the combined list.
-        if (props.setlist.sets.set.length > 1) { //Encore exists
+        if (props.setlist.sets.set.length > 1) { // If encore exists (more than one element in setlist array), combine the two.
             let full_setlist = [...props.setlist.sets.set[0].song, ...props.setlist.sets.set[1].song]
             setSongList(full_setlist)
         }
-        else {
-            setSongList(props.setlist.sets.set[0].song)
+        else { // No encore exists.
+            setSongList(props.setlist.sets.set[0].song) 
         }
-
-        //First 4 setlist views (the amount that will be on screen) need have offset fade in effects for the desire 
-        //cascading effect. 
-        if (props.idx < 4) {
+ 
+        if (props.idx < 4) { //Sets delay based on how far down the page the song is. Creates cascading effect.
             setDelay(props.idx * 200)
         }
     }, [])
 
+    /**
+     * Converts numbered month to string month.
+     */
     const numToMonth = (num) => {
-        //Helper funciton to convert a month number to string. 
         switch(num) {
             case "01":
             return "January";
@@ -61,17 +62,21 @@ function SetlistView (props) {
         }
     }
 
+    /**
+     * Formats setlist day.
+     */
     const numToDate = (num) => {
-        //Helper function to format date
-        if (num[0] === "0") { //Remove 0 if num < 10
+        if (num[0] === "0") { // Remove 0 if num < 10.
             return num[1]
         } else {
             return num
         }
     }
 
+    /**
+     * Formats setlist date.
+     */
     const formatDate = (date) => {
-        //Takes in date from setlist data and formats it.
         let split_date = date.split("-") //split_date[0] -> day, split_date[1] -> month, split_date[2] -> year
         let formatted_date = ""
         
@@ -84,20 +89,23 @@ function SetlistView (props) {
         return formatted_date
     }
 
+    /**
+     * Formats venue location.
+     */
     const formatVenueLocation = (location) => {
-        //Takes in venue location from setlist data and formats it.
         let formattedLocation = ""
-        if (location.country.code === "US") {
+        if (location.country.code === "US") { //Include state if location is in US.
             formattedLocation = location.name.concat(", ".concat(location.stateCode))
         } else {
             formattedLocation = location.name.concat(", ".concat(location.country.name))
         }
-
         return formattedLocation
     }
 
+    /**
+     * Extract song count and format it as a string.
+     */
     const songCount = (set) => {
-        //Extracts song count from setlist data and returns formatted string
         if (set[0] !== undefined) {
             return "Songs (".concat(songList.length.toString().concat(")"))
         }

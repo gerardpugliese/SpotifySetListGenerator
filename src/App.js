@@ -14,57 +14,52 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [setUserId] = useState(null)
 
+  /**
+   * Clears out all state variables and returns to home page.
+   */
   const goToHomePage = () => {
-    //Clear out all state variables, this will return us to home page
     setSearchResults([]);
     setQuery("");
   }
 
+  /**
+   * Filters out MusicBrainz results that don't match artist tha's searched for.
+   */
   const sanitizeSearchResults = (searchResults) => {
-    /*
-      This function takes in the artist results from musicbrainz and filters out some unwanted results.
-      If there were only a few results matching the query, other very general results such as 'the name',
-      'name' and 'n.a.m.e' are in the result. This function filters those out unless explicitly queried. 
-    */
-
     let splice_index = searchResults.length
     for (let i = 0; i < searchResults.length; i++) {
       if ((searchResults[i].name.toLowerCase() === "the name" && query !== "the name") ||
         (searchResults[i].name.toLowerCase() === "name" && query !== "name") || 
         (searchResults[i].name.toLowerCase() === "n.a.m.e" && query !== "n.a.m.e")
-        ) {
-        //If one of these names is found, store it's index so we can remove it.
+        ) { // API will return these for partial matches. Don't want them unless it's a perfect match.
         splice_index = i
         break;
       }
     }
-    //Use found index to remove result
     searchResults = searchResults.splice(0, splice_index)
     
-    //Restrict results to length of 6
-    return searchResults.splice(0, 6)
+    return searchResults.splice(0, 6) //Restrict results to length of 6
   }
 
+  /**
+   * Goes to results page for selected artist.
+   */
   const goToArtistResults = (key, name) => {
-    //Function that executes when an artist result is clicked on.s
     window.location.href = `/artist_results/${name}/${key}`
   }
 
+  /**
+   * Queries MusicBrainz API for artist names
+   */
   const submitQuery = (query) => {
-    /*This function executes everytime the artist input text changes. It will query musicbrainz and return results for
-      the current artist input. 
-    */
-
-    //Since this function executes onChange, if the query becomes an empty string we should clear out the results and not
-    //send a request to musicbrainz with an empty artist name. In this implementation we don't query 'a' as well.
-    if (query === "" || query === " " || query === "a") {
+    if (query === "" || query === " " || query === "a") { // Clear query and search results if string is empty or insignificant
       setQuery("")
       setSearchResults([])
     }
     else {
       setQuery(query)
       
-      if (query.length > 2) {
+      if (query.length > 2) { // Reduces number of API calls.
         fetch(`https://musicbrainz.org/ws/2/artist/?query=name:${query}&limit=10`, {
           method: "GET",
         })
@@ -78,8 +73,7 @@ function App() {
         const parser = new XMLParser(options);
         let obj = parser.parse(textResp)
 
-        //Sanitize results
-        let results = sanitizeSearchResults(obj.metadata['artist-list'].artist, query)
+        let results = sanitizeSearchResults(obj.metadata['artist-list'].artist, query) //Sanitize results
         setSearchResults(results)
         })
       }

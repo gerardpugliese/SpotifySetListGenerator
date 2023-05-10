@@ -10,11 +10,14 @@ function PlaylistForm(props) {
     const [token] = useState(props.token)
     const [errorText, setErrorText] = useState("")
 
+    /**
+     * Builds list of song URIs.
+     */
     useEffect(() => {
         let i = 0;
         let uris = [];
         while (i < songs.length) {
-            if (typeof songs[i] !== "string") {
+            if (typeof songs[i] !== "string") { //If song type is string it's not on Spotify and has no URI
                 uris.push(songs[i].uri);
             }
             i++;
@@ -22,10 +25,16 @@ function PlaylistForm(props) {
         setSongs(uris);
     }, [props.songs])
 
+    /**
+     * Changes state of private / public playlist toggle switch.
+     */
     const handleChange = val => {
         setChecked(val)
     }
 
+    /**
+     * Adds playlist songs to newly created Spotify playlist.
+     */
     const populatePlaylist = (id) => {
         let data = {
             "uris": songs,
@@ -43,9 +52,9 @@ function PlaylistForm(props) {
         .then(resp => resp.json())
         .then(resp => {
             if (resp["error"]) {
-                props.changePlaylistFormState(-1)
+                props.changePlaylistFormState(-1) // Error occurred populating Spotify playlist.
             } else {
-                props.changePlaylistFormState(2)
+                props.changePlaylistFormState(2) // Spotify playlist was created successfully.
             }
         })
         .catch(error => {
@@ -53,12 +62,14 @@ function PlaylistForm(props) {
         })
     }
 
+    /**
+     * Creates new Spotify playlist for user.
+     */
     const createPlaylist = () => {
         if (playlistName === "") {
-            //Set error for 3 seconds
             setErrorText("Playlist name can't be empty!")
             setTimeout(() => {
-                setErrorText("")
+                setErrorText("") //Show error for 3 seconds
               }, 3000)
         } else {
             props.changePlaylistFormState(1)
@@ -77,8 +88,7 @@ function PlaylistForm(props) {
             })
             .then(resp => resp.json())
             .then(resp => {
-                populatePlaylist(resp.id)
-                //Call function to add songs to playlist
+                populatePlaylist(resp.id) // Adds songs to newly created playlist.
             })
             .catch(error => {
                 console.log(error)
