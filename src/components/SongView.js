@@ -1,6 +1,9 @@
 import React from 'react';
 
 function SongView (props) {
+    /**
+     * Song view in setlist view.
+     */
     return (
         <div onClick={(e) => {
             e.stopPropagation()
