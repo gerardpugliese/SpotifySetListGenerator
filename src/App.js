@@ -76,6 +76,9 @@ function App() {
         let results = sanitizeSearchResults(obj.metadata['artist-list'].artist, query) //Sanitize results
         setSearchResults(results)
         })
+        .catch(error => {
+          //503 error occurs if we send too many requests to MusicBrainz
+      })
       }
     } 
   }
