@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import Fade from 'react-reveal/Fade';
+import React, {useState, useEffect} from 'react';
 import SongView from './SongView';
 import useCollapse from 'react-collapsed';
-import Fade from 'react-reveal/Fade';
-
 
 function SetlistView (props) {
     const [songList, setSongList] = useState([]);

@@ -1,8 +1,6 @@
-import React, {useEffect, useState} from 'react';
 import { BsDot } from 'react-icons/bs'
 import Fade from 'react-reveal/Fade';
-
-
+import React, {useEffect, useState} from 'react';
 
 function PlaylistSong(props) {
     const [delay, setDelay] = useState(0)
