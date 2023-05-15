@@ -1,13 +1,13 @@
 import './App.css';
-import React, {useState} from 'react';
-import Header from './components/Header';
-import { FaSearch } from 'react-icons/fa';
 import { BsPlusLg } from 'react-icons/bs'
-import { XMLParser } from 'fast-xml-parser';
-import music_icon from './images/musicicon.svg';
-import headphone_icon from './images/headphoneicon.svg';
-import phone_icon from './images/phoneicon.svg';
 import Fade from 'react-reveal/Fade';
+import { FaSearch } from 'react-icons/fa';
+import Header from './components/Header';
+import headphone_icon from './images/headphoneicon.svg';
+import music_icon from './images/musicicon.svg';
+import phone_icon from './images/phoneicon.svg';
+import React, {useState} from 'react';
+import { XMLParser } from 'fast-xml-parser';
 
 function App() {
   const [query, setQuery] = useState("");
