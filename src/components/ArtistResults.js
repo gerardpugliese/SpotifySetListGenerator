@@ -134,8 +134,8 @@ function ArtistResults(props) {
             let playlistWrapper = document.getElementById('playlist-songs-wrapper');
             let heightToMatch = playlistWrapper.offsetHeight;
             if (heightToMatch > 700) {
-            let setListWrapper = document.getElementById('setlist-results')
-            setListWrapper.style.height = heightToMatch.toString().concat("px")
+                let setListWrapper = document.getElementById('setlist-results')
+                setListWrapper.style.height = heightToMatch.toString().concat("px")
             }
         }
     }
@@ -185,17 +185,14 @@ function ArtistResults(props) {
         }
     }
 
-    
-    
-
     return(
         <div className="artist-results-wrapper">
         <Header propagateUserId={setUserId} goToHomePage={goToHomePage}/>
         <div className="setlist-result-wrapper">
             <div className="artist-setlists">
                 <div className="setlist-header">
-                <p id="confirmed-artist-header-name">{selectedArtist}</p>
-                <p id="confirmed-artist-header"> recent set lists</p>
+                    <p id="confirmed-artist-header-name">{selectedArtist}</p>
+                    <p id="confirmed-artist-header"> recent set lists</p>
                 </div>
                 <div id="setlist-results" className="setlist-results">
                 {setLists === undefined || setLists.length === 0 ? <React.Fragment>
@@ -208,13 +205,13 @@ function ArtistResults(props) {
                     if (setlist.sets.set.length !== 0) {
                     return (
                         <div key={idx}>
-                        <SetlistView idx={idx} setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
+                            <SetlistView idx={idx} setlist={setlist} addSongToPlaylist={addSongToPlaylist} addSetToPlaylist={addSetToPlaylist}/>
                         </div>
                     )
                     } else if (setLists.length === 1 && setlist.sets.set.length === 0) {
                     return (
                         <div key={idx} className="setlist-empty-results-wrapper">
-                        <p className="setlist-empty-results-txt">No set lists found!</p>
+                            <p className="setlist-empty-results-txt">No set lists found!</p>
                         </div>
                     )
                     } else {
@@ -228,26 +225,26 @@ function ArtistResults(props) {
                 <div id="playlist-songs-wrapper" className="playlist-songs-wrapper">
                 {songsForPlaylist.length > 0 ?
                     <div>
-                    {songsForPlaylist.map((song, idx) => {
-                        return(
-                        <div key={idx}>
-                            <Fade duration={500}>
-                            <div onMouseEnter={() => changePlaylistDelButton("flex", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} onMouseLeave={() => changePlaylistDelButton("none", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} className="playlist-song-wrapper" key={idx}>
-                                <p className="playlist-song-number">{idx+1}.</p>
-                                <p className="playlist-song-name">{song.name}</p>
-                                <div className="playlist-song-delete-btn" id={"playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase())}>
-                                <BsPlusLg onClick={() => {
-                                    removeSongFromPlaylist(song)
-                                }} className="playlist-song-delete-icon"/>
+                        {songsForPlaylist.map((song, idx) => {
+                            return(
+                            <div key={idx}>
+                                <Fade duration={500}>
+                                <div onMouseEnter={() => changePlaylistDelButton("flex", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} onMouseLeave={() => changePlaylistDelButton("none", "playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase()))} className="playlist-song-wrapper" key={idx}>
+                                    <p className="playlist-song-number">{idx+1}.</p>
+                                    <p className="playlist-song-name">{song.name}</p>
+                                    <div className="playlist-song-delete-btn" id={"playlist-song-delete-btn".concat(song.name.replace(/\s+/g, '-').toLowerCase())}>
+                                    <BsPlusLg onClick={() => {
+                                        removeSongFromPlaylist(song)
+                                    }} className="playlist-song-delete-icon"/>
+                                    </div>
                                 </div>
+                                </Fade>
                             </div>
-                            </Fade>
-                        </div>
-                        )
-                    })}
+                            )
+                        })}
                     </div> :
                     <div className="empty-setlist-playlist-wrapper">
-                    <p className="empty-setlist-playlist-text">No songs added.</p>
+                        <p className="empty-setlist-playlist-text">No songs added.</p>
                     </div>
                 }
                 </div>
