@@ -41,10 +41,10 @@ function PlaylistFinalization(props) {
      * Determines if a song name from Spotify matches a song name from the playlist.
      */
     const filterSpotifySongName = (query_name, song_name) => {
-        if (song_name.toLowerCase() === query_name.toLowerCase()) { // A perfect match.
+        if (song_name.toLowerCase().trimStart().replace(/[^a-z0-9]/gi, '') === query_name.toLowerCase().trimStart().replace(/[^a-z0-9]/gi, '')) { // A perfect match.
           return true
         }
-        else if (query_name.toLowerCase().includes(song_name.toLowerCase()) && query_name.slice(-8).toLowerCase() === "remaster") { // These are a match but the string contains '- <year> remaster'.
+        else if (query_name.toLowerCase().trimStart().includes(song_name.toLowerCase()) && query_name.slice(-8).toLowerCase() === "remaster") { // These are a match but the string contains '- <year> remaster'.
           return true 
         }
         else { // Not a match.
