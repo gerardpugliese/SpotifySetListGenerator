@@ -90,6 +90,9 @@ function ArtistResults(props) {
      * Logs user into their Spotify account.
      */
     const login = () => {
+        // Store selected artist and their musicbrainz ID locally
+        window.localStorage.setItem("artistName", name)
+        window.localStorage.setItem("artistKey", id)
         window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
     }
 

@@ -6,13 +6,23 @@ import Header from './components/Header';
 import headphone_icon from './images/headphoneicon.svg';
 import music_icon from './images/musicicon.svg';
 import phone_icon from './images/phoneicon.svg';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { XMLParser } from 'fast-xml-parser';
 
 function App() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [setUserId] = useState(null)
+
+  useEffect(() => {
+    //Check for artistName and artistKey in local storage.
+    let artistName = window.localStorage.getItem("artistName")
+    let artistKey = window.localStorage.getItem("artistKey")
+
+    if (artistName !== null && artistKey !== null) {
+      goToArtistResults(artistKey, artistName)
+    }
+}, [])
 
   /**
    * Clears out all state variables and returns to home page.
