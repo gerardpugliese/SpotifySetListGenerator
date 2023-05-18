@@ -27,7 +27,7 @@ function App() {
 }, [])
 
   /**
-   * Clears out all state variables and returns to home page.
+   * Clears out state variables, local storage, session storage and returns to home page.
    */
   const goToHomePage = () => {
     setSearchResults([]);

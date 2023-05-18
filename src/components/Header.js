@@ -66,10 +66,17 @@ function Header(props) {
       setToken("")
       window.localStorage.removeItem("token")
     } 
+
+    const goToHomePage = () => {
+      window.localStorage.removeItem("artistName");
+      window.localStorage.removeItem("artistKey");
+      window.sessionStorage.removeItem("songsForPlaylist");
+      window.location.href = "/";
+    }
     
     return(
         <div className="home-header">
-          <div onClick={() => window.location.href = "/"} className="home-header-logo-wrapper">
+          <div onClick={() => goToHomePage()} className="home-header-logo-wrapper">
             <p className="home-header-logo-txt">SetListify</p>
           </div>
           {token === "" || token === null ? 
