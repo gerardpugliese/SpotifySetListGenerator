@@ -56,6 +56,12 @@ function ArtistResults(props) {
             window.localStorage.setItem("token", token)
         }
         setToken(token)
+
+        let sessionPlaylistSongs = window.sessionStorage.getItem("songsForPlaylist")
+        if (sessionPlaylistSongs !== null) {
+            let parsedSessionSongs = JSON.parse(sessionPlaylistSongs)
+            setSongsForPlaylist(parsedSessionSongs)
+        }
     }, [])
 
     /**
@@ -90,9 +96,11 @@ function ArtistResults(props) {
      * Logs user into their Spotify account.
      */
     const login = () => {
-        // Store selected artist and their musicbrainz ID locally
+        // Store selected artist, their musicbrainz ID, and any selected songs locally
         window.localStorage.setItem("artistName", name)
         window.localStorage.setItem("artistKey", id)
+        console.log("Stringified songs: ", JSON.stringify(songsForPlaylist))
+        window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(songsForPlaylist))
         window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
     }
 
@@ -190,7 +198,7 @@ function ArtistResults(props) {
 
     return(
         <div className="artist-results-wrapper">
-        <Header propagateUserId={setUserId} artistName={name} artistKey={id} goToHomePage={goToHomePage}/>
+        <Header propagateUserId={setUserId} artistName={name} artistKey={id} songsForPlaylist={songsForPlaylist} goToHomePage={goToHomePage}/>
         <div className="setlist-result-wrapper">
             <div className="artist-setlists">
                 <div className="setlist-header">
