@@ -180,8 +180,10 @@ function ArtistResults(props) {
     const addSongToPlaylist = (song) => {
         if (songsForPlaylist.length > 0) {
           setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
+          window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(removeDuplicates(songsForPlaylist, song)))
         } else {
           setSongsForPlaylist([song])
+          window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(song))
         }
     }
     
@@ -191,9 +193,12 @@ function ArtistResults(props) {
     const addSetToPlaylist = (setlist) => {
         if (songsForPlaylist.length > 0) {
             setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
+            window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(removeDuplicates(songsForPlaylist, setlist)))
         } else {
             setSongsForPlaylist(setlist)
+            window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(setlist))
         }
+        
     }
 
     return(
