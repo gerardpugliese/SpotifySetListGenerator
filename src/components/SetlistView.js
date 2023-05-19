@@ -1,4 +1,4 @@
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaAngleDown, FaAngleUp, FaPlus } from 'react-icons/fa';
 import Fade from 'react-reveal/Fade';
 import React, {useState, useEffect} from 'react';
 import SongView from './SongView';
@@ -112,10 +112,15 @@ function SetlistView (props) {
 
     return (
         <Fade delay={delay}>
-            <div key={props.idx} onClick={() => props.addSetToPlaylist(songList)} className="setlist-result">
+            <div key={props.idx} className="setlist-result">
                 <div className="setlist-result-top">
-                    <p className="setlist-venue-name">{props.setlist.venue.name}</p>
-                    <p className="setlist-venueu-location">{formatVenueLocation(props.setlist.venue.city)}</p>
+                    <div className="setlist-result-top-left">
+                        <p className="setlist-venue-name">{props.setlist.venue.name}</p>
+                        <p className="setlist-venueu-location">{formatVenueLocation(props.setlist.venue.city)}</p>
+                    </div>
+                    <div className="setlist-result-top-right">
+                        <FaPlus onClick={() => props.addSetToPlaylist(songList)} className="add-setlist-btn"/>
+                    </div>
                 </div>
                 <div className="setlist-result-bottom">
                     <p className="setlist-date">{formatDate(props.setlist.eventDate)}</p>
