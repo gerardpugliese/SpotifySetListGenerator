@@ -99,7 +99,6 @@ function ArtistResults(props) {
         // Store selected artist, their musicbrainz ID, and any selected songs locally
         window.localStorage.setItem("artistName", name)
         window.localStorage.setItem("artistKey", id)
-        console.log("Stringified songs: ", JSON.stringify(songsForPlaylist))
         window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(songsForPlaylist))
         window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
     }
