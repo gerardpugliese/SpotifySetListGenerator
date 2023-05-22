@@ -412,11 +412,6 @@ a {
   font-family: var(--subtext-font);
 }
 
-/*.setlist-result:hover {
-  cursor: pointer;
-  border: 1px solid var(--blue);
-}*/
-
 .setlist-venue-name {
   font-size: 20px;
   color: black;

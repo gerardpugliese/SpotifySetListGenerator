@@ -25,6 +25,8 @@ function SetlistView (props) {
         if (props.idx < 4) { //Sets delay based on how far down the page the song is. Creates cascading effect.
             setDelay(props.idx * 200)
         }
+
+        
     }, [])
 
     /**
