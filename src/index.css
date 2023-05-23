@@ -517,7 +517,6 @@ a {
   width: fit-content;
   display: flex;
   border-radius: 10px;
-  padding: 10px 5px;
   margin: auto;
   margin-right: 5vw;
 }
@@ -530,7 +529,6 @@ a {
   font-family: var(--header-font);
   color: white;
   font-size: 14px;
-  margin-right: 1vw;
   width: fit-content;
   height: fit-content;
 }
