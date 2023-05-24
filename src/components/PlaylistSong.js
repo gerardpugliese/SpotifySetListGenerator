@@ -3,7 +3,7 @@ import Fade from 'react-reveal/Fade';
 import React, {useEffect, useState} from 'react';
 
 function PlaylistSong(props) {
-    const [delay, setDelay] = useState(0)
+    const [delay, setDelay] = useState(0);
 
     /**
      * Sets delay based on how far down the page the song is. Creates cascading effect.

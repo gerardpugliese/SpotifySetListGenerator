@@ -2,8 +2,8 @@ import React, {useState, useEffect} from "react";
 import spotify_logo from '../images/Spotify_Logo_RGB_Green.png';
 
 function Header(props) {
-    const [token, setToken] = useState("")
-    const [userId, setUserId] = useState(null)
+    const [token, setToken] = useState("");
+    const [userId, setUserId] = useState(null);
 
     /**
      * Retrieves user's token from local storage.
