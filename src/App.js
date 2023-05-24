@@ -12,7 +12,7 @@ import { XMLParser } from 'fast-xml-parser';
 function App() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [setUserId] = useState(null)
+  const [setUserId] = useState(null);
 
   useEffect(() => {
     //Check for artistName and artistKey in local storage.

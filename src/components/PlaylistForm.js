@@ -4,11 +4,13 @@ import ReactSwitch from 'react-switch';
 
 function PlaylistForm(props) {
     const [checked, setChecked] = useState(true);
+    const [errorText, setErrorText] = useState("");
     const [playlistName, setPlaylistName] = useState("");
-    const [userId] = useState(props.userId)
-    const [songs, setSongs] = useState(props.songs)
-    const [token] = useState(props.token)
-    const [errorText, setErrorText] = useState("")
+    const [songs, setSongs] = useState(props.songs);
+    const [token] = useState(props.token);
+    const [userId] = useState(props.userId);
+    
+    
 
     /**
      * Builds list of song URIs.

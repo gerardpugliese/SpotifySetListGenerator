@@ -5,10 +5,10 @@ import SongView from './SongView';
 import useCollapse from 'react-collapsed';
 
 function SetlistView (props) {
+    const [delay, setDelay] = useState(0);
+    const [isExpanded, setExpanded] = useState(false);
+    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
     const [songList, setSongList] = useState([]);
-    const [isExpanded, setExpanded] = useState(false)
-    const [delay, setDelay] = useState(0)
-    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded })
 
     /**
      * Creates song list and and sets delays.

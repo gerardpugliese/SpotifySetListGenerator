@@ -5,14 +5,14 @@ import React, {useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 
 function PlaylistFinalization(props) {
-    const [token, setToken] = useState("")
-    const [userId, setUserId] = useState(null)
-    const [displaySongs, setDisplaySongs] = useState(false)
-    const [playlistCreationState, setPlaylistCreationState] = useState(0)
-    const location = useLocation()
-    const [spotifyResultsForPlaylist, setSpotifyResultsForPlaylist] = useState([])
-    const { songsForPlaylist } = location.state 
-    const { selectedArtist} = location.state
+    const [displaySongs, setDisplaySongs] = useState(false);
+    const location = useLocation();
+    const [playlistCreationState, setPlaylistCreationState] = useState(0);
+    const [spotifyResultsForPlaylist, setSpotifyResultsForPlaylist] = useState([]);
+    const { songsForPlaylist } = location.state;
+    const { selectedArtist} = location.state;
+    const [token, setToken] = useState("");
+    const [userId, setUserId] = useState(null);
 
     /**
      * Retrieves user's token from local storage, then calls function to retrieve playlist songs from Spotify.
