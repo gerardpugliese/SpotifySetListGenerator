@@ -7,6 +7,7 @@
   --blue: #14213d;
   --blue-hover: #003459;
   --text-color: #ffffff;
+  --error-color: #e80c1f;
   --alt-color: #e5e5e5;
   --header-font: 'Montserrat', sans-serif;
 }
@@ -922,7 +923,7 @@ a {
 .error-text {
   font-family: var(--header-font);
   margin: auto;
-  color: #e80c1f;
+  color: var(--error-color);
   padding: 10px;
 }
 
