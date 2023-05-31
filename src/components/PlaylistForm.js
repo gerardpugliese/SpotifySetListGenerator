@@ -19,7 +19,7 @@ function PlaylistForm(props) {
         let i = 0;
         let uris = [];
         while (i < songs.length) {
-            if (typeof songs[i] !== "string") { //If song type is string it's not on Spotify and has no URI
+            if (typeof songs[i] !== "string" && songs[i].song.uri !== undefined) { //If song type is string it's not on Spotify and has no URI
                 uris.push(songs[i].song.uri);
             }
             i++;
