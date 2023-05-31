@@ -838,6 +838,7 @@ a {
   flex-direction: column;
   width: 80%;
   margin: auto;
+  margin-bottom: 5vw;
 }
 
 .playlist-form-title {
