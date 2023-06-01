@@ -10,8 +10,6 @@ function PlaylistForm(props) {
     const [token] = useState(props.token);
     const [userId] = useState(props.userId);
     
-    
-
     /**
      * Builds list of song URIs.
      */
