@@ -1179,6 +1179,14 @@ a {
 }
 
 @media screen and (max-width: 625px) {
+  .finalize-playlist-loading-text {
+    font-size: 16px;
+  }
+
+  .finalize-playlist-complete-link {
+    font-size: 16px;
+  }
+
   .home-page-blurb {
     font-size: 20px;
   }
