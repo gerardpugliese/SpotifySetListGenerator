@@ -12,6 +12,7 @@
 /src/images/headphoneicon.svg
 /src/images/musicicon.svg
 /src/images/phoneicon.svg
+/public/setlistify_favicon.ico
 
 # production
 /build
