@@ -144,7 +144,7 @@ function App() {
           <div className="home-howitworks-header-wrapper">
             <p className="howitworks-header-txt">How Setlistify Works</p>
             <p className="howitworks-header-subtxt">
-               Prepare for you next concert with a customzied playlist of songs your favorite artist has played recently!
+               Prepare for you next concert with a customzied playlist of songs an artist has played recently!
             </p>
           </div>
           <div className="home-howitworks-content-wrapper">
