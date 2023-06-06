@@ -870,6 +870,8 @@ a {
   width: fit-content;
   font-family: var(--header-font);
   color: var(--blue);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .playlist-form-image-title {

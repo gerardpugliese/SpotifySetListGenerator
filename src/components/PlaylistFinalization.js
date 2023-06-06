@@ -161,7 +161,7 @@ function PlaylistFinalization(props) {
                         <PlaylistForm changePlaylistFormState={changePlaylistFormState} token={token} songs={spotifyResultsForPlaylist} userId={userId}/>
                     </div>  
                     <div className="finalize-playlist-right">
-                        <p style={{marginRight: "auto", marginLeft: "auto"}}className="playlist-songs-name-title">Playlist Songs:</p>
+                        <p className="playlist-songs-name-title">Playlist Songs:</p>
                         <div className="finalize-playlist-right-songs">
                         {spotifyResultsForPlaylist.map((song, idx, arr) => {
                             if (typeof song.song !== "string") {
