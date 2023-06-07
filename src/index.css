@@ -455,36 +455,6 @@ a {
   margin-left: 1vw;
 }
 
-.log-in-btn-img {
-  max-width: 2vw;
-  max-height: 2vw;
-  min-width: 25px;
-  min-height: 25px;
-  margin: auto;
-  margin-left: 1vw;
-  margin-right: 1vw;
-}
-
-.log-in-btn-wrapper {
-  width: fit-content;
-  display: flex;
-  border-radius: 10px;
-  margin: auto;
-  margin-right: 5vw;
-}
-
-.log-in-btn-wrapper:hover {
-  cursor: pointer;
-}
-
-.log-in-btn-text {
-  font-family: var(--header-font);
-  color: white;
-  font-size: 14px;
-  width: fit-content;
-  height: fit-content;
-}
-
 .log-out-btn-text {
   font-family: var(--header-font);
   color: white;
@@ -492,31 +462,6 @@ a {
   margin-right: 1vw;
   width: fit-content;
   height: fit-content;
-}
-
-.home-header {
-  background-color: var(--blue);
-  width: 100vw;
-  height: 8vh;
-  display: flex;
-}
-
-.home-header-logo-wrapper {
-  color: white;
-  margin-right: auto;
-  margin-left: 5vw;
-  height: 8vh;
-  display: flex;
-}
-
-.home-header-logo-wrapper:hover {
-  cursor: pointer;
-}
-
-.home-header-logo-txt {
-  margin: auto;
-  font-size: 24px;
-  font-family: var(--logo-font);
 }
 
 .playlist-song-wrapper {
@@ -1046,15 +991,6 @@ a {
 @media screen and (max-width: 520px) {
   .home-header-logo-txt {
     font-size: 20px;
-  }
-
-  .log-in-btn-img {
-    min-width: 15px;
-    min-height: 15px;
-  }
-
-  .log-in-btn-text {
-    font-size: 12px;
   }
 
   .home-page-blurb {

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import '../css/Header.css';
 import spotify_logo from '../images/Spotify_Logo_RGB_Green.png';
 
 function Header(props) {
