@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import '../css/ArtistResults.css';
 import { BsPlusLg } from 'react-icons/bs'
 import SetlistView from './SetlistView';
 import Fade from 'react-reveal/Fade';

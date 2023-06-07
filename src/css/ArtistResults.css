@@ -1,0 +1,241 @@
+.artist-results-wrapper {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.artist-setlists {
+    width: 45vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.confirm-playlist-btn-wrapper {
+    margin: auto;
+    margin-top: 2vw;
+    background: var(--blue);
+    color: white;
+    font-family: var(--header-font);
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    width: fit-content;
+}
+
+.confirm-playlist-btn-wrapper:hover {
+    cursor: pointer;
+    background: var(--blue-hover);
+}
+
+.confirm-playlist-login {
+    display: flex;
+    margin-top: 1vw;
+}
+
+.confirm-playlist-login-link {
+    font-family: var(--subtext-font);
+    font-size: 16px;
+    color: var(--blue);
+    text-decoration: underline;
+    width: fit-content;
+    margin: auto;
+    margin-right: 0;
+}
+
+.confirm-playlist-login-link:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.confirm-playlist-login-text {
+    font-family: var(--subtext-font);
+    font-size: 16px;
+    color: black;
+    width: fit-content;
+    margin-left: 1vw;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#confirmed-artist-header-name {
+    font-size: 24px;
+    color: var(--blue);
+    font-family: var(--header-font);
+    margin-top: auto + 10px;
+    margin-right: 1vw;
+    line-height: 1;
+    margin-left: auto;
+}
+  
+#confirmed-artist-header {
+    font-size: 24px;
+    color: black;
+    font-family: var(--subtext-font);
+    width: fit-content;
+    line-height: 1;
+    margin-right: auto;
+}
+
+.empty-setlist-playlist-wrapper {
+  width: inherit;
+  display: flex;
+}
+
+.empty-setlist-playlist-text {
+  font-family: var(--subtext-font);
+  width: fit-content;
+  margin: auto;
+}
+
+.playlist-creator-wrapper {
+    padding-bottom: 2vw;
+    width: 45vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.playlist-creator-title {
+    font-size: 24px;
+    font-family: var(--subtext-font);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vw;
+    width: fit-content;
+}
+
+.playlist-song-delete-btn {
+  display: none;
+}
+
+.playlist-song-delete-icon {
+  transform: rotateY(0deg) rotate(45deg);
+  color: black;
+  margin: auto;
+  padding: 10px;
+  height: 2vw;
+}
+
+.playlist-song-name {
+    margin-left: 5px;
+}
+
+.playlist-songs-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.setlist-results {
+    overflow-y: scroll;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 100vh;
+}
+
+.setlist-header {
+    display: flex;
+}
+
+.setlist-empty-results-wrapper {
+    display: flex;
+}
+
+.setlist-empty-results-txt {
+    font-size: 20px;
+    font-family: var(--subtext-font);
+    margin: auto;
+}
+
+.setlist-result-wrapper {
+    margin: auto;
+    display: flex;
+    background-color: var(--alt-color);
+}
+
+@media screen and (max-width: 665px) {
+    .artist-results-wrapper {
+        min-height: 100vh;
+        background: var(--alt-color);
+    }
+
+    .artist-setlists {
+        width: 90vw;
+    }
+
+    .confirm-playlist-login-link {
+        font-size: 14px;
+    }
+    
+    .confirm-playlist-login-text {
+        font-size: 14px;
+    }
+
+    .empty-setlist-playlist-text {
+        font-size: 14px;
+    }
+
+    .playlist-creator-wrapper {
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .playlist-creator-title {
+        font-size: 20px;
+    }
+
+    .playlist-song-delete-btn {
+        display: flex;
+    }
+
+    .playlist-song-name {
+        font-size: 14px;
+    }
+
+    .playlist-song-number {
+        font-size: 14px;
+    }
+
+    .setlist-empty-results-txt {
+        font-size: 14px;
+    }
+
+    .setlist-results {
+        width: 90vw;
+        margin: auto;
+        margin-bottom: 2vw;
+        display: flex;
+        overflow-x: scroll;
+        height: fit-content;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .setlist-result-wrapper {
+        flex-direction: column;
+    }  
+}
+
+@media screen and (max-width: 625px) {
+    .setlist-empty-results-txt {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    #confirmed-artist-header-name {
+        font-size: 20px;
+    }
+
+    #confirmed-artist-header {
+        font-size: 20px;
+    }
+
+    .playlist-songs-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
