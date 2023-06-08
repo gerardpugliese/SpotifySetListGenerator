@@ -586,58 +586,11 @@ a {
   text-decoration: underline;
 }
 
-.playlist-song-img-wrapper {
-  display: flex;
-  width: 35%;
-  margin: auto;
-}
-
-.playlist-song-info-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 65%;
-  margin: auto;
-  font-family: var(--subtext-font);
-}
-
-.playlist-song-img {
-  width: 80%;
-  margin: auto;
-}
-
-.confirm-playlist-song-album {
-  width: fit-content;
-  margin-right: auto;
-  margin-top: 0.5vw;
-  margin-bottom: 0.5vw;
-  font-size: 12px;
-}
-
-.confirm-playlist-bulletpoint {
-  width: fit-content;
-  margin: auto;
-  margin-top: 0.5vw;
-  margin-left: 0.25vw;
-  margin-right: 0.25vw;
-}
-
-.confirm-playlist-song-artist {
-  width: fit-content;
-  margin-top: 0.5vw;
-  margin-bottom: 1vw;
-  margin-left: 1vw;
-  font-size: 12px;
-}
-
 .confirm-playlist-song-bulletpoint {
   width: fit-content;
   margin: 0;
   margin-left: 0.5vw;
   margin-right: 0.5vw;
-}
-
-.playlist-song-album-artist-wrapper {
-  display: flex;
 }
 
 .playlist-form-image-title {
