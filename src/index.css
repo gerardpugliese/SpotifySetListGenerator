@@ -351,84 +351,7 @@ a {
   margin-bottom: 2vw;
 }
 
-.setlist-result {
-  background-color: #fafffd;
-  margin: auto;
-  margin-left: 0;
-  margin-bottom: 2vw;
-  color: black;
-  max-width: 500px;
-  border-radius: 5px;
-  padding: 1vw 2vw;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  font-family: var(--subtext-font);
-}
-
-.setlist-venue-name {
-  font-size: 20px;
-  color: black;
-  width: fit-content;
-  margin-bottom: 0;
-  margin-right: 1vw;
-}
-
-.setlist-result-top {
-  display: flex;
-  height: fit-content;
-}
-
-.setlist-result-top-right {
-  margin-left: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.setlist-result-top-right:hover {
-  cursor: pointer;
-}
-
-.add-setlist-btn {
-  color: var(--blue);
-}
-
-.add-setlist-btn:hover {
-  color: var(--blue-hover);
-  cursor: pointer;
-}
-
-.setlist-date {
-  font-size: 20px;
-  color: black;
-  width: fit-content;
-}
-
-.setlist-venueu-location {
-  font-size: 20px;
-  color: black;
-  width: fit-content;
-  margin-left: 0vw;
-  font-style: italic;
-  margin-bottom: 0;
-}
-
-.setlist-result-songs {
-  width: fit-content;
-}
-
-.setlist-result-songs:hover {
-  cursor: pointer;
-}
-
-.setlist-songs-dropdown {
-  width: fit-content;
-  font-size: 20px;
-}
-
 .dropdown-button {
-  cursor: pointer;
-}
-
-.setlist-songs-dropdow:hover {
   cursor: pointer;
 }
 
@@ -648,28 +571,6 @@ a {
     height: fit-content;
     padding-left: 0;
     padding-right: 0;
-  }
-
-  .setlist-result {
-    margin-right: 2vw;
-    width: 40vw;
-  }
-
-  .setlist-venue-name {
-    font-size: 14px;
-  }
-
-  .setlist-venueu-location {
-    font-size: 14px;
-    margin-top: 0;
-  }
-
-  .setlist-date {
-    font-size: 14px;
-  }
-
-  .setlist-songs-dropdown {
-    font-size: 14px;
   }
 
   .finalize-playlist-wrapper {

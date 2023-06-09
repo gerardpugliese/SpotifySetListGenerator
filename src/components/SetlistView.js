@@ -1,3 +1,4 @@
+import '../css/SetlistView.css';
 import { FaAngleDown, FaAngleUp, FaPlus } from 'react-icons/fa';
 import Fade from 'react-reveal/Fade';
 import React, {useState, useEffect} from 'react';
@@ -118,7 +119,7 @@ function SetlistView (props) {
                 <div className="setlist-result-top">
                     <div className="setlist-result-top-left">
                         <p className="setlist-venue-name">{props.setlist.venue.name}</p>
-                        <p className="setlist-venueu-location">{formatVenueLocation(props.setlist.venue.city)}</p>
+                        <p className="setlist-venue-location">{formatVenueLocation(props.setlist.venue.city)}</p>
                     </div>
                     <div className="setlist-result-top-right">
                         <FaPlus onClick={() => props.addSetToPlaylist(songList)} className="add-setlist-btn"/>
