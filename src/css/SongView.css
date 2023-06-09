@@ -1,0 +1,22 @@
+.song-wrapper {
+    display: flex;
+    margin: auto;
+    margin-right: auto;
+    margin-left: 0;
+    padding: 5px;
+    width: fit-content;
+  }
+  
+.song-wrapper:hover {
+    cursor: pointer;
+    color: #5a87d1;
+}
+
+.song-num {
+    width: fit-content;
+}
+  
+.song-title {
+    width: fit-content;
+    margin-left: 1vw;
+}

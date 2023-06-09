@@ -1,3 +1,4 @@
+import '../css/SongView.css';
 import React from 'react';
 
 function SongView (props) {

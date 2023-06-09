@@ -369,15 +369,6 @@ a {
   color: #5a87d1;
 }
 
-.song-num {
-  width: fit-content;
-}
-
-.song-title {
-  width: fit-content;
-  margin-left: 1vw;
-}
-
 .log-out-btn-text {
   font-family: var(--header-font);
   color: white;
