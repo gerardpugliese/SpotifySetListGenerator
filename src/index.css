@@ -450,56 +450,6 @@ a {
   margin: auto;
 }
 
-.finalize-playlist-wrapper {
-  margin: auto;
-  width: 100vw;
-  display: flex;
-  background: var(--alt-color);
-}
-
-.finalize-playlist-left {
-  width: 50vw;
-  padding-left: 5vw;
-}
-
-.finalize-playlist-right {
-  width: 50vw;
-  padding-right: 5vw;
-}
-
-.finalize-playlist-header-txt {
-  font-family: var(--logo-font);
-  font-size: 24px;
-  color: var(--blue);
-}
-
-.finalize-playlist-loading {
-  display: flex;
-  width: 100vw;
-  height: 92vh;
-}
-
-.finalize-playlist-loading-text {
-  font-family: var(--header-font);
-  font-size: 20px;
-  color: var(--blue);
-  width: fit-content;
-  margin: auto;
-}
-
-.finalize-playlist-complete-link {
-  font-family: var(--header-font);
-  font-size: 20px;
-  color: var(--blue);
-  width: fit-content;
-  margin: auto;
-}
-
-.finalize-playlist-complete-link:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
 .confirm-playlist-song-bulletpoint {
   width: fit-content;
   margin: 0;
@@ -564,22 +514,6 @@ a {
     padding-right: 0;
   }
 
-  .finalize-playlist-wrapper {
-    flex-direction: column;
-  }
-
-  .finalize-playlist-left {
-    width: 90vw;
-    margin-top: 5vw;
-    padding-left: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .finalize-playlist-right {
-    display: none;
-  }
-
   .setlist-results {
     width: 90vw;
     margin: auto;
@@ -588,14 +522,6 @@ a {
 }
 
 @media screen and (max-width: 625px) {
-  .finalize-playlist-loading-text {
-    font-size: 16px;
-  }
-
-  .finalize-playlist-complete-link {
-    font-size: 16px;
-  }
-
   .home-page-blurb {
     font-size: 20px;
   }

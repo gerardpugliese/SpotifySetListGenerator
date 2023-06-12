@@ -1,3 +1,4 @@
+import '../css/PlaylistFinalization.css';
 import Header from './Header';
 import PlaylistForm from './PlaylistForm';
 import PlaylistSong from './PlaylistSong';

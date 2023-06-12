@@ -1,0 +1,149 @@
+.confirm-playlist-song-name {
+    width: fit-content;
+    margin-right: auto;
+    margin-top: 1vw;
+    margin-bottom: 0.5vw;
+    margin-left: 1vw;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.confirm-playlist-song-wrapper {
+    display: flex;
+    width: 25vw;
+    background-color: #ffffff;
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    border-radius: 15px;
+    padding: 2vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    margin-left: 2vw;
+    margin-right: auto;
+}
+
+.finalize-playlist-wrapper {
+    margin: auto;
+    width: 100vw;
+    display: flex;
+    background: var(--alt-color);
+  }
+  
+.finalize-playlist-left {
+    width: 50vw;
+    padding-left: 5vw;
+}
+
+.finalize-playlist-right {
+    width: 50vw;
+    padding-right: 5vw;
+}
+
+.finalize-playlist-header-txt {
+    font-family: var(--logo-font);
+    font-size: 24px;
+    color: var(--blue);
+}
+
+.finalize-playlist-loading {
+    display: flex;
+    width: 100vw;
+    height: 92vh;
+}
+
+.finalize-playlist-loading-text {
+    font-family: var(--header-font);
+    font-size: 20px;
+    color: var(--blue);
+    width: fit-content;
+    margin: auto;
+}
+
+.finalize-playlist-complete-link {
+    font-family: var(--header-font);
+    font-size: 20px;
+    color: var(--blue);
+    width: fit-content;
+    margin: auto;
+}
+
+.finalize-playlist-complete-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.finalize-playlist-right-songs {
+    height: 88vh;
+    overflow-y: scroll;
+    width: inherit;
+}
+
+.playlist-songs-name-title {
+    width: fit-content;
+    font-family: var(--header-font);
+    color: var(--blue);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.playlist-song-num {
+    margin: auto;
+    font-family: var(--subtext-font);
+}
+
+.playlist-song-num-wrapper {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+}
+
+.playlist-song-outerwrapper {
+    display: flex;
+}
+
+@media screen and (max-width: 665px) {
+    .confirm-playlist-song-wrapper {
+        width: 65vw;
+    }
+
+    .finalize-playlist-wrapper {
+        flex-direction: column;
+    }
+    
+    .finalize-playlist-left {
+        width: 90vw;
+        margin-top: 5vw;
+        padding-left: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .finalize-playlist-right {
+        display: none;
+    }
+
+    .finalize-playlist-right-songs {
+        width: 90vw;
+        overflow-y: visible;
+        height: fit-content;
+        margin-bottom: 5vw;
+    }
+
+    .playlist-songs-name-title {
+        width: 80%;
+        margin-left: 0 !important;
+    }
+
+    .playlist-song-outerwrapper {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 625px) {
+    .finalize-playlist-loading-text {
+        font-size: 16px;
+      }
+    
+    .finalize-playlist-complete-link {
+        font-size: 16px;
+    }
+}
