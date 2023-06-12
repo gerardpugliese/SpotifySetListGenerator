@@ -16,7 +16,13 @@ function SetlistView (props) {
      */
     useEffect(() => {
         if (props.setlist.sets.set.length > 1) { // If encore exists (more than one element in setlist array), combine the two.
-            let full_setlist = [...props.setlist.sets.set[0].song, ...props.setlist.sets.set[1].song]
+            let setlist_length = props.setlist.sets.set.length;
+            let i = 1;
+            let full_setlist = props.setlist.sets.set[0].song;
+            while (i < setlist_length) {
+                full_setlist = [...full_setlist, ...props.setlist.sets.set[i].song];
+                i += 1;
+            }
             setSongList(full_setlist)
         }
         else { // No encore exists.
