@@ -128,6 +128,16 @@
     padding-right: 2rem;
 }
 
+.playlist-song-wrapper {
+    display: flex;
+    margin-right: auto;
+    font-family: var(--subtext-font);
+}
+  
+.playlist-song-wrapper:hover {
+    cursor: pointer;
+}
+
 .setlist-results {
     overflow-y: scroll;
     padding-left: 2rem;
