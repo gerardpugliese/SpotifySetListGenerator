@@ -1,4 +1,3 @@
-import './App.css';
 import { BsPlusLg } from 'react-icons/bs'
 import Fade from 'react-reveal/Fade';
 import { FaSearch } from 'react-icons/fa';

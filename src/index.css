@@ -39,6 +39,7 @@ a {
   background-color: var(--alt-color);
   width: 100vw;
   min-height: 100vh;
+  text-align: center;
 }
 
 .home-outer-wrapper {
