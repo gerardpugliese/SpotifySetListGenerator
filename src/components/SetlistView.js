@@ -1,7 +1,7 @@
+import React, {useState, useEffect} from 'react';
 import '../css/SetlistView.css';
 import { FaAngleDown, FaAngleUp, FaPlus } from 'react-icons/fa';
 import Fade from 'react-reveal/Fade';
-import React, {useState, useEffect} from 'react';
 import SongView from './SongView';
 import useCollapse from 'react-collapsed';
 

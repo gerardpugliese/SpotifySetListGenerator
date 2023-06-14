@@ -1,6 +1,6 @@
+import React, {useState, useEffect} from 'react'
 import PlaylistSong from './PlaylistSong';
 import '../css/PlaylistForm.css';
-import React, {useState, useEffect} from 'react'
 import ReactSwitch from 'react-switch';
 
 function PlaylistForm(props) {

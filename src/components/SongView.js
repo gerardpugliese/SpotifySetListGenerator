@@ -1,5 +1,5 @@
-import '../css/SongView.css';
 import React from 'react';
+import '../css/SongView.css';
 
 function SongView (props) {
     /**
