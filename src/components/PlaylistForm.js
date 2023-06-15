@@ -68,7 +68,7 @@ function PlaylistForm(props) {
      */
     const createPlaylist = () => {
         if (playlistName === "") {
-            setErrorText("Playlist name can't be empty!")
+            setErrorText("Playlist name can't be empty.")
             setTimeout(() => {
                 setErrorText("") //Show error for 3 seconds
               }, 3000)
