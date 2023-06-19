@@ -280,6 +280,10 @@ a {
 }
 
 @media screen and (max-width: 665px) {
+  .search-results {
+    padding-left: 10px;
+  }
+  
   .setlist-results {
     display: flex;
     overflow-x: scroll;
