@@ -9,6 +9,7 @@ function PlaylistFinalization(props) {
     const [displaySongs, setDisplaySongs] = useState(false);
     const location = useLocation();
     const [playlistCreationState, setPlaylistCreationState] = useState(0);
+    const [playlistName, setPlaylistName] = useState("");
     const [spotifyResultsForPlaylist, setSpotifyResultsForPlaylist] = useState([]);
     const { songsForPlaylist } = location.state;
     const { selectedArtist} = location.state;
@@ -142,6 +143,10 @@ function PlaylistFinalization(props) {
         setPlaylistCreationState(state)
     }
 
+    const retrievePlaylistName = (name) => {
+        setPlaylistName(name)
+    }
+
     /**
      * Sends user to home page.
      */
@@ -159,7 +164,7 @@ function PlaylistFinalization(props) {
                 displaySongs === true ?
                 <div className="finalize-playlist-wrapper">
                     <div className="finalize-playlist-left">
-                        <PlaylistForm changePlaylistFormState={changePlaylistFormState} token={token} songs={spotifyResultsForPlaylist} userId={userId}/>
+                        <PlaylistForm changePlaylistFormState={changePlaylistFormState} retrievePlaylistName={retrievePlaylistName} token={token} songs={spotifyResultsForPlaylist} userId={userId}/>
                     </div>  
                     <div className="finalize-playlist-right">
                         <p className="playlist-songs-name-title">Playlist Songs:</p>
@@ -203,7 +208,7 @@ function PlaylistFinalization(props) {
             : playlistCreationState === 2 ? // Playlist has been created successfully
             <React.Fragment>
                 <div style={{display: "flex", flexDirection: "column"}} className="finalize-playlist-loading">
-                    <p style={{marginBottom: "2vw"}} className="finalize-playlist-loading-text">Playlist successfully created!</p>
+                    <p style={{marginBottom: "2vw"}} className="finalize-playlist-loading-text">"{playlistName}" successfully created!</p>
                     <p style={{marginTop: "2vw"}} onClick={() => goToHomePage()} className="finalize-playlist-complete-link">Return to Home page</p>
                 </div>
             </React.Fragment> 

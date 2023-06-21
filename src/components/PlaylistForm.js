@@ -102,7 +102,10 @@ function PlaylistForm(props) {
             <p className="playlist-form-title">Your Playlist Details</p>
             <div className="playlist-form-name-wrapper">
                 <p className="playlist-form-name-title">Playlist Name:</p>
-                <input style={errorText !== "" ? {border: "1px solid #e80c1f"} : {}} onChange={e => setPlaylistName(e.target.value)} className="playlist-form-name-input" type="text" />
+                <input style={errorText !== "" ? {border: "1px solid #e80c1f"} : {}} onChange={e => {
+                    setPlaylistName(e.target.value)
+                    props.retrievePlaylistName(e.target.value)
+                    }} className="playlist-form-name-input" type="text" />
             </div>
             <div className="playlist-form-public-wrapper">
                 <p className="playlist-form-name-title">{checked === true ? "Public" : "Private"}:</p>
