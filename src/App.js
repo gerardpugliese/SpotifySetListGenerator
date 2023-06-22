@@ -100,7 +100,7 @@ function App() {
       <div className="home-outer-wrapper">
         <React.Fragment>
         <div className="home-wrapper">
-          <p className="home-page-blurb">Look up an artist to see their recent set lists!</p>
+          <p className="home-page-blurb">Search any artist to see their recent set lists!</p>
           <div className="search-input-wrapper">
             <input id="test-search-input" name="query" placeholder="I want to see set lists for..." autoComplete="off" value={query} onChange={e => {submitQuery(e.target.value)}}/>
             <div className="delete-search-icon-wrapper">
