@@ -208,12 +208,12 @@ function ArtistResults(props) {
             <div className="artist-setlists">
                 <div className="setlist-header">
                     <p id="confirmed-artist-header-name">{selectedArtist}</p>
-                    <p id="confirmed-artist-header"> recent set lists</p>
+                    <p id="confirmed-artist-header"> recent setlists</p>
                 </div>
                 <div id="setlist-results" className="setlist-results">
                 {setLists === undefined || setLists.length === 0 ? <React.Fragment>
                     <div className="setlist-empty-results-wrapper">
-                        <p className="setlist-empty-results-txt">No set lists found!</p>
+                        <p className="setlist-empty-results-txt">No setlists found!</p>
                     </div>
                 </React.Fragment> 
                 :
@@ -227,7 +227,7 @@ function ArtistResults(props) {
                     } else if (setLists.length === 1 && setlist.sets.set.length === 0) {
                     return (
                         <div key={idx} className="setlist-empty-results-wrapper">
-                            <p className="setlist-empty-results-txt">No set lists found!</p>
+                            <p className="setlist-empty-results-txt">No setlists found!</p>
                         </div>
                     )
                     } else {

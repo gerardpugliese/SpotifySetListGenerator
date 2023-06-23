@@ -100,9 +100,9 @@ function App() {
       <div className="home-outer-wrapper">
         <React.Fragment>
         <div className="home-wrapper">
-          <p className="home-page-blurb">Search any artist to see their recent set lists!</p>
+          <p className="home-page-blurb">Search any artist to see their recent setlists!</p>
           <div className="search-input-wrapper">
-            <input id="test-search-input" name="query" placeholder="I want to see set lists for..." autoComplete="off" value={query} onChange={e => {submitQuery(e.target.value)}}/>
+            <input id="test-search-input" name="query" placeholder="I want to see setlists for..." autoComplete="off" value={query} onChange={e => {submitQuery(e.target.value)}}/>
             <div className="delete-search-icon-wrapper">
             {query !== "" ?
               <BsPlusLg onClick={() => {
@@ -158,7 +158,7 @@ function App() {
               <div className="howitworks-content-tile-wrapper">
                 <img alt="Music Icon" className="howitworks-content-title-icon" src={music_icon}/>
                 <p className="howitworks-content-tile-title">Build your Playlist</p>
-                <p className="howitworks-content-tile-subtext">Search for an artist, view their recent set lists and add songs to a playlist.</p>
+                <p className="howitworks-content-tile-subtext">Search for an artist, view their recent setlists and add songs to a playlist.</p>
               </div>
             </Fade>
             <Fade up duration={1750} distance={"20px"}>
