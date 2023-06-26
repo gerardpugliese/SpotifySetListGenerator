@@ -29,6 +29,7 @@ function ArtistResults(props) {
         };
 
         window.addEventListener('resize', handleWindowResize);
+        let name = window.sessionStorage.getItem("artistName")
 
         return () => {
             window.removeEventListener('resize', handleWindowResize);
@@ -58,10 +59,15 @@ function ArtistResults(props) {
         }
         setToken(token)
 
-        let sessionPlaylistSongs = window.sessionStorage.getItem("songsForPlaylist")
-        if (sessionPlaylistSongs !== null) {
-            let parsedSessionSongs = JSON.parse(sessionPlaylistSongs)
-            setSongsForPlaylist(parsedSessionSongs)
+        let artistName = window.sessionStorage.getItem("artistName")
+        if (artistName === name || artistName !== null) {
+            let sessionPlaylistSongs = window.sessionStorage.getItem("songsForPlaylist")
+            if (sessionPlaylistSongs !== null) {
+                let parsedSessionSongs = JSON.parse(sessionPlaylistSongs)
+                setSongsForPlaylist(parsedSessionSongs)
+            }
+        } else {
+            window.sessionStorage.clear()
         }
     }, [])
 
@@ -100,6 +106,7 @@ function ArtistResults(props) {
         // Store selected artist, their musicbrainz ID, and any selected songs locally
         window.localStorage.setItem("artistName", name)
         window.localStorage.setItem("artistKey", id)
+        window.sessionStorage.setItem("artistName", name)
         window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(songsForPlaylist))
         window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
     }
@@ -179,11 +186,19 @@ function ArtistResults(props) {
      */
     const addSongToPlaylist = (song) => {
         if (songsForPlaylist.length > 0) {
-          setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
-          window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(removeDuplicates(songsForPlaylist, song)))
+            setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
+            let artistName = window.sessionStorage.getItem("artistName")
+            if (artistName === null) {
+                window.sessionStorage.setItem("artistName", name)
+            }
+            window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(removeDuplicates(songsForPlaylist, song)))
         } else {
-          setSongsForPlaylist([song])
-          window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(song))
+            let artistName = window.sessionStorage.getItem("artistName")
+            if (artistName === null) {
+                window.sessionStorage.setItem("artistName", name)
+            }
+            setSongsForPlaylist([song])
+            window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(song))
         }
     }
     
@@ -193,9 +208,17 @@ function ArtistResults(props) {
     const addSetToPlaylist = (setlist) => {
         if (songsForPlaylist.length > 0) {
             setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
+            let artistName = window.sessionStorage.getItem("artistName")
+            if (artistName === null) {
+                window.sessionStorage.setItem("artistName", name)
+            }
             window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(removeDuplicates(songsForPlaylist, setlist)))
         } else {
             setSongsForPlaylist(setlist)
+            let artistName = window.sessionStorage.getItem("artistName")
+            if (artistName === null) {
+                window.sessionStorage.setItem("artistName", name)
+            }
             window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(setlist))
         }
         
