@@ -29,7 +29,6 @@ function ArtistResults(props) {
         };
 
         window.addEventListener('resize', handleWindowResize);
-        let name = window.sessionStorage.getItem("artistName")
 
         return () => {
             window.removeEventListener('resize', handleWindowResize);
