@@ -15,7 +15,7 @@ function SetlistView (props) {
      * Creates song list and and sets delays.
      */
     useEffect(() => {
-        if (props.setlist.sets.set.length > 1) { // If encore exists (more than one element in setlist array), combine the two.
+        if (props.setlist.sets.set.length > 1) { // If encores exist (more than one element in setlist array), make sure all are combined.
             let setlist_length = props.setlist.sets.set.length;
             let i = 1;
             let full_setlist = props.setlist.sets.set[0].song;
