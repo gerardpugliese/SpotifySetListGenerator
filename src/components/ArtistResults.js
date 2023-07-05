@@ -59,7 +59,7 @@ function ArtistResults(props) {
         setToken(token)
 
         let artistName = window.sessionStorage.getItem("artistName")
-        if (artistName === name || artistName !== null) {
+        if (artistName === name) {
             let sessionPlaylistSongs = window.sessionStorage.getItem("songsForPlaylist")
             if (sessionPlaylistSongs !== null) {
                 let parsedSessionSongs = JSON.parse(sessionPlaylistSongs)
