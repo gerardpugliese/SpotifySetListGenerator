@@ -147,21 +147,21 @@ function App() {
             </p>
           </div>
           <div className="home-howitworks-content-wrapper">
-            <Fade up duration={1750} distance={"20px"}>
+            <Fade up duration={1000} distance={"20px"}>
               <div className="howitworks-content-tile-wrapper">
                 <img alt="Phone Icon" className="howitworks-content-title-icon" src={phone_icon}/>
                 <p className="howitworks-content-tile-title">Login with Spotify</p>
                 <p className="howitworks-content-tile-subtext">Login with your Spotify credentials so you can save whatever you create. </p>
               </div>
             </Fade>
-            <Fade up duration={500} distance={"20px"}>
+            <Fade up duration={1000} distance={"20px"}>
               <div className="howitworks-content-tile-wrapper">
                 <img alt="Music Icon" className="howitworks-content-title-icon" src={music_icon}/>
                 <p className="howitworks-content-tile-title">Build your Playlist</p>
                 <p className="howitworks-content-tile-subtext">Search for an artist, view their recent setlists and add songs to a playlist.</p>
               </div>
             </Fade>
-            <Fade up duration={1750} distance={"20px"}>
+            <Fade up duration={1000} distance={"20px"}>
               <div className="howitworks-content-tile-wrapper">
                 <img alt="Headphone Icon" className="howitworks-content-title-icon" src={headphone_icon}/>
                 <p className="howitworks-content-tile-title">Start Listening</p>
