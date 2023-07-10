@@ -158,7 +158,7 @@ function App() {
               <div className="howitworks-content-tile-wrapper">
                 <img alt="Music Icon" className="howitworks-content-title-icon" src={music_icon}/>
                 <p className="howitworks-content-tile-title">Build your Playlist</p>
-                <p className="howitworks-content-tile-subtext">Search for an artist, view their recent setlists and add songs to a playlist.</p>
+                <p className="howitworks-content-tile-subtext">Search for any artist, view their recent setlists and customize your own playlist.</p>
               </div>
             </Fade>
             <Fade up duration={1000} distance={"20px"}>
