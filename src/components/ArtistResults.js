@@ -59,7 +59,9 @@ function ArtistResults(props) {
         setToken(token)
 
         let artistName = window.sessionStorage.getItem("artistName")
-        if (artistName === name) {
+        let playlistTimestamp = window.sessionStorage.getItem("playlistTimestamp")
+        let timeDiff = Math.floor((Date.now() - playlistTimestamp) / 1000)
+        if (artistName === name && timeDiff < 300) {
             let sessionPlaylistSongs = window.sessionStorage.getItem("songsForPlaylist")
             if (sessionPlaylistSongs !== null) {
                 let parsedSessionSongs = JSON.parse(sessionPlaylistSongs)
@@ -105,6 +107,7 @@ function ArtistResults(props) {
         // Store selected artist, their musicbrainz ID, and any selected songs locally
         window.localStorage.setItem("artistName", name)
         window.localStorage.setItem("artistKey", id)
+        window.sessionStorage.setItem("playlistTimestamp", Date.now())
         window.sessionStorage.setItem("artistName", name)
         window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(songsForPlaylist))
         window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
@@ -190,6 +193,7 @@ function ArtistResults(props) {
             if (artistName === null) {
                 window.sessionStorage.setItem("artistName", name)
             }
+            window.sessionStorage.setItem("playlistTimestamp", Date.now())
             window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(removeDuplicates(songsForPlaylist, song)))
         } else {
             let artistName = window.sessionStorage.getItem("artistName")
@@ -197,6 +201,7 @@ function ArtistResults(props) {
                 window.sessionStorage.setItem("artistName", name)
             }
             setSongsForPlaylist([song])
+            window.sessionStorage.setItem("playlistTimestamp", Date.now())
             window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(song))
         }
     }
@@ -211,6 +216,7 @@ function ArtistResults(props) {
             if (artistName === null) {
                 window.sessionStorage.setItem("artistName", name)
             }
+            window.sessionStorage.setItem("playlistTimestamp", Date.now())
             window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(removeDuplicates(songsForPlaylist, setlist)))
         } else {
             setSongsForPlaylist(setlist)
@@ -218,6 +224,7 @@ function ArtistResults(props) {
             if (artistName === null) {
                 window.sessionStorage.setItem("artistName", name)
             }
+            window.sessionStorage.setItem("playlistTimestamp", Date.now())
             window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(setlist))
         }
         
