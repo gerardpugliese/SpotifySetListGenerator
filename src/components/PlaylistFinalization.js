@@ -152,6 +152,7 @@ function PlaylistFinalization(props) {
      */
     const goToHomePage = () => {
         window.location.href = "/"
+        window.sessionStorage.clear()
     }
 
     return (

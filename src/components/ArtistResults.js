@@ -78,6 +78,7 @@ function ArtistResults(props) {
     const goToHomePage = () => {
         setSelectedArtist(null);
         setSongsForPlaylist([]);
+        window.sessionStorage.clear()
         window.location.href = "/"
     }
 
