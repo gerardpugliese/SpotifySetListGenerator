@@ -106,8 +106,6 @@ function ArtistResults(props) {
      */
     const login = () => {
         // Store selected artist, their musicbrainz ID, and any selected songs locally
-        window.localStorage.setItem("artistName", name)
-        window.localStorage.setItem("artistKey", id)
         window.sessionStorage.setItem("playlistTimestamp", Date.now())
         window.sessionStorage.setItem("artistName", name)
         window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(songsForPlaylist))
