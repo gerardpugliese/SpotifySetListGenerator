@@ -53,8 +53,6 @@ function Header(props) {
      */
     const login = () => {
       if (props.artistName && props.artistKey && props.songsForPlaylist) {
-        window.localStorage.setItem("artistName", props.artistName)
-        window.localStorage.setItem("artistKey", props.artistKey)
         window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(props.songsForPlaylist))
       }
       window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
@@ -69,8 +67,6 @@ function Header(props) {
     } 
 
     const goToHomePage = () => {
-      window.localStorage.removeItem("artistName");
-      window.localStorage.removeItem("artistKey");
       window.sessionStorage.clear();
       window.location.href = "/";
     }
