@@ -19,8 +19,7 @@ function App() {
     let artistKey = window.localStorage.getItem("artistKey")
 
     if (artistName !== null && artistKey !== null) {
-      window.localStorage.removeItem("artistName")
-      window.localStorage.removeItem("artistKey")
+      window.localStorage.clear()
       goToArtistResults(artistKey, artistName)
     }
 }, [])
