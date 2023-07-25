@@ -15,12 +15,12 @@ function App() {
 
   useEffect(() => {
     //Check for artistName and artistKey in local storage.
-    let artistName = window.localStorage.getItem("artistName")
-    let artistKey = window.localStorage.getItem("artistKey")
+    let artistName = window.sessionStorage.getItem("artistName")
+    let artistKey = window.sessionStorage.getItem("artistKey")
 
     if (artistName !== null && artistKey !== null) {
-      window.localStorage.removeItem("artistName")
-      window.localStorage.removeItem("artistKey")
+      window.sessionStorage.removeItem("artistName")
+      window.sessionStorage.removeItem("artistKey")
       goToArtistResults(artistKey, artistName)
     }
 }, [])

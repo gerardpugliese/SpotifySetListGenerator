@@ -108,6 +108,7 @@ function ArtistResults(props) {
         // Store selected artist, their musicbrainz ID, and any selected songs locally
         window.sessionStorage.setItem("playlistTimestamp", Date.now())
         window.sessionStorage.setItem("artistName", name)
+        window.sessionStorage.setItem("artistKey", id)
         window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(songsForPlaylist))
         window.location.href = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=${process.env.REACT_APP_SCOPE}`
     }
@@ -189,6 +190,10 @@ function ArtistResults(props) {
         if (songsForPlaylist.length > 0) {
             setSongsForPlaylist(removeDuplicates(songsForPlaylist, song))
             let artistName = window.sessionStorage.getItem("artistName")
+            let artistKey = window.sessionStorage.getItem("artistKey")
+            if (artistKey === null) {
+                window.sessionStorage.setItem("artistKey", id)
+            }
             if (artistName === null) {
                 window.sessionStorage.setItem("artistName", name)
             }
@@ -196,6 +201,10 @@ function ArtistResults(props) {
             window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(removeDuplicates(songsForPlaylist, song)))
         } else {
             let artistName = window.sessionStorage.getItem("artistName")
+            let artistKey = window.sessionStorage.getItem("artistKey")
+            if (artistKey === null) {
+                window.sessionStorage.setItem("artistKey", id)
+            }
             if (artistName === null) {
                 window.sessionStorage.setItem("artistName", name)
             }
@@ -212,6 +221,10 @@ function ArtistResults(props) {
         if (songsForPlaylist.length > 0) {
             setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
             let artistName = window.sessionStorage.getItem("artistName")
+            let artistKey = window.sessionStorage.getItem("artistKey")
+            if (artistKey === null) {
+                window.sessionStorage.setItem("artistKey", id)
+            }
             if (artistName === null) {
                 window.sessionStorage.setItem("artistName", name)
             }
@@ -220,6 +233,10 @@ function ArtistResults(props) {
         } else {
             setSongsForPlaylist(setlist)
             let artistName = window.sessionStorage.getItem("artistName")
+            let artistKey = window.sessionStorage.getItem("artistKey")
+            if (artistKey === null) {
+                window.sessionStorage.setItem("artistKey", id)
+            }
             if (artistName === null) {
                 window.sessionStorage.setItem("artistName", name)
             }
