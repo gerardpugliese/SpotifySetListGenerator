@@ -58,17 +58,13 @@ function ArtistResults(props) {
         }
         setToken(token)
 
-        let artistName = window.sessionStorage.getItem("artistName")
-        let playlistTimestamp = window.sessionStorage.getItem("playlistTimestamp")
-        let timeDiff = Math.floor((Date.now() - playlistTimestamp) / 1000)
-        if (artistName === name && timeDiff < 300) {
-            let sessionPlaylistSongs = window.sessionStorage.getItem("songsForPlaylist")
-            if (sessionPlaylistSongs !== null) {
-                let parsedSessionSongs = JSON.parse(sessionPlaylistSongs)
-                setSongsForPlaylist(parsedSessionSongs)
-            }
-        } else {
-            window.sessionStorage.clear()
+        //let artistName = window.sessionStorage.getItem("artistName")
+        //let playlistTimestamp = window.sessionStorage.getItem("playlistTimestamp")
+        //let timeDiff = Math.floor((Date.now() - playlistTimestamp) / 1000)
+        let sessionPlaylistSongs = window.sessionStorage.getItem("songsForPlaylist")
+        if (sessionPlaylistSongs !== null) {
+            let parsedSessionSongs = JSON.parse(sessionPlaylistSongs)
+            setSongsForPlaylist(parsedSessionSongs)
         }
     }, [])
 
