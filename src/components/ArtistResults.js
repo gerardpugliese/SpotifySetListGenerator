@@ -209,6 +209,15 @@ function ArtistResults(props) {
             window.sessionStorage.setItem("songsForPlaylist", JSON.stringify(song))
         }
     }
+
+    /**
+     * Clears the current playlist.
+     */
+    const clearPlaylist = () => {
+        setSongsForPlaylist([])
+        window.sessionStorage.removeItem("songsForPlaylist")
+        window.sessionStorage.removeItem("playlistTimestamp")
+    }
     
     /**
      * Adds a whole setlist to the playlist.
@@ -305,6 +314,11 @@ function ArtistResults(props) {
                     </div>
                 }
                 </div>
+                {songsForPlaylist.length > 0 && 
+                    <div className="clear-playlist-btn">
+                        <p onClick={() => clearPlaylist()} className="clear-playlist-btn-text">Clear</p>
+                    </div>
+                }
                 {token == null ? 
                 songsForPlaylist.length > 0 && <div className="confirm-playlist-login">
                     <p onClick={() => login()} className="confirm-playlist-login-link">Log in with Spotify </p>

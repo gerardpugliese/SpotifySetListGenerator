@@ -165,6 +165,17 @@
     background-color: var(--alt-color);
 }
 
+.clear-playlist-btn-text {
+    padding-left: 2rem;
+    text-decoration: underline;
+    font-family: var(--subtext-font);
+}
+
+.clear-playlist-btn-text:hover {
+    cursor: pointer;
+    color: #2d71de;
+}
+
 @media screen and (max-width: 665px) {
     .artist-results-wrapper {
         min-height: 100vh;
