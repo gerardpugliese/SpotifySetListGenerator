@@ -217,6 +217,7 @@ function ArtistResults(props) {
         setSongsForPlaylist([])
         window.sessionStorage.removeItem("songsForPlaylist")
         window.sessionStorage.removeItem("playlistTimestamp")
+        window.scrollTo(0,0)
     }
     
     /**
