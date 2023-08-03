@@ -252,13 +252,21 @@ function ArtistResults(props) {
         
     }
 
+    const returnApostrophe = (artist) => {
+        if (artist[artist.length-1] === "s") {
+            return "'";
+        } else {
+            return "'s";
+        }
+    }
+
     return(
         <div className="artist-results-wrapper">
         <Header propagateUserId={setUserId} artistName={name} artistKey={id} songsForPlaylist={songsForPlaylist} goToHomePage={goToHomePage}/>
         <div className="setlist-result-wrapper">
             <div className="artist-setlists">
                 <div className="setlist-header">
-                    <p id="confirmed-artist-header-name">{selectedArtist}</p>
+                    <p id="confirmed-artist-header-name">{selectedArtist + returnApostrophe(name)}</p>
                     <p id="confirmed-artist-header"> recent setlists</p>
                 </div>
                 <div id="setlist-results" className="setlist-results">
