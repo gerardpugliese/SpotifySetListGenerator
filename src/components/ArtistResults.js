@@ -266,8 +266,10 @@ function ArtistResults(props) {
         <div className="setlist-result-wrapper">
             <div className="artist-setlists">
                 <div className="setlist-header">
-                    <p id="confirmed-artist-header-name">{selectedArtist + returnApostrophe(name)}</p>
-                    <p id="confirmed-artist-header"> recent setlists</p>
+                    {selectedArtist !== null && <React.Fragment>
+                        <p id="confirmed-artist-header-name">{selectedArtist + returnApostrophe(name)}</p>
+                        <p id="confirmed-artist-header"> recent setlists</p>
+                    </React.Fragment>}
                 </div>
                 <div id="setlist-results" className="setlist-results">
                 {setLists === undefined || setLists.length === 0 ? <React.Fragment>
