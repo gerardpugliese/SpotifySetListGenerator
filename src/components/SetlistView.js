@@ -23,10 +23,12 @@ function SetlistView (props) {
                 full_setlist = [...full_setlist, ...props.setlist.sets.set[i].song];
                 i += 1;
             }
+            console.log('full_setlist: ', full_setlist)
             setSongList(full_setlist)
         }
         else { // No encore exists.
-            setSongList(props.setlist.sets.set[0].song) 
+            console.log('setlist: ', props.setlist.sets.set[0].song)
+            setSongList(props.setlist.sets.set[0].song)  
         }
  
         if (props.idx < 4) { //Sets delay based on how far down the page the song is. Creates cascading effect.
@@ -145,11 +147,14 @@ function SetlistView (props) {
                 </div>
                 <div {...getCollapseProps()} className="setlist-song-list">
                     {songList !== undefined && songList.map((song, idx) => {
-                    return (
-                        <div key={idx}>
-                            <SongView song={song} songNum={idx+1} addSongToPlaylist={props.addSongToPlaylist}/>
-                        </div>
-                    )
+                        if (song.name !== '') {
+                        return (
+                            <div key={idx}>
+                                <SongView song={song} songNum={idx+1} addSongToPlaylist={props.addSongToPlaylist}/>
+                            </div> 
+                        )} else {
+                            return <React.Fragment />
+                        }
                     })} 
                 </div>
             </div>
