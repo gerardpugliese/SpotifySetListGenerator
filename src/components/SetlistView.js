@@ -23,11 +23,9 @@ function SetlistView (props) {
                 full_setlist = [...full_setlist, ...props.setlist.sets.set[i].song];
                 i += 1;
             }
-            console.log('full_setlist: ', full_setlist)
             setSongList(full_setlist)
         }
         else { // No encore exists.
-            console.log('setlist: ', props.setlist.sets.set[0].song)
             setSongList(props.setlist.sets.set[0].song)  
         }
  
