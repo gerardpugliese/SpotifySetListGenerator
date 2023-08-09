@@ -219,11 +219,19 @@ function ArtistResults(props) {
         window.sessionStorage.removeItem("playlistTimestamp")
         window.scrollTo(0,0)
     }
+
+    /**
+     * Removes unwanted songs from setlist 
+     */
+    const sanitizeSetlist = (setlist) => {
+        return setlist;
+    }
     
     /**
      * Adds a whole setlist to the playlist.
      */
     const addSetToPlaylist = (setlist) => {
+        setlist = sanitizeSetlist(setlist);
         if (songsForPlaylist.length > 0) {
             setSongsForPlaylist(removeDuplicates(songsForPlaylist, setlist))
             let artistName = window.sessionStorage.getItem("artistName")
