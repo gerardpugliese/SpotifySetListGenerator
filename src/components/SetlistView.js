@@ -33,8 +33,15 @@ function SetlistView (props) {
             setDelay(props.idx * 200)
         }
 
-        
+        setSongList(sanitizeSetlist(songList))
     }, [])
+
+    /**
+     * Removes unwanted songs from setlist 
+     */
+    const sanitizeSetlist = (setlist) => {
+        return setlist;
+    }
 
     /**
      * Converts numbered month to string month.
