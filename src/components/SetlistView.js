@@ -23,23 +23,16 @@ function SetlistView (props) {
                 full_setlist = [...full_setlist, ...props.setlist.sets.set[i].song];
                 i += 1;
             }
-            setSongList(sanitizeSetlist(full_setlist))
+            setSongList(full_setlist)
         }
         else { // No encore exists.
-            setSongList(sanitizeSetlist(props.setlist.sets.set[0].song))  
+            setSongList(props.setlist.sets.set[0].song)  
         }
  
         if (props.idx < 4) { //Sets delay based on how far down the page the song is. Creates cascading effect.
             setDelay(props.idx * 200)
         }
     }, [])
-
-    /**
-     * Removes unwanted songs from setlist 
-     */
-    const sanitizeSetlist = (setlist) => {
-        return setlist;
-    }
 
     /**
      * Converts numbered month to string month.
