@@ -149,7 +149,7 @@ function SetlistView (props) {
                                 <SongView song={song} songNum={idx+1} addSongToPlaylist={props.addSongToPlaylist}/>
                             </div> 
                         )} else {
-                            return <React.Fragment />
+                            return <React.Fragment key={idx}/>
                         }
                     })} 
                 </div>
