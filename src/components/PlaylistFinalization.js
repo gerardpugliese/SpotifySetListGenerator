@@ -130,7 +130,9 @@ function PlaylistFinalization(props) {
                 setSpotifyResultsForPlaylist(results)
             }
           })
-          .catch(error => console.log(error))
+          .catch(error => {
+            //console.log(error)
+        })
           i++
         }
         sortSpotifyResults()

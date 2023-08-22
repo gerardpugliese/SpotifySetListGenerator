@@ -94,7 +94,9 @@ function ArtistResults(props) {
             setSetLists(resp.setlist)
             setSelectedArtist(result) 
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            //console.log(error)
+        })
     }
 
     /**
