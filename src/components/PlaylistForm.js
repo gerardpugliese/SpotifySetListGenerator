@@ -92,7 +92,7 @@ function PlaylistForm(props) {
                 populatePlaylist(resp.id) // Adds songs to newly created playlist.
             })
             .catch(error => {
-                console.log(error)
+                //console.log(error)
             })
         } 
     }
